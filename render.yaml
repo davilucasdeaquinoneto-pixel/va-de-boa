@@ -8,7 +8,7 @@ services:
     headers:
       - path: /*
         name: Content-Security-Policy
-        value: "default-src 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self'; media-src 'self'; font-src 'self'; style-src 'self'; style-src-attr 'none'; script-src 'self'; script-src-attr 'none'; connect-src 'none'; frame-src 'none'; worker-src 'none'; upgrade-insecure-requests"
+        value: "default-src 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self'; media-src 'self'; font-src 'self'; style-src 'self'; style-src-attr 'none'; script-src 'self'; script-src-attr 'none'; connect-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; require-trusted-types-for 'script'; trusted-types 'none'; upgrade-insecure-requests"
       - path: /*
         name: X-Content-Type-Options
         value: nosniff
@@ -31,9 +31,24 @@ services:
         name: X-Permitted-Cross-Domain-Policies
         value: none
       - path: /*
+        name: Cross-Origin-Embedder-Policy
+        value: require-corp
+      - path: /*
+        name: Origin-Agent-Cluster
+        value: "?1"
+      - path: /*
+        name: X-XSS-Protection
+        value: "0"
+      - path: /*
+        name: X-DNS-Prefetch-Control
+        value: "off"
+      - path: /*
         name: Strict-Transport-Security
         value: "max-age=31536000"
       - path: /index.html
+        name: Cache-Control
+        value: "public, max-age=0, must-revalidate"
+      - path: /404.html
         name: Cache-Control
         value: "public, max-age=0, must-revalidate"
       - path: /assets/*
