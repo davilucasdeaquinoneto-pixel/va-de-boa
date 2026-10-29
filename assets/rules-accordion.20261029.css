@@ -1,0 +1,45 @@
+/* Organização expansível da página Regras */
+.rules-content-intro{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:32px 0 8px;padding:20px 0 16px;border-bottom:1px solid #dce5f0}
+.rules-content-intro h3{font-size:clamp(1.35rem,2.4vw,1.8rem);letter-spacing:-.6px;line-height:1.2;margin:5px 0 0;color:#17345f}
+.rules-content-intro>p{max-width:430px;margin:0;color:#5b6d83;font-size:.92rem;line-height:1.6}
+.rules-accordion-group{margin-top:30px}
+.rules-accordion-group-heading{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:13px}
+.rules-accordion-group-heading .eyebrow{margin:0 0 7px}
+.rules-accordion-group-heading h3{font-size:clamp(1.2rem,2vw,1.45rem);letter-spacing:-.45px;line-height:1.25;margin:0;color:#17345f}
+.rules-accordion-group-heading>p{max-width:440px;margin:0;color:#5b6d83;font-size:.88rem;line-height:1.6}
+.rules-accordion-list{display:grid;gap:10px}
+.rule-accordion{min-width:0;border:1px solid #dbe4ef;border-radius:13px;background:#fff;overflow:hidden;transition:border-color .18s ease,box-shadow .18s ease}
+.rule-accordion:hover{border-color:#b6c6d9;box-shadow:0 7px 22px #12346b0b}
+.rule-accordion[open]{border-color:#b8c9dd;box-shadow:0 8px 24px #12346b0b}
+.rule-accordion>summary{display:flex;align-items:center;gap:16px;padding:17px 20px;cursor:pointer;list-style:none;user-select:none}
+.rule-accordion>summary::-webkit-details-marker{display:none}
+.rule-accordion-number{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:10px;background:#fff0df;color:#a85200;font-size:.88rem;font-weight:850}
+.rule-accordion-title{display:flex;flex:1;flex-direction:column;gap:3px;min-width:0}
+.rule-accordion-title .rule-label{margin:0;font-size:.68rem;letter-spacing:1.05px;color:#5a6f8c}
+.rule-accordion-title strong{font-size:1.04rem;line-height:1.35;color:#17345f}
+.rule-accordion-title small{color:#64758b;font-size:.84rem;line-height:1.45}
+.rule-accordion-chevron{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border-radius:9px;background:#f1f5f9;color:#17345f}
+.rule-accordion-chevron::before{content:"+";font-size:1.35rem;line-height:1;font-weight:500}
+.rule-accordion[open] .rule-accordion-chevron::before{content:"−"}
+.rule-accordion[open]>summary{background:#fbfcfe;border-bottom:1px solid #e6edf5}
+.rule-accordion-content{padding:18px 24px 22px 76px;color:#445a78;font-size:.94rem;line-height:1.7}
+.rule-accordion-content p{margin:0 0 12px}
+.rule-accordion-content p:last-child{margin-bottom:0}
+.rule-accordion-content ul{padding-left:19px;margin:0;display:grid;gap:8px}
+.rule-accordion-content .rule-ref{display:inline-block;margin-top:13px}
+.rule-accordion-note{margin-top:14px;padding:12px 14px;border-left:3px solid var(--orange);border-radius:0 8px 8px 0;background:#fff7ed;color:#654a2c;font-size:.86rem;line-height:1.6}
+.rule-accordion-note strong{color:#17345f}
+@media(max-width:820px){
+  .rules-content-intro,.rules-accordion-group-heading{align-items:flex-start;flex-direction:column;gap:10px}
+  .rules-content-intro>p,.rules-accordion-group-heading>p{max-width:none}
+  .rules-accordion-group{margin-top:25px}
+}
+@media(max-width:560px){
+  .rules-content-intro{margin-top:24px;padding-top:16px}
+  .rule-accordion>summary{gap:11px;padding:14px 13px}
+  .rule-accordion-number{width:34px;height:34px;flex-basis:34px;border-radius:9px;font-size:.8rem}
+  .rule-accordion-title strong{font-size:.96rem}
+  .rule-accordion-title small{font-size:.78rem}
+  .rule-accordion-chevron{width:29px;height:29px;flex-basis:29px}
+  .rule-accordion-content{padding:15px 16px 19px;font-size:.9rem}
+}
