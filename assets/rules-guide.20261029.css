@@ -1,0 +1,96 @@
+/* Guia de regras: consulta rápida e conteúdo detalhado */
+.rules-quick{
+  margin:30px 0 38px;
+  padding:24px 26px 18px;
+  border:1px solid #dce5ef;
+  border-radius:16px;
+  background:#f6f8fb;
+}
+.rules-quick-heading{max-width:760px;margin-bottom:12px}
+.rules-quick-heading .eyebrow{margin:0 0 8px}
+.rules-quick-heading h3,.vehicle-guides-heading h3,.full-rules-heading h3{
+  margin:0;color:#17345f;font-size:clamp(1.45rem,2.5vw,1.9rem);line-height:1.2;letter-spacing:-.65px
+}
+.rules-quick-heading>p,.vehicle-guides-heading>p,.full-rules-heading>p{
+  max-width:720px;margin:10px 0 0;color:#5b6d83;line-height:1.65;font-size:.94rem
+}
+.rules-quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:34px}
+.rule-quick-item{display:grid;grid-template-columns:34px minmax(0,1fr);gap:13px;padding:17px 0;border-top:1px solid #dce5ef}
+.quick-index{display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:#ffecd8;color:#9a4b00;font-size:.78rem;font-weight:850}
+.rule-quick-item h4{margin:1px 0 5px;color:#17345f;font-size:1rem;line-height:1.35}
+.rule-quick-item p{margin:0;color:#4f627a;font-size:.88rem;line-height:1.6}
+.rule-quick-item strong{color:#17345f}
+.vehicle-guides{margin:42px 0 46px}
+.vehicle-guides-heading,.full-rules-heading{margin-bottom:18px}
+.vehicle-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.vehicle-guide-card{
+  display:flex;flex-direction:column;align-items:flex-start;min-height:205px;padding:21px 20px 18px;
+  border:1px solid #dce5ef;border-radius:13px;background:#fff;color:inherit;text-decoration:none;
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease
+}
+.vehicle-guide-card:hover{border-color:#9db4ce;transform:translateY(-2px);box-shadow:0 9px 22px #12346b0b}
+.vehicle-guide-card:focus-visible{outline:3px solid #e18a32;outline-offset:3px}
+.vehicle-guide-card .eyebrow{margin:0 0 10px;font-size:.68rem;letter-spacing:1px}
+.vehicle-guide-card h4{margin:0 0 8px;color:#17345f;font-size:1.1rem;line-height:1.3}
+.vehicle-guide-card p{margin:0 0 18px;color:#5b6d83;font-size:.88rem;line-height:1.6}
+.vehicle-guide-card .guide-card-link{display:flex;align-items:center;gap:8px;margin-top:auto;color:#9a4b00;font-size:.86rem;font-weight:800}
+.guide-card-link svg{width:15px;height:15px}
+.full-rules-guide{margin-top:38px}
+.full-rules-heading{padding-bottom:20px;border-bottom:1px solid #dce5ef}
+.guide-topic{display:grid;grid-template-columns:minmax(200px,.72fr) minmax(0,1.45fr);gap:32px;padding:27px 0;border-bottom:1px solid #dce5ef}
+.guide-topic-heading .eyebrow{margin:0 0 8px}
+.guide-topic-heading h4{margin:0;color:#17345f;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.3;letter-spacing:-.35px}
+.guide-topic-body{color:#465c76;font-size:.94rem;line-height:1.75}
+.guide-topic-body p{margin:0 0 13px}
+.guide-topic-body p:last-child{margin-bottom:0}
+.guide-topic-body ul,.guide-topic-body ol{margin:0 0 14px;padding-left:21px;display:grid;gap:7px}
+.guide-topic-body strong{color:#17345f}
+.guide-note{margin-top:14px;padding:13px 15px;border-left:3px solid #d97818;border-radius:0 8px 8px 0;background:#fff5e9;color:#60482d;font-size:.88rem;line-height:1.65}
+.guide-note strong{color:#17345f}
+.guide-source{display:inline-block;margin-top:9px;color:#60748e;font-size:.68rem;font-weight:850;letter-spacing:.8px;text-transform:uppercase}
+.rules-source-note{margin-top:28px;padding-top:22px;border-top:1px solid #dce5ef}
+.rules-source-note p{max-width:780px;color:#5b6d83;line-height:1.65}
+.guide-page-intro{padding-bottom:22px}
+.guide-page-intro .section-heading{margin-bottom:18px}
+.guide-page-intro .guide-lead{max-width:790px;color:#4f627a;font-size:1rem;line-height:1.75}
+.guide-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.guide-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:24px 0 35px;border-top:1px solid #dce5ef;border-bottom:1px solid #dce5ef}
+.guide-fact{padding:19px 20px 19px 0}
+.guide-fact+.guide-fact{padding-left:20px;border-left:1px solid #dce5ef}
+.guide-fact .fact-label{display:block;margin-bottom:6px;color:#63778f;font-size:.7rem;font-weight:850;letter-spacing:.85px;text-transform:uppercase}
+.guide-fact strong{display:block;color:#17345f;font-size:1.2rem;line-height:1.35}
+.guide-fact p{margin:6px 0 0;color:#5b6d83;font-size:.84rem;line-height:1.55}
+.guide-page-content{max-width:920px}
+.guide-page-content>h3{margin:31px 0 12px;padding-top:20px;border-top:1px solid #dce5ef;color:#17345f;font-size:1.35rem;line-height:1.35}
+.guide-page-content>p,.guide-page-content>ul,.guide-page-content>ol{color:#465c76;font-size:.96rem;line-height:1.75}
+.guide-page-content>p{margin:0 0 14px}
+.guide-page-content>ul,.guide-page-content>ol{padding-left:23px;display:grid;gap:9px;margin:0 0 17px}
+.guide-page-content li strong{color:#17345f}
+.guide-checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 25px;margin:15px 0 20px}
+.guide-checklist li{padding:11px 0;border-bottom:1px solid #e2e9f1}
+.guide-page-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;margin:38px 0 8px;padding-top:22px;border-top:1px solid #dce5ef}
+.guide-page-footer p{max-width:600px;margin:0;color:#5b6d83;font-size:.9rem;line-height:1.65}
+.guide-page-footer .guide-actions{margin-top:0}
+@media(max-width:850px){
+  .vehicle-guide-grid{grid-template-columns:1fr}
+  .vehicle-guide-card{min-height:0}
+  .guide-topic{grid-template-columns:1fr;gap:12px}
+  .guide-topic-heading h4{max-width:640px}
+  .guide-facts{grid-template-columns:1fr}
+  .guide-fact,.guide-fact+.guide-fact{padding:15px 0;border-left:0;border-bottom:1px solid #e2e9f1}
+  .guide-fact:last-child{border-bottom:0}
+}
+@media(max-width:620px){
+  .rules-quick{padding:19px 17px 12px;margin:23px 0 30px}
+  .rules-quick-grid{grid-template-columns:1fr}
+  .rule-quick-item{padding:14px 0}
+  .vehicle-guides{margin:32px 0}
+  .guide-topic{padding:21px 0}
+  .guide-topic-body{font-size:.91rem}
+  .guide-checklist{grid-template-columns:1fr}
+  .guide-page-footer{align-items:flex-start;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  .vehicle-guide-card{transition:none}
+  .vehicle-guide-card:hover{transform:none}
+}
