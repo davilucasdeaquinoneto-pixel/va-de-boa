@@ -324,15 +324,19 @@ function normalizeGuideText(value) {
 }
 function initGuideSearch() {
   const sections = [...document.querySelectorAll("section[data-page]")];
-  const index = sections.filter((section) => pageTitles[section.dataset.page]).map((section) => {
+  const routeBodies = new Map();
+  sections.forEach((section) => {
     const route = section.dataset.page;
-    return {
-      route,
-      title: pageTitles[route],
-      body: normalizeGuideText(section.textContent + " " + (guideSearchAliases[route] || "")),
-      rawBody: section.textContent.replace(/\s+/g, " ").trim()
-    };
+    if (!pageTitles[route]) return;
+    const existing = routeBodies.get(route) || "";
+    routeBodies.set(route, (existing + " " + section.textContent).trim());
   });
+  const index = [...routeBodies.entries()].map(([route, rawBody]) => ({
+    route,
+    title: pageTitles[route],
+    body: normalizeGuideText(rawBody + " " + (guideSearchAliases[route] || "")),
+    rawBody: rawBody.replace(/\s+/g, " ").trim()
+  }));
   document.querySelectorAll("[data-guide-search]").forEach((input) => {
     const results = document.getElementById(input.dataset.searchResults);
     if (!results) return;
