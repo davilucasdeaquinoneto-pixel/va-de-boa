@@ -8,6 +8,7 @@
 <title>Vá de Boa | Projeto Turma 41</title>
 <link href="assets/favicon.c92632b67411.svg" rel="icon" type="image/svg+xml"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="index,follow,max-image-preview:large" name="robots"/><meta content="light" name="color-scheme"/><meta content="Vá de Boa | Projeto Turma 41" property="og:title"/><meta content="Campanha educativa independente sobre bicicletas elétricas, desenvolvida por alunos da Turma 41 do curso de Aprendizagem Profissional em Comércio de Bens, Serviços e Turismo do Senac." property="og:description"/><meta content="website" property="og:type"/><meta content="assets/bike-hero.82c05c9b30be.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><link crossorigin="anonymous" href="assets/styles.2772bc3939d3.css" integrity="sha384-Bx5JjxjYe+OlS+a/j6DVBIaWv2Y6RC6dmhIxlSZEMqulQVPAYu7PKL/ZF1MgOKfR" rel="stylesheet"/><link href="assets/rules-guide.20261029.css" rel="stylesheet"/>
+<link href="assets/navigation-guides.20261029.css" rel="stylesheet"/>
 <!--
 Interface icons adapted from Lucide and Feather.
 Source: https://github.com/lucide-icons/lucide/blob/main/LICENSE
@@ -105,12 +106,55 @@ SOFTWARE.
 <div><span class="drawer-kicker">PROJETO INDEPENDENTE</span><h2 id="menu-title">Vá de Boa</h2><p>Projeto Turma 41 · feito por alunos do curso de Aprendizagem Profissional em Comércio de Bens, Serviços e Turismo</p></div>
 <button aria-label="Fechar menu" class="icon-button" data-close-dialog="menu-dialog" type="button"><svg aria-hidden="true" class="icon"><use href="#i-close"></use></svg></button>
 </div>
-<nav aria-label="Páginas da campanha" class="drawer-nav">
+<nav aria-label="Navegação da campanha" class="drawer-nav">
 <a data-route="inicio" href="#inicio"><span class="drawer-index">01</span><span>Início</span></a>
-<a data-route="regras" href="#regras"><span class="drawer-index">02</span><span>Regras</span></a>
-<a data-route="cards" href="#cards"><span class="drawer-index">03</span><span>Materiais educativos</span></a>
-<a data-route="videos" href="#videos"><span class="drawer-index">04</span><span>Vídeos</span></a>
-<a data-route="campanha" href="#campanha"><span class="drawer-index">05</span><span>Sobre o projeto</span></a>
+<a data-route="regras" href="#regras"><span class="drawer-index">02</span><span>Regras rápidas</span></a>
+
+<div class="drawer-group" data-drawer-group="bike">
+  <button aria-controls="drawer-bike-links" aria-expanded="false" class="drawer-group-toggle" data-drawer-toggle type="button"><span class="drawer-index">03</span><span>Bicicleta elétrica</span><span aria-hidden="true" class="drawer-chevron"></span></button>
+  <ul class="drawer-subnav" hidden id="drawer-bike-links">
+    <li><a data-route="bicicleta-eletrica" href="#bicicleta-eletrica">Regras e instruções gerais</a></li>
+    <li><a data-route="bike-equipamentos" href="#bike-equipamentos">Equipamentos obrigatórios</a></li>
+    <li><a data-route="bike-velocidade" href="#bike-velocidade">Velocidade e limites</a></li>
+    <li><a data-route="bike-circulacao" href="#bike-circulacao">Onde pode circular</a></li>
+    <li><a data-route="bike-manutencao" href="#bike-manutencao">Conferência e manutenção</a></li>
+  </ul>
+</div>
+
+<div class="drawer-group" data-drawer-group="autopropelido">
+  <button aria-controls="drawer-auto-links" aria-expanded="false" class="drawer-group-toggle" data-drawer-toggle type="button"><span class="drawer-index">04</span><span>Equipamento autopropelido</span><span aria-hidden="true" class="drawer-chevron"></span></button>
+  <ul class="drawer-subnav" hidden id="drawer-auto-links">
+    <li><a data-route="autopropelido" href="#autopropelido">Regras e instruções gerais</a></li>
+    <li><a data-route="autopropelido-equipamentos" href="#autopropelido-equipamentos">Equipamentos obrigatórios</a></li>
+    <li><a data-route="autopropelido-velocidade" href="#autopropelido-velocidade">Velocidade e limites</a></li>
+    <li><a data-route="autopropelido-circulacao" href="#autopropelido-circulacao">Onde pode circular</a></li>
+  </ul>
+</div>
+
+<div class="drawer-group" data-drawer-group="ciclomotor">
+  <button aria-controls="drawer-moped-links" aria-expanded="false" class="drawer-group-toggle" data-drawer-toggle type="button"><span class="drawer-index">05</span><span>Ciclomotor</span><span aria-hidden="true" class="drawer-chevron"></span></button>
+  <ul class="drawer-subnav" hidden id="drawer-moped-links">
+    <li><a data-route="ciclomotor" href="#ciclomotor">Regras e instruções gerais</a></li>
+    <li><a data-route="ciclomotor-documentacao" href="#ciclomotor-documentacao">Documentação e registro</a></li>
+    <li><a data-route="ciclomotor-habilitacao" href="#ciclomotor-habilitacao">Habilitação e idade</a></li>
+    <li><a data-route="ciclomotor-equipamentos" href="#ciclomotor-equipamentos">Equipamentos obrigatórios</a></li>
+    <li><a data-route="ciclomotor-circulacao" href="#ciclomotor-circulacao">Velocidade e circulação</a></li>
+  </ul>
+</div>
+
+<div class="drawer-group" data-drawer-group="circulacao">
+  <button aria-controls="drawer-road-links" aria-expanded="false" class="drawer-group-toggle" data-drawer-toggle type="button"><span class="drawer-index">06</span><span>Circulação e convivência</span><span aria-hidden="true" class="drawer-chevron"></span></button>
+  <ul class="drawer-subnav" hidden id="drawer-road-links">
+    <li><a data-route="velocidade-por-local" href="#velocidade-por-local">Velocidade por local</a></li>
+    <li><a data-route="calcadas-compartilhadas" href="#calcadas-compartilhadas">Calçadas compartilhadas</a></li>
+    <li><a data-route="circulacao-sem-ciclovia" href="#circulacao-sem-ciclovia">Quando não há ciclovia</a></li>
+    <li><a data-route="distancia-ultrapassagem" href="#distancia-ultrapassagem">Distância na ultrapassagem</a></li>
+  </ul>
+</div>
+
+<a data-route="cards" href="#cards"><span class="drawer-index">07</span><span>Materiais educativos</span></a>
+<a data-route="videos" href="#videos"><span class="drawer-index">08</span><span>Vídeos</span></a>
+<a data-route="campanha" href="#campanha"><span class="drawer-index">09</span><span>Sobre o projeto</span></a>
 </nav>
 <div class="drawer-secondary"><a data-route="sobre-nos" href="#sobre-nos">Sobre nós</a><a data-route="acessibilidade" href="#acessibilidade">Acessibilidade</a><a data-route="privacidade" href="#privacidade">Privacidade</a><a data-route="termos" href="#termos">Termos de uso</a></div>
 <p class="drawer-footer">PROJETO TURMA 41 · 2026</p>
@@ -353,12 +397,13 @@ SOFTWARE.
       <div class="guide-topic-body">
         <p>A autorização depende da categoria do veículo, da sinalização e das regras do órgão responsável pela via. Não presuma que uma calçada, ciclovia ou rua esteja liberada só porque parece adequada ao veículo.</p>
         <ul>
-          <li><strong>Ciclovias, ciclofaixas e ciclorrotas:</strong> respeite a sinalização e o limite de velocidade regulamentado para aquele trecho.</li>
-          <li><strong>Calçadas e áreas de pedestres:</strong> bicicletas só podem circular no passeio quando houver autorização e sinalização adequadas. Para equipamentos autopropelidos, a circulação em área de pedestres depende de autorização local.</li>
+          <li><strong>Ciclovias, ciclofaixas e ciclorrotas:</strong> siga a sinalização e o limite definido para aquele trecho. Em Vila Velha, a Lei Municipal nº 7.243/2025 fixa até 20 km/h nas ciclovias e ciclofaixas abrangidas pela lei.</li>
+          <li><strong>Calçadas e áreas de pedestres:</strong> bicicletas só podem circular no passeio quando houver autorização e sinalização adequadas. Para autopropelidos, a circulação em área de pedestres depende de autorização local e, quando permitida, a Resolução CONTRAN prevê até 6 km/h.</li>
+          <li><strong>Cariacica:</strong> a Lei Municipal nº 5.150/2014 prevê que a faixa compartilhada na calçada depende de autorização e sinalização e não pode comprometer a mobilidade segura e confortável dos pedestres. A orientação divulgada pela Inspetoria de Trânsito municipal indica até 6 km/h para bicicletas elétricas em praças e calçadas autorizadas.</li>
           <li><strong>Outras vias:</strong> verifique a regulamentação local e use a infraestrutura permitida para a categoria do veículo.</li>
         </ul>
-        <p>Em Vila Velha, a Lei Municipal nº 7.243/2025 estabelece limite de até <strong>20 km/h em ciclovias e ciclofaixas</strong> para bicicletas elétricas e equipamentos autopropelidos abrangidos pela lei. Esse limite não deve ser aplicado automaticamente a calçadas compartilhadas ou a outras cidades.</p>
-        <span class="guide-source">Resolução CONTRAN 996/2023 · arts. 6º, 7º e 9º · CTB, art. 59 · Lei Municipal 7.243/2025</span>
+        <p>O limite de 20 km/h de Vila Velha não deve ser transferido automaticamente para calçadas compartilhadas nem para outros municípios.</p>
+        <span class="guide-source">Resolução CONTRAN 996/2023 · CTB, art. 59 · Lei de Cariacica 5.150/2014 · Lei de Vila Velha 7.243/2025</span>
       </div>
     </article>
 
@@ -391,17 +436,19 @@ SOFTWARE.
     <article class="guide-topic" id="limites-velocidade">
       <div class="guide-topic-heading">
         <p class="eyebrow">05 / VELOCIDADE</p>
-        <h4>32 km/h, 20 km/h e 6 km/h: qual é a diferença?</h4>
+        <h4>32 km/h, 20 km/h e 6 km/h: cada número tem seu contexto</h4>
       </div>
       <div class="guide-topic-body">
-        <p>Esses números não representam uma única regra. Cada um aparece em um contexto diferente:</p>
+        <p>Não existe um único limite que possa ser aplicado a todos os veículos e a todos os espaços. É necessário distinguir a capacidade técnica do veículo das regras de circulação do local.</p>
         <ul>
-          <li><strong>32 km/h:</strong> é o limite de velocidade de propulsão do motor auxiliar na definição nacional de bicicleta elétrica. Não é uma autorização para circular a essa velocidade em qualquer lugar.</li>
-          <li><strong>20 km/h em Vila Velha:</strong> é o limite municipal aplicável às ciclovias e ciclofaixas abrangidas pela Lei nº 7.243/2025 para bicicletas elétricas e equipamentos autopropelidos.</li>
-          <li><strong>6 km/h:</strong> a Resolução CONTRAN prevê esse limite para equipamentos autopropelidos em áreas de circulação de pedestres quando a autoridade local autoriza essa circulação. Não é um limite nacional automático para toda bicicleta elétrica em qualquer calçada.</li>
+          <li><strong>32 km/h:</strong> limite de velocidade da assistência do motor na definição nacional de bicicleta elétrica; também é o limite de fabricação usado na classificação de equipamentos autopropelidos. Não autoriza circular a essa velocidade em qualquer lugar.</li>
+          <li><strong>20 km/h:</strong> em Vila Velha, a Lei Municipal nº 7.243/2025 estabelece esse limite para bicicletas elétricas e equipamentos autopropelidos abrangidos pela lei nas ciclovias e ciclofaixas. Não é o limite de calçadas compartilhadas.</li>
+          <li><strong>6 km/h em área de pedestres:</strong> a Resolução CONTRAN nº 996/2023 prevê esse limite para autopropelidos quando a autoridade local autoriza a circulação nesse espaço.</li>
+          <li><strong>Cariacica:</strong> a Lei Municipal nº 5.150/2014 condiciona a faixa compartilhada na calçada à autorização e sinalização. Em 2025, a Inspetoria de Trânsito municipal informou que bicicletas elétricas só devem circular em praças e calçadas onde o compartilhamento esteja sinalizado, respeitando até 6 km/h.</li>
         </ul>
-        <p>Além desses casos, a sinalização e a regulamentação do local podem estabelecer condições específicas. Reduza a velocidade em áreas movimentadas e mantenha espaço para reagir a pedestres, cruzamentos e obstáculos.</p>
-        <span class="guide-source">Resolução CONTRAN 996/2023 · arts. 2º, 6º, 7º e 9º · Lei Municipal 7.243/2025</span>
+        <div class="guide-note"><strong>Importante:</strong> nas fontes consultadas, não encontrei norma de Cariacica que estabeleça 20 km/h para calçadas compartilhadas. Em caso de dúvida, confira a sinalização e a orientação atual do órgão municipal de trânsito.</div>
+        <p>Em vias públicas, também devem ser respeitadas as regras locais, a sinalização e as condições do trajeto. A velocidade máxima de fabricação não é uma autorização para ignorar o limite da via.</p>
+        <span class="guide-source">Resolução CONTRAN 996/2023 · Lei de Cariacica 5.150/2014 · Lei de Vila Velha 7.243/2025 · orientação da Inspetoria de Trânsito de Cariacica</span>
       </div>
     </article>
 
@@ -435,6 +482,8 @@ SOFTWARE.
       <a class="button button-outline" href="https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm" rel="noopener noreferrer" target="_blank">Código de Trânsito Brasileiro <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a>
       <a class="button button-outline" href="https://vilavelha.splonline.com.br/processo.aspx?autor=69&id=284954&tipo=21" rel="noopener noreferrer" target="_blank">Lei 7.243/2025 · Vila Velha <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a>
       <a class="button button-outline" href="https://detran.es.gov.br/Contents/Item/Display/17711" rel="noopener noreferrer" target="_blank">Orientação do Detran|ES sobre ciclomotores <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a>
+      <a class="button button-outline" href="https://detran.es.gov.br/Media/detran/Legislacao/Resolu%C3%A7%C3%B5es/RESOLU%C3%87%C3%83O%20CETRAN%20N%C2%BA%2020-2026.pdf" rel="noopener noreferrer" target="_blank">Resolução CETRAN-ES nº 20/2026 <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a>
+      <a class="button button-outline" href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9932023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 993/2023 <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a>
     </div>
   </div>
   <p class="legal-disclaimer"><strong>Nota:</strong> este é um material educativo de uma campanha independente. Não substitui a legislação vigente, a sinalização da via nem a orientação do órgão de trânsito responsável.</p>
@@ -486,7 +535,7 @@ SOFTWARE.
 
     <h3>4. Onde pode circular?</h3>
     <p>A circulação deve respeitar a sinalização e a regulamentação do órgão responsável pela via. Em ciclovias, ciclofaixas e ciclorrotas, siga o limite local. A circulação de bicicletas em passeios depende de autorização e sinalização adequadas.</p>
-    <p>Em Vila Velha, a Lei Municipal nº 7.243/2025 estabelece limite de até 20 km/h nas ciclovias e ciclofaixas abrangidas pela lei. Não trate esse número como uma autorização para circular a 20 km/h em qualquer calçada ou em qualquer município.</p>
+    <p>Em Vila Velha, a Lei Municipal nº 7.243/2025 estabelece limite de até 20 km/h nas ciclovias e ciclofaixas abrangidas pela lei. Em Cariacica, a Lei Municipal nº 5.150/2014 exige autorização e sinalização para uma faixa compartilhada na calçada; a orientação divulgada pela Inspetoria de Trânsito municipal indica até 6 km/h para bicicletas elétricas nesses espaços autorizados. Não encontrei fonte que fixe 20 km/h para calçadas compartilhadas em Cariacica.</p>
 
     <h3>5. Conferência antes de sair</h3>
     <ul>
@@ -498,6 +547,12 @@ SOFTWARE.
     </ul>
     <div class="guide-note"><strong>Referência principal:</strong> Resolução CONTRAN nº 996/2023, especialmente os artigos 2º, 4º, 6º, 7º, 11 e 12. A ficha técnica do modelo ajuda a confirmar se ele realmente pertence a esta categoria.</div>
   </div>
+
+  <div class="guide-related-links-block">
+  <h3>Explore os assuntos deste guia</h3>
+  <p>Consulte cada tema em uma página própria, com requisitos, exemplos e referências.</p>
+  <div class="guide-related-links"><a href="#bike-equipamentos">Equipamentos obrigatórios<span aria-hidden="true">→</span></a><a href="#bike-velocidade">Velocidade e limites<span aria-hidden="true">→</span></a><a href="#bike-circulacao">Onde pode circular<span aria-hidden="true">→</span></a><a href="#bike-manutencao">Conferência e manutenção<span aria-hidden="true">→</span></a></div>
+ </div>
 
   <div class="guide-page-footer">
     <p>Para comparar esta categoria com equipamentos que podem ter acelerador, consulte o guia de autopropelidos.</p>
@@ -546,7 +601,7 @@ SOFTWARE.
 
     <h3>5. Onde pode circular?</h3>
     <p>O órgão responsável pela via regulamenta a circulação. Antes de usar uma ciclovia, ciclofaixa, calçada ou área compartilhada, confira a sinalização e a regra municipal.</p>
-    <p>A Resolução CONTRAN prevê velocidade de até 6 km/h para equipamentos autopropelidos em áreas de circulação de pedestres quando a autoridade local autoriza esse uso. Isso não libera automaticamente todos os equipamentos em qualquer calçada. Em Vila Velha, a Lei Municipal nº 7.243/2025 estabelece até 20 km/h nas ciclovias e ciclofaixas abrangidas pela lei.</p>
+    <p>A Resolução CONTRAN prevê velocidade de até 6 km/h para equipamentos autopropelidos em áreas de circulação de pedestres quando a autoridade local autoriza esse uso. Isso não libera automaticamente todos os equipamentos em qualquer calçada. Em Vila Velha, a Lei Municipal nº 7.243/2025 estabelece até 20 km/h nas ciclovias e ciclofaixas abrangidas pela lei. Em Cariacica, confirme a autorização e a sinalização do local; as fontes consultadas não estabelecem 20 km/h para calçadas compartilhadas.</p>
 
     <h3>6. O que conferir antes de usar?</h3>
     <ul>
@@ -558,6 +613,12 @@ SOFTWARE.
     </ul>
     <div class="guide-note"><strong>Referência principal:</strong> Resolução CONTRAN nº 996/2023, artigos 2º, 3º, 6º, 9º, 11 e 12. Para confirmar a categoria, consulte as especificações do modelo.</div>
   </div>
+
+  <div class="guide-related-links-block">
+  <h3>Explore os assuntos deste guia</h3>
+  <p>Consulte cada tema em uma página própria, com requisitos, exemplos e referências.</p>
+  <div class="guide-related-links"><a href="#autopropelido-equipamentos">Equipamentos obrigatórios<span aria-hidden="true">→</span></a><a href="#autopropelido-velocidade">Velocidade e limites<span aria-hidden="true">→</span></a><a href="#autopropelido-circulacao">Onde pode circular<span aria-hidden="true">→</span></a></div>
+ </div>
 
   <div class="guide-page-footer">
     <p>Se o veículo se aproxima das características de uma pequena moto, confira as regras específicas de ciclomotores.</p>
@@ -609,9 +670,410 @@ SOFTWARE.
     <div class="guide-note"><strong>Atenção:</strong> este guia é educativo. Para circular, os requisitos de idade, habilitação, documentação e equipamentos devem ser cumpridos integralmente.</div>
   </div>
 
+  <div class="guide-related-links-block">
+  <h3>Explore os assuntos deste guia</h3>
+  <p>Consulte cada tema em uma página própria, com requisitos, exemplos e referências.</p>
+  <div class="guide-related-links"><a href="#ciclomotor-documentacao">Documentação e registro<span aria-hidden="true">→</span></a><a href="#ciclomotor-habilitacao">Habilitação e idade<span aria-hidden="true">→</span></a><a href="#ciclomotor-equipamentos">Equipamentos obrigatórios<span aria-hidden="true">→</span></a><a href="#ciclomotor-circulacao">Velocidade e circulação<span aria-hidden="true">→</span></a></div>
+ </div>
+
   <div class="guide-page-footer">
     <p>As exigências de ciclomotores são diferentes das regras para bicicletas elétricas e autopropelidos.</p>
     <div class="guide-actions"><a class="button button-outline" href="#regras">Resumo das regras</a><a class="button button-orange" href="#bicicleta-eletrica">Guia de bicicleta elétrica <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="bike-equipamentos-title" class="route-section vehicle-guide-page" data-page="bike-equipamentos" hidden="" id="bike-equipamentos">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">BICICLETA ELÉTRICA / EQUIPAMENTOS</p><h2 id="bike-equipamentos-title">Equipamentos obrigatórios da bicicleta elétrica<span class="orange-dot">.</span></h2></div>
+      <p>A Resolução CONTRAN nº 996/2023 define os equipamentos que a bicicleta elétrica precisa ter para circular. A lista legal deve ser distinguida dos cuidados adicionais de manutenção.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#bicicleta-eletrica">Voltar para bicicleta elétrica</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Velocidade</span><strong>Indicador ou limitador</strong><p>A norma admite alternativas de indicação.</p></div><div class="guide-fact"><span class="fact-label">Alerta</span><strong>Campainha</strong><p>Use quando for necessário alertar alguém.</p></div><div class="guide-fact"><span class="fact-label">Visibilidade</span><strong>Sinalização noturna</strong><p>Frente, traseira, laterais e pedais.</p></div></div>
+  <div class="guide-page-content"><h3>1. Itens previstos no art. 4º</h3>
+<ul class="guide-checklist">
+<li><strong>Indicador de velocidade ou limitador eletrônico.</strong> A resolução permite aviso sonoro ou aplicativo de celular como alternativa para indicar a velocidade.</li>
+<li><strong>Campainha.</strong> Deve estar disponível para alertar outras pessoas quando necessário.</li>
+<li><strong>Sinalização noturna dianteira.</strong> Para aumentar a visibilidade pela frente em condições de pouca luz.</li>
+<li><strong>Sinalização noturna traseira e lateral.</strong> Ajuda motoristas e outros usuários a perceberem a bicicleta e sua posição.</li>
+<li><strong>Sinalização nos pedais.</strong> Também integra os itens expressamente previstos pela norma.</li>
+<li><strong>Espelho retrovisor esquerdo.</strong> Ajuda a observar o trânsito que vem por trás, sem substituir a atenção direta.</li>
+<li><strong>Pneus em condições mínimas de segurança.</strong> Confira desgaste, danos e a calibragem indicada pelo fabricante.</li>
+</ul>
+<h3>2. O que conferir além da lista legal?</h3>
+<p>Antes de sair, teste os freios, confira a fixação das rodas e do guidão, observe a corrente e verifique se a bateria está bem encaixada. São cuidados preventivos importantes, mas não devem ser apresentados como se todos estivessem enumerados no art. 4º.</p>
+<h3>3. Capacete e proteção</h3>
+<p>O capacete é uma medida de proteção recomendada pela campanha. A lista específica do art. 4º da Resolução nº 996/2023 não o inclui entre os equipamentos obrigatórios da bicicleta elétrica; verifique também a sinalização e as regras locais aplicáveis ao trajeto.</p>
+<div class="guide-note"><strong>Antes de circular:</strong> se a campainha, a sinalização, o espelho, os pneus ou o sistema de frenagem apresentarem falhas, resolva o problema antes de usar a bicicleta.</div>
+<p><strong>Referências:</strong> <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023, art. 4º</a> e <a href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9932023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 993/2023</a>.</div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#bicicleta-eletrica">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="bike-velocidade-title" class="route-section vehicle-guide-page" data-page="bike-velocidade" hidden="" id="bike-velocidade">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">BICICLETA ELÉTRICA / VELOCIDADE</p><h2 id="bike-velocidade-title">Velocidade da bicicleta elétrica<span class="orange-dot">.</span></h2></div>
+      <p>O limite de assistência do motor não é o mesmo que a velocidade permitida em cada rua, ciclovia ou calçada. A localização e a regulamentação local fazem diferença.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#bicicleta-eletrica">Voltar para bicicleta elétrica</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Critério técnico</span><strong>Até 32 km/h</strong><p>Limite da propulsão auxiliar na definição geral.</p></div><div class="guide-fact"><span class="fact-label">Vila Velha</span><strong>Até 20 km/h</strong><p>Nas ciclovias e ciclofaixas abrangidas pela lei municipal.</p></div><div class="guide-fact"><span class="fact-label">Cariacica</span><strong>Até 6 km/h</strong><p>Orientação local divulgada para calçadas/praças autorizadas.</p></div></div>
+  <div class="guide-page-content"><h3>1. O que significa 32 km/h?</h3>
+<p>Na definição nacional, a bicicleta elétrica tem motor auxiliar que só funciona enquanto a pessoa pedala e cuja velocidade máxima de propulsão não ultrapassa 32 km/h. Esse é um critério técnico da categoria, não uma permissão para andar a 32 km/h em qualquer espaço.</p>
+<h3>2. Como funciona o limite de 20 km/h?</h3>
+<p>Em Vila Velha, a Lei Municipal nº 7.243/2025 estabelece até 20 km/h nas ciclovias e ciclofaixas abrangidas pela lei para as categorias nela indicadas. Esse limite local não deve ser transferido automaticamente para calçadas compartilhadas nem para todos os municípios.</p>
+<h3>3. Calçadas compartilhadas em Cariacica</h3>
+<p>A Lei Municipal nº 5.150/2014 prevê que a faixa compartilhada na calçada depende de autorização e sinalização e não pode comprometer a mobilidade segura e confortável dos pedestres. Em 2025, a Inspetoria de Trânsito de Cariacica informou que bicicletas elétricas só podem circular em praças e calçadas onde a sinalização permita o compartilhamento, respeitando até 6 km/h.</p>
+<div class="guide-note"><strong>Não confunda os números:</strong> nas fontes consultadas, não encontrei uma norma de Cariacica que fixe 20 km/h para calçadas compartilhadas. Verifique a placa do local e a orientação atual do órgão municipal de trânsito.</div>
+<h3>4. E nas outras vias?</h3>
+<p>Observe a sinalização e a regulamentação do trecho. Reduza a velocidade perto de cruzamentos, pedestres, entradas de garagem e pontos com visibilidade limitada. A velocidade máxima da assistência não substitui a condução segura.</p>
+<p><strong>Referências:</strong> <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023</a>; <a href="https://www.camaracariacica.es.gov.br/uploads/dio/59/2014/l-51502014-1611965926.pdf" rel="noopener noreferrer" target="_blank">Lei de Cariacica nº 5.150/2014</a>; <a href="https://dev.tribunaonline.com.br/cidades/prefeituras-dizem-que-vao-orientar-usuarios-sobre-uso-de-bicicletas-eletricas-281640" rel="noopener noreferrer" target="_blank">relato da orientação da Inspetoria de Trânsito de Cariacica</a>; <a href="https://vilavelha.splonline.com.br/processo.aspx?autor=69&id=284954&tipo=21" rel="noopener noreferrer" target="_blank">Lei de Vila Velha nº 7.243/2025</a>.</div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#bicicleta-eletrica">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="bike-circulacao-title" class="route-section vehicle-guide-page" data-page="bike-circulacao" hidden="" id="bike-circulacao">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">BICICLETA ELÉTRICA / CIRCULAÇÃO</p><h2 id="bike-circulacao-title">Onde a bicicleta elétrica pode circular<span class="orange-dot">.</span></h2></div>
+      <p>A bicicleta elétrica que atende à definição do CONTRAN é equiparada à bicicleta para fins de circulação. Isso não significa que toda calçada ou via esteja liberada.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#bicicleta-eletrica">Voltar para bicicleta elétrica</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Ciclovia</span><strong>Siga a sinalização</strong><p>Confira o sentido e o limite local.</p></div><div class="guide-fact"><span class="fact-label">Rua sem cicloestrutura</span><strong>Mesmo sentido</strong><p>Use o bordo da pista quando previsto e seguro.</p></div><div class="guide-fact"><span class="fact-label">Calçada</span><strong>Autorização e placa</strong><p>Não presuma que o compartilhamento é permitido.</p></div></div>
+  <div class="guide-page-content"><h3>1. Ciclovias, ciclofaixas e ciclorrotas</h3>
+<p>Use a infraestrutura indicada para bicicletas e respeite o sentido, a sinalização e o limite de velocidade definido pelo órgão responsável pela via. Uma faixa pintada ou compartilhada não dispensa atenção a pedestres e cruzamentos.</p>
+<h3>2. Calçadas e passeios</h3>
+<p>O art. 59 do Código de Trânsito Brasileiro prevê circulação de bicicletas nos passeios somente quando autorizada e devidamente sinalizada. Em Cariacica, a Lei Municipal nº 5.150/2014 também condiciona a faixa compartilhada na calçada à autorização e sinalização, sem comprometer a mobilidade segura e confortável de pedestres.</p>
+<p>A orientação divulgada pela Inspetoria de Trânsito de Cariacica em 2025 indica que bicicletas elétricas só circulem em praças e calçadas onde a sinalização permita compartilhamento, respeitando até 6 km/h. Priorize sempre quem está a pé.</p>
+<h3>3. Quando não há ciclovia ou ciclofaixa</h3>
+<p>O art. 58 do CTB prevê, nas condições descritas pela lei, circulação pelo bordo da pista, no mesmo sentido regulamentado para a via, com preferência sobre veículos automotores. Observe buracos, carros estacionados e cruzamentos. Não faça zigue-zague e não desvie sem verificar se há espaço.</p>
+<h3>4. Antes de escolher o trajeto</h3>
+<ul><li>Leia placas e marcas no pavimento.</li><li>Confirme se a categoria do seu veículo pode usar aquele espaço.</li><li>Reduza a velocidade onde há pedestres ou pouca visibilidade.</li><li>Se o trajeto não parecer seguro, procure uma alternativa permitida.</li></ul>
+<p><strong>Referências:</strong> <a href="https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm" rel="noopener noreferrer" target="_blank">CTB, arts. 58 e 59</a>; <a href="https://www.camaracariacica.es.gov.br/uploads/dio/59/2014/l-51502014-1611965926.pdf" rel="noopener noreferrer" target="_blank">Lei de Cariacica nº 5.150/2014</a>.</div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#bicicleta-eletrica">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="bike-manutencao-title" class="route-section vehicle-guide-page" data-page="bike-manutencao" hidden="" id="bike-manutencao">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">BICICLETA ELÉTRICA / PREPARAÇÃO</p><h2 id="bike-manutencao-title">Conferência e manutenção antes de sair<span class="orange-dot">.</span></h2></div>
+      <p>Uma conferência curta antes do trajeto ajuda a identificar falhas que podem comprometer a condução. Use a lista como rotina, não como substituto da manutenção indicada pelo fabricante.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#bicicleta-eletrica">Voltar para bicicleta elétrica</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Freios</span><strong>Teste antes de sair</strong><p>As alavancas devem responder normalmente.</p></div><div class="guide-fact"><span class="fact-label">Pneus e rodas</span><strong>Confira o estado</strong><p>Observe desgaste, danos e fixação.</p></div><div class="guide-fact"><span class="fact-label">Energia</span><strong>Planeje a carga</strong><p>Use o carregador compatível com o modelo.</p></div></div>
+  <div class="guide-page-content"><h3>1. Lista de conferência</h3>
+<ul class="guide-checklist"><li><strong>Freios:</strong> teste dianteiro e traseiro em baixa velocidade, em local seguro.</li><li><strong>Pneus:</strong> observe desgaste, cortes, objetos presos e calibragem recomendada.</li><li><strong>Rodas e guidão:</strong> confira se estão firmes e sem folgas incomuns.</li><li><strong>Corrente e pedais:</strong> observe se há ruídos ou peças soltas.</li><li><strong>Campainha e sinalização:</strong> teste o funcionamento e a visibilidade.</li><li><strong>Bateria:</strong> confirme que está encaixada e que há carga suficiente para o trajeto.</li></ul>
+<h3>2. Durante a utilização</h3>
+<p>Se notar perda de frenagem, pneu danificado, direção instável ou falha elétrica, pare em um local seguro e não continue como se nada tivesse acontecido. Procure manutenção qualificada quando o problema não puder ser resolvido com segurança.</p>
+<h3>3. Proteção e atenção</h3>
+<p>O capacete bem ajustado é recomendado como proteção. Planeje o trajeto, mantenha o celular guardado durante a condução e pare em local seguro se precisar consultar uma rota ou mensagem.</p>
+<div class="guide-note"><strong>Importante:</strong> siga as orientações do fabricante para inspeção, limpeza, armazenamento e recarga da bateria. Não use peças ou carregadores incompatíveis.</div>
+<p><strong>Referência legal:</strong> Resolução CONTRAN nº 996/2023, art. 4º, sobre os equipamentos específicos exigidos para bicicletas elétricas.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#bicicleta-eletrica">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="autopropelido-equipamentos-title" class="route-section vehicle-guide-page" data-page="autopropelido-equipamentos" hidden="" id="autopropelido-equipamentos">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">AUTOPROPELIDO / EQUIPAMENTOS</p><h2 id="autopropelido-equipamentos-title">Equipamentos obrigatórios do autopropelido<span class="orange-dot">.</span></h2></div>
+      <p>A lista de equipamentos dos autopropelidos não é igual à da bicicleta elétrica. A categoria deve ser identificada antes de avaliar os requisitos aplicáveis.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#autopropelido">Voltar para equipamento autopropelido</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Indicação</span><strong>Velocidade</strong><p>Indicador ou limitador eletrônico.</p></div><div class="guide-fact"><span class="fact-label">Alerta</span><strong>Campainha</strong><p>Para avisar outras pessoas quando necessário.</p></div><div class="guide-fact"><span class="fact-label">Visibilidade</span><strong>Sinalização noturna</strong><p>Dianteira, traseira e lateral.</p></div></div>
+  <div class="guide-page-content"><h3>1. Itens exigidos pela Resolução CONTRAN nº 996/2023</h3>
+<ul><li><strong>Indicador de velocidade e/ou dispositivo limitador eletrônico:</strong> a norma admite aviso sonoro ou aplicativo em smartphone como alternativa para indicar a velocidade.</li><li><strong>Campainha:</strong> para alertar outras pessoas quando necessário.</li><li><strong>Sinalização noturna dianteira, traseira e lateral:</strong> incorporada ao equipamento.</li></ul>
+<h3>2. Inspeção prática</h3>
+<p>Confira a condição dos pneus ou rodas, o sistema de frenagem, a plataforma e a direção, conforme o tipo de equipamento. Observe as recomendações do fabricante e não utilize o equipamento se houver falha que comprometa o controle.</p>
+<h3>3. A categoria precisa estar correta</h3>
+<p>Os equipamentos autopropelidos são definidos por critérios técnicos, como potência, velocidade máxima de fabricação e dimensões. Um modelo que exceda os critérios pode pertencer a outra categoria, mesmo que seja anunciado como patinete ou scooter elétrica.</p>
+<div class="guide-note"><strong>Capacete:</strong> é uma medida de proteção recomendada. Confira a regulamentação local e use equipamentos de proteção adequados ao modelo e ao trajeto.</div>
+<p><strong>Referência:</strong> <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023, arts. 2º e 3º</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#autopropelido">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="autopropelido-velocidade-title" class="route-section vehicle-guide-page" data-page="autopropelido-velocidade" hidden="" id="autopropelido-velocidade">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">AUTOPROPELIDO / VELOCIDADE</p><h2 id="autopropelido-velocidade-title">Velocidade e limites do autopropelido<span class="orange-dot">.</span></h2></div>
+      <p>A velocidade máxima de fabricação é um critério para definir a categoria. A velocidade permitida em circulação depende do espaço, da sinalização e da regulamentação local.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#autopropelido">Voltar para equipamento autopropelido</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Classificação</span><strong>Até 32 km/h</strong><p>Velocidade máxima de fabricação.</p></div><div class="guide-fact"><span class="fact-label">Área de pedestres</span><strong>Até 6 km/h</strong><p>Somente quando o uso for autorizado.</p></div><div class="guide-fact"><span class="fact-label">Cicloestrutura</span><strong>Limite local</strong><p>Não presuma que o mesmo limite vale em toda cidade.</p></div></div>
+  <div class="guide-page-content"><h3>1. O que significa 32 km/h?</h3>
+<p>Para a categoria geral de equipamento autopropelido, a Resolução CONTRAN nº 996/2023 define velocidade máxima de fabricação de até 32 km/h, além de outros critérios técnicos. Isso não significa que seja permitido conduzir a 32 km/h em qualquer espaço.</p>
+<h3>2. Áreas de pedestres</h3>
+<p>O art. 9º da Resolução nº 996/2023 prevê que o órgão responsável pela via pode autorizar a circulação de autopropelidos em áreas de pedestres, limitada a 6 km/h. A autorização local é essencial: o limite não é uma permissão automática para circular em toda calçada.</p>
+<h3>3. Ciclovias e ciclofaixas</h3>
+<p>Respeite o limite definido pelo órgão com circunscrição sobre a via. Em Vila Velha, a Lei Municipal nº 7.243/2025 fixa até 20 km/h nas ciclovias e ciclofaixas abrangidas pela lei. Essa regra não deve ser aplicada a calçadas compartilhadas.</p>
+<h3>4. Cariacica</h3>
+<p>As fontes consultadas não indicam uma norma municipal que fixe 20 km/h para calçadas compartilhadas em Cariacica. Para áreas de pedestres, verifique a sinalização e a autorização local; não confunda a velocidade máxima de fabricação com a velocidade permitida no local.</p>
+<p><strong>Referências:</strong> <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023, arts. 2º, 6º e 9º</a>; <a href="https://vilavelha.splonline.com.br/processo.aspx?autor=69&id=284954&tipo=21" rel="noopener noreferrer" target="_blank">Lei Municipal nº 7.243/2025 de Vila Velha</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#autopropelido">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="autopropelido-circulacao-title" class="route-section vehicle-guide-page" data-page="autopropelido-circulacao" hidden="" id="autopropelido-circulacao">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">AUTOPROPELIDO / CIRCULAÇÃO</p><h2 id="autopropelido-circulacao-title">Onde o autopropelido pode circular<span class="orange-dot">.</span></h2></div>
+      <p>Patinetes, skates e outros equipamentos autopropelidos não têm acesso irrestrito a toda calçada, ciclovia ou rua. A autorização da via é parte da regra.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#autopropelido">Voltar para equipamento autopropelido</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Pedestres</span><strong>Prioridade</strong><p>Só use áreas autorizadas.</p></div><div class="guide-fact"><span class="fact-label">Cicloestrutura</span><strong>Regra local</strong><p>Confira sinalização e limite.</p></div><div class="guide-fact"><span class="fact-label">Via comum</span><strong>Condições específicas</strong><p>A Resolução define hipóteses e limites.</p></div></div>
+  <div class="guide-page-content"><h3>1. O que a Resolução prevê</h3>
+<p>O art. 9º da Resolução CONTRAN nº 996/2023 prevê a possibilidade de o órgão responsável autorizar autopropelidos em áreas de pedestres, até 6 km/h; em ciclovias, ciclofaixas e ciclorrotas, respeitando a velocidade regulamentada; e em vias cuja velocidade máxima regulamentada seja de até 40 km/h, conforme as condições previstas na norma.</p>
+<p>Essas hipóteses não substituem a regulamentação local. Antes de circular, confira placas, marcas no pavimento e as regras do município.</p>
+<h3>2. Calçadas compartilhadas</h3>
+<p>Não presuma que o equipamento possa circular por qualquer calçada. Em Cariacica, a Lei Municipal nº 5.150/2014 exige autorização e sinalização para a faixa compartilhada na calçada. A orientação local divulgada para bicicletas elétricas indica até 6 km/h nesses espaços autorizados; para autopropelidos, a regra nacional também condiciona o uso de áreas de pedestres à autorização local.</p>
+<h3>3. Convivência e controle</h3>
+<ul><li>Reduza a velocidade perto de pedestres e entradas de garagem.</li><li>Não circule na contramão nem faça movimentos bruscos.</li><li>Use a campainha de forma moderada e dê espaço para pessoas a pé.</li><li>Se o espaço estiver lotado, desmonte e conduza o equipamento à mão quando isso for a opção mais segura e permitida.</li></ul>
+<p><strong>Referências:</strong> <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023, arts. 6º, 9º e 11</a>; <a href="https://www.camaracariacica.es.gov.br/uploads/dio/59/2014/l-51502014-1611965926.pdf" rel="noopener noreferrer" target="_blank">Lei de Cariacica nº 5.150/2014</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#autopropelido">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="ciclomotor-documentacao-title" class="route-section vehicle-guide-page" data-page="ciclomotor-documentacao" hidden="" id="ciclomotor-documentacao">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">CICLOMOTOR / DOCUMENTAÇÃO</p><h2 id="ciclomotor-documentacao-title">Documentação e registro do ciclomotor<span class="orange-dot">.</span></h2></div>
+      <p>Ciclomotores são veículos automotores e estão sujeitos a exigências diferentes das bicicletas elétricas e dos autopropelidos que se enquadram corretamente em suas categorias.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#ciclomotor">Voltar para ciclomotor</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Registro</span><strong>Obrigatório</strong><p>No órgão executivo de trânsito competente.</p></div><div class="guide-fact"><span class="fact-label">Licenciamento</span><strong>Obrigatório</strong><p>O veículo precisa estar regular para circular.</p></div><div class="guide-fact"><span class="fact-label">Placa</span><strong>Obrigatória</strong><p>Conforme o registro e as regras aplicáveis.</p></div></div>
+  <div class="guide-page-content"><h3>1. O que precisa estar regularizado?</h3>
+<p>O ciclomotor está sujeito a registro, licenciamento e emplacamento, além dos equipamentos e requisitos previstos no CTB e nas normas do CONTRAN. A dispensa que existe para bicicletas elétricas e autopropelidos não se aplica a um veículo que, pelas características técnicas, seja classificado como ciclomotor.</p>
+<h3>2. Prazo de regularização</h3>
+<p>O prazo de transição previsto na Resolução CONTRAN nº 996/2023 para os ciclomotores abrangidos terminou em 31 de dezembro de 2025. Em 2026, não se deve presumir que um veículo ainda não regularizado possa circular em via pública. Confirme a situação e os procedimentos com o Detran|ES.</p>
+<h3>3. Documentos e características técnicas</h3>
+<p>A regularização pode exigir documentação do veículo e comprovação de suas características técnicas, conforme o caso. Não compre ou adapte um veículo contando apenas com a descrição comercial do anúncio. Guarde nota fiscal, manual e documentos fornecidos pelo fabricante ou vendedor.</p>
+<div class="guide-note"><strong>Antes de circular:</strong> confirme registro, licenciamento, placa e requisitos do condutor. Se houver dúvida sobre a classificação do veículo, consulte o Detran|ES antes de usá-lo em via pública.</div>
+<p><strong>Referências:</strong> <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023</a>; <a href="https://detran.es.gov.br/Contents/Item/Display/17711" rel="noopener noreferrer" target="_blank">orientação do Detran|ES sobre ciclomotores</a>; <a href="https://detran.es.gov.br/Media/detran/Legislacao/Resolu%C3%A7%C3%B5es/RESOLU%C3%87%C3%83O%20CETRAN%20N%C2%BA%2020-2026.pdf" rel="noopener noreferrer" target="_blank">Resolução CETRAN-ES nº 20/2026</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#ciclomotor">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="ciclomotor-habilitacao-title" class="route-section vehicle-guide-page" data-page="ciclomotor-habilitacao" hidden="" id="ciclomotor-habilitacao">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">CICLOMOTOR / HABILITAÇÃO</p><h2 id="ciclomotor-habilitacao-title">Habilitação e idade para conduzir ciclomotor<span class="orange-dot">.</span></h2></div>
+      <p>A pessoa que conduz um ciclomotor em via pública precisa atender aos requisitos legais de idade e habilitação. Ter experiência com bicicleta ou patinete não substitui esses requisitos.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#ciclomotor">Voltar para ciclomotor</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Idade</span><strong>Mais de 18 anos</strong><p>Requisito para conduzir em via pública.</p></div><div class="guide-fact"><span class="fact-label">Habilitação</span><strong>ACC ou CNH A</strong><p>Conforme a legislação de trânsito.</p></div><div class="guide-fact"><span class="fact-label">Proteção</span><strong>Capacete motociclístico</strong><p>Com viseira ou óculos de proteção.</p></div></div>
+  <div class="guide-page-content"><h3>1. Qual habilitação é exigida?</h3>
+<p>Para conduzir ciclomotor em via pública, é necessário possuir Autorização para Conduzir Ciclomotor (ACC) ou Carteira Nacional de Habilitação na categoria A, conforme as regras aplicáveis. A autorização não pode ser substituída por uma habilitação de outra categoria que não permita essa condução.</p>
+<h3>2. Qual é a idade mínima?</h3>
+<p>A condução em via pública exige que o condutor tenha mais de 18 anos e possua a habilitação correspondente. Um ciclomotor não deve ser tratado como bicicleta elétrica ou autopropelido só porque tem motor elétrico ou formato parecido.</p>
+<h3>3. Equipamentos pessoais e conduta</h3>
+<p>O condutor deve utilizar capacete motociclístico com viseira ou óculos de proteção e cumprir as regras de circulação aplicáveis. A habilitação e a proteção não dispensam o registro, licenciamento, placa e equipamentos obrigatórios do veículo.</p>
+<div class="guide-note"><strong>Para conferir seu caso:</strong> consulte o Detran|ES sobre ACC, CNH categoria A e os procedimentos de habilitação vigentes.</div>
+<p><strong>Referências:</strong> <a href="https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm" rel="noopener noreferrer" target="_blank">Código de Trânsito Brasileiro</a>; <a href="https://detran.es.gov.br/Contents/Item/Display/17711" rel="noopener noreferrer" target="_blank">orientação do Detran|ES</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#ciclomotor">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="ciclomotor-equipamentos-title" class="route-section vehicle-guide-page" data-page="ciclomotor-equipamentos" hidden="" id="ciclomotor-equipamentos">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">CICLOMOTOR / EQUIPAMENTOS</p><h2 id="ciclomotor-equipamentos-title">Equipamentos obrigatórios do ciclomotor<span class="orange-dot">.</span></h2></div>
+      <p>Os equipamentos de ciclomotor são definidos por normas específicas para veículos automotores. Não use a lista de bicicleta elétrica como substituta.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#ciclomotor">Voltar para ciclomotor</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Visibilidade</span><strong>Farol e lanterna</strong><p>Dianteira e traseira.</p></div><div class="guide-fact"><span class="fact-label">Controle</span><strong>Velocímetro e buzina</strong><p>Itens previstos na regulamentação.</p></div><div class="guide-fact"><span class="fact-label">Segurança</span><strong>Espelhos e pneus</strong><p>Ambos os lados e pneus em boas condições.</p></div></div>
+  <div class="guide-page-content"><h3>1. Equipamentos indicados na regulamentação</h3>
+<p>A Resolução CONTRAN nº 912/2022, que estabelecia os equipamentos obrigatórios gerais, foi substituída pela Resolução nº 993/2023. Para ciclomotores, a lista inclui:</p>
+<ul><li><strong>Espelhos retrovisores dos dois lados.</strong></li><li><strong>Farol dianteiro</strong> de cor branca ou amarela.</li><li><strong>Lanterna traseira</strong> de cor vermelha.</li><li><strong>Velocímetro.</strong></li><li><strong>Buzina.</strong></li><li><strong>Pneus em condições mínimas de segurança.</strong></li><li><strong>Dispositivo de controle de ruído do motor,</strong> conforme as exigências aplicáveis.</li></ul>
+<h3>2. O que mais deve ser conferido?</h3>
+<p>Os equipamentos precisam estar instalados e funcionando. Confira também a placa, o licenciamento e as condições de frenagem, iluminação e identificação do veículo, conforme a legislação específica aplicável ao modelo.</p>
+<h3>3. Capacete</h3>
+<p>O condutor de ciclomotor deve usar capacete motociclístico com viseira ou óculos de proteção, conforme as regras do CTB. O capacete de ciclista não substitui o equipamento exigido para conduzir ciclomotor.</p>
+<p><strong>Referências:</strong> <a href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9932023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 993/2023</a>; <a href="https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm" rel="noopener noreferrer" target="_blank">Código de Trânsito Brasileiro</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#ciclomotor">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="ciclomotor-circulacao-title" class="route-section vehicle-guide-page" data-page="ciclomotor-circulacao" hidden="" id="ciclomotor-circulacao">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">CICLOMOTOR / CIRCULAÇÃO</p><h2 id="ciclomotor-circulacao-title">Velocidade e circulação do ciclomotor<span class="orange-dot">.</span></h2></div>
+      <p>Os 50 km/h fazem parte do critério de fabricação que define a categoria. Não significam que o ciclomotor possa circular a essa velocidade em qualquer via.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#ciclomotor">Voltar para ciclomotor</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Critério técnico</span><strong>Até 50 km/h</strong><p>Velocidade máxima de fabricação.</p></div><div class="guide-fact"><span class="fact-label">Via urbana</span><strong>Pista de rolamento</strong><p>Siga as regras próprias dos ciclomotores.</p></div><div class="guide-fact"><span class="fact-label">Cicloestrutura</span><strong>Não presuma acesso</strong><p>Ciclomotor não é bicicleta elétrica.</p></div></div>
+  <div class="guide-page-content"><h3>1. Como interpretar os 50 km/h?</h3>
+<p>A definição de ciclomotor abrange veículos de duas ou três rodas com motor a combustão de até 50 cm³ ou motor elétrico de até 4 kW, cuja velocidade máxima de fabricação não exceda 50 km/h. O limite técnico serve para classificar o veículo, não para definir a velocidade permitida em cada rua.</p>
+<h3>2. Onde deve circular?</h3>
+<p>O art. 57 do CTB estabelece regras próprias para ciclomotores, incluindo a circulação pela direita da pista e restrições específicas. Não os trate como bicicletas e não presuma que possam usar ciclovias, ciclofaixas ou calçadas. Em Vila Velha, a Lei Municipal nº 7.243/2025 proíbe ciclomotores nas ciclovias e ciclofaixas abrangidas pela lei.</p>
+<h3>3. Respeite o limite da via</h3>
+<p>Siga a sinalização de velocidade, as regras de circulação e as restrições para a categoria. Não utilize a velocidade máxima de fabricação como justificativa para ultrapassar o limite regulamentado.</p>
+<h3>4. Cariacica e Espírito Santo</h3>
+<p>A Resolução CETRAN-ES nº 20/2026 complementa procedimentos de classificação e fiscalização no estado, mas preserva a competência do órgão responsável por cada via para regulamentar a circulação. Consulte as placas locais e mantenha a documentação em dia.</p>
+<p><strong>Referências:</strong> <a href="https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm" rel="noopener noreferrer" target="_blank">CTB, art. 57</a>; <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023</a>; <a href="https://detran.es.gov.br/Media/detran/Legislacao/Resolu%C3%A7%C3%B5es/RESOLU%C3%87%C3%83O%20CETRAN%20N%C2%BA%2020-2026.pdf" rel="noopener noreferrer" target="_blank">Resolução CETRAN-ES nº 20/2026</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#ciclomotor">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="velocidade-por-local-title" class="route-section vehicle-guide-page" data-page="velocidade-por-local" hidden="" id="velocidade-por-local">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">CIRCULAÇÃO / VELOCIDADE</p><h2 id="velocidade-por-local-title">Como entender os limites de velocidade<span class="orange-dot">.</span></h2></div>
+      <p>Antes de comparar números, identifique o veículo e o local. Limite técnico, velocidade regulamentada da via e orientação municipal são coisas diferentes.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#regras">Voltar para regras rápidas</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Bicicleta elétrica</span><strong>32 km/h</strong><p>Limite da assistência do motor na definição geral.</p></div><div class="guide-fact"><span class="fact-label">Ciclomotor</span><strong>50 km/h</strong><p>Critério de velocidade máxima de fabricação.</p></div><div class="guide-fact"><span class="fact-label">Espaço compartilhado</span><strong>Consulte o local</strong><p>A sinalização e a regra municipal são decisivas.</p></div></div>
+  <div class="guide-page-content"><h3>1. Três números, três contextos</h3>
+<ul><li><strong>32 km/h:</strong> limite da assistência do motor na definição nacional de bicicleta elétrica; também aparece como limite de fabricação para autopropelidos.</li><li><strong>50 km/h:</strong> velocidade máxima de fabricação prevista na definição de ciclomotor. Não é autorização para andar a 50 km/h em qualquer rua.</li><li><strong>20 km/h:</strong> em Vila Velha, a Lei nº 7.243/2025 estabelece esse limite nas ciclovias e ciclofaixas abrangidas pela lei. Outros municípios podem ter regras próprias.</li></ul>
+<h3>2. Calçadas compartilhadas e Cariacica</h3>
+<p>A Lei Municipal de Cariacica nº 5.150/2014 condiciona a faixa compartilhada na calçada à autorização e sinalização. Em 2025, a Inspetoria de Trânsito de Cariacica informou que bicicletas elétricas só podem circular em praças e calçadas onde a sinalização permita o compartilhamento, com limite de até 6 km/h.</p>
+<div class="guide-note"><strong>Conclusão prática:</strong> não use 20 km/h como limite de calçada compartilhada em Cariacica com base nas fontes consultadas. Confirme a placa e a orientação municipal atual.</div>
+<h3>3. E os autopropelidos?</h3>
+<p>A Resolução CONTRAN nº 996/2023 prevê até 6 km/h em áreas de pedestres para autopropelidos quando a autoridade local autoriza esse uso. Nas ciclovias e ciclofaixas, o limite depende da regulamentação do órgão responsável pela via.</p>
+<h3>4. Como agir com segurança</h3>
+<ul><li>Confira a sinalização antes de entrar em um trecho.</li><li>Reduza a velocidade em áreas movimentadas e perto de pedestres.</li><li>Não confunda o limite técnico do veículo com o limite da via.</li><li>Se houver conflito entre informações, consulte o órgão municipal de trânsito responsável.</li></ul>
+<p><strong>Referências:</strong> <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023</a>; <a href="https://www.camaracariacica.es.gov.br/uploads/dio/59/2014/l-51502014-1611965926.pdf" rel="noopener noreferrer" target="_blank">Lei de Cariacica nº 5.150/2014</a>; <a href="https://vilavelha.splonline.com.br/processo.aspx?autor=69&id=284954&tipo=21" rel="noopener noreferrer" target="_blank">Lei de Vila Velha nº 7.243/2025</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#regras">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="calcadas-compartilhadas-title" class="route-section vehicle-guide-page" data-page="calcadas-compartilhadas" hidden="" id="calcadas-compartilhadas">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">CIRCULAÇÃO / PEDESTRES</p><h2 id="calcadas-compartilhadas-title">Calçadas compartilhadas: regras e prioridade<span class="orange-dot">.</span></h2></div>
+      <p>Compartilhar um espaço não significa que todos os veículos estejam autorizados nem que possam circular na mesma velocidade. A autorização e a sinalização precisam ser verificadas.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#regras">Voltar para regras rápidas</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Prioridade</span><strong>Pedestres</strong><p>Reduza a velocidade e dê espaço.</p></div><div class="guide-fact"><span class="fact-label">Cariacica</span><strong>Autorização e placa</strong><p>A Lei nº 5.150/2014 estabelece essas condições.</p></div><div class="guide-fact"><span class="fact-label">Bicicleta elétrica</span><strong>Até 6 km/h</strong><p>Orientação da Inspetoria em espaços autorizados.</p></div></div>
+  <div class="guide-page-content"><h3>1. O que é uma faixa compartilhada?</h3>
+<p>É um espaço sinalizado em que diferentes modos de deslocamento podem dividir a área, conforme a regulamentação aplicável. A existência de uma calçada larga não significa, por si só, que bicicletas elétricas ou autopropelidos possam circular ali.</p>
+<h3>2. O que prevê a lei de Cariacica?</h3>
+<p>A Lei Municipal nº 5.150/2014 prevê que uma faixa compartilhada pode ser instalada na calçada somente quando autorizada e devidamente sinalizada pelo órgão executivo competente, nos casos em que isso não comprometer a mobilidade segura e confortável do pedestre.</p>
+<h3>3. Qual velocidade usar?</h3>
+<p>Em 2025, a Inspetoria de Trânsito de Cariacica informou que bicicletas elétricas só podem circular em praças e calçadas onde haja sinalização permitindo o compartilhamento com pedestres, respeitando até 6 km/h. Para autopropelidos, a Resolução CONTRAN nº 996/2023 também prevê até 6 km/h em áreas de circulação de pedestres quando a autoridade local autoriza esse uso.</p>
+<div class="guide-note"><strong>Sobre os 20 km/h:</strong> as fontes consultadas não confirmam 20 km/h como limite de calçada compartilhada em Cariacica. Em Vila Velha, a Lei nº 7.243/2025 estabelece 20 km/h nas ciclovias e ciclofaixas abrangidas pela lei, não como regra geral para calçadas.</div>
+<h3>4. Como dividir o espaço com segurança?</h3>
+<ul><li>Respeite a sinalização e a prioridade de quem está a pé.</li><li>Reduza a velocidade antes de se aproximar de pessoas.</li><li>Não toque a campainha de forma insistente nem exija que pedestres saiam do caminho.</li><li>Se não houver espaço suficiente, pare e espere ou conduza o equipamento à mão, quando adequado.</li></ul>
+<p><strong>Referências:</strong> <a href="https://www.camaracariacica.es.gov.br/uploads/dio/59/2014/l-51502014-1611965926.pdf" rel="noopener noreferrer" target="_blank">Lei de Cariacica nº 5.150/2014, art. 9º</a>; <a href="https://dev.tribunaonline.com.br/cidades/prefeituras-dizem-que-vao-orientar-usuarios-sobre-uso-de-bicicletas-eletricas-281640" rel="noopener noreferrer" target="_blank">relato da orientação da Inspetoria de Trânsito de Cariacica</a>; <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#regras">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="circulacao-sem-ciclovia-title" class="route-section vehicle-guide-page" data-page="circulacao-sem-ciclovia" hidden="" id="circulacao-sem-ciclovia">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">CIRCULAÇÃO / VIA COMUM</p><h2 id="circulacao-sem-ciclovia-title">Quando não há ciclovia ou ciclofaixa<span class="orange-dot">.</span></h2></div>
+      <p>A ausência de infraestrutura cicloviária não elimina as regras de circulação. A categoria do veículo, o sentido da via e a sinalização determinam como prosseguir.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#regras">Voltar para regras rápidas</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Bicicleta</span><strong>Mesmo sentido</strong><p>Siga o CTB e as condições da via.</p></div><div class="guide-fact"><span class="fact-label">Trajetória</span><strong>Previsível</strong><p>Sinalize e evite zigue-zague.</p></div><div class="guide-fact"><span class="fact-label">Segurança</span><strong>Sem disputa</strong><p>Não force passagem em espaço estreito.</p></div></div>
+  <div class="guide-page-content"><h3>1. Regra para bicicletas</h3>
+<p>O art. 58 do Código de Trânsito Brasileiro prevê que, na ausência de ciclovia, ciclofaixa ou acostamento utilizável, bicicletas circulam pelo bordo da pista, no mesmo sentido regulamentado para a via, com preferência sobre veículos automotores. A bicicleta elétrica que atende à definição legal é equiparada à bicicleta para esse fim pela Resolução CONTRAN nº 996/2023.</p>
+<h3>2. Como manter uma trajetória previsível</h3>
+<ul><li>Observe buracos, tampas, areia, veículos estacionados e portas que possam abrir.</li><li>Sinalize mudanças de direção com antecedência, sempre que possível.</li><li>Antes de desviar, observe o trânsito e confirme se há espaço suficiente.</li><li>Evite zigue-zague entre veículos ou movimentos bruscos para tentar abrir passagem.</li></ul>
+<h3>3. E os autopropelidos?</h3>
+<p>A Resolução CONTRAN nº 996/2023 permite que o órgão responsável autorize sua circulação em determinados tipos de via, incluindo vias com velocidade máxima regulamentada de até 40 km/h, nas condições da norma. Confirme a regra local antes de entrar na pista.</p>
+<h3>4. E os ciclomotores?</h3>
+<p>Ciclomotores seguem regras próprias e não devem ser conduzidos como bicicletas. O art. 57 do CTB define condições específicas de circulação e restrições, inclusive em vias de trânsito rápido e sobre calçadas urbanas.</p>
+<div class="guide-note"><strong>Se o trecho não for seguro:</strong> reduza a velocidade e procure um local adequado para parar ou uma rota alternativa permitida. Não dispute espaço com veículos maiores.</div>
+<p><strong>Referências:</strong> <a href="https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm" rel="noopener noreferrer" target="_blank">CTB, arts. 57 e 58</a>; <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#regras">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+</div>
+</section>
+
+<section aria-labelledby="distancia-ultrapassagem-title" class="route-section vehicle-guide-page" data-page="distancia-ultrapassagem" hidden="" id="distancia-ultrapassagem">
+<div class="container">
+  <div class="guide-page-intro">
+    <div class="section-heading">
+      <div><p class="eyebrow">CIRCULAÇÃO / ULTRAPASSAGEM</p><h2 id="distancia-ultrapassagem-title">Distância segura ao ultrapassar uma bicicleta<span class="orange-dot">.</span></h2></div>
+      <p>A ultrapassagem exige espaço lateral suficiente. A obrigação legal é do motorista que passa pela bicicleta, e a manobra não deve colocar quem pedala em risco.</p>
+    </div>
+    <div class="guide-actions"><a class="button button-outline" href="#regras">Voltar para regras rápidas</a><a class="button button-orange" href="#regras">Regras rápidas <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
+  </div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Distância mínima</span><strong>1,5 metro</strong><p>Obrigação prevista no CTB.</p></div><div class="guide-fact"><span class="fact-label">Manobra</span><strong>Com segurança</strong><p>Só ultrapasse quando houver espaço.</p></div><div class="guide-fact"><span class="fact-label">Quem pedala</span><strong>Trajetória previsível</strong><p>Sinalize e evite desvios bruscos.</p></div></div>
+  <div class="guide-page-content"><h3>1. O que a lei exige?</h3>
+<p>O art. 201 do Código de Trânsito Brasileiro determina que o motorista mantenha distância lateral mínima de 1,5 metro ao passar ou ultrapassar uma bicicleta. A infração está prevista no CTB.</p>
+<h3>2. Como ultrapassar com segurança</h3>
+<ul><li>Reduza a velocidade antes da manobra.</li><li>Verifique se existe espaço lateral suficiente e se a ultrapassagem pode ser concluída sem risco.</li><li>Não pressione a bicicleta contra o meio-fio nem buzine para forçar a pessoa a sair do caminho.</li><li>Se não houver espaço, aguarde até que a manobra seja segura.</li></ul>
+<h3>3. Para quem está pedalando</h3>
+<p>Mantenha uma trajetória previsível, observe a via e sinalize mudanças de direção com antecedência. Não tente disputar espaço com um veículo maior. Se precisar desviar de um obstáculo, verifique o trânsito e só mude de posição quando houver espaço suficiente.</p>
+<div class="guide-note"><strong>Lembrete:</strong> a distância mínima de 1,5 metro é uma obrigação legal do motorista ao passar ou ultrapassar uma bicicleta; não é apenas uma recomendação de convivência.</div>
+<p><strong>Referência:</strong> <a href="https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm" rel="noopener noreferrer" target="_blank">Código de Trânsito Brasileiro, art. 201</a>.</p></div>
+  <div class="guide-page-footer">
+    <p>Consulte a sinalização e a regulamentação atual do órgão responsável pela via. Este guia é educativo e não substitui o texto legal.</p>
+    <div class="guide-actions"><a class="button button-outline" href="#regras">Guia geral</a><a class="button button-orange" href="#regras">Voltar às regras <svg aria-hidden="true" class="icon"><use href="#i-arrow"></use></svg></a></div>
   </div>
 </div>
 </section>
