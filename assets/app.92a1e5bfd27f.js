@@ -256,7 +256,7 @@ async function shareCardContent(id) {
 }
 
 // Navegação por hash: funciona tanto em arquivo local quanto no Render.
-const pageTitles = { inicio: "Início", cards: "Materiais educativos", regras: "Regras", videos: "Vídeos", campanha: "Sobre o projeto", "sobre-nos": "Sobre nós", privacidade: "Privacidade", termos: "Termos de uso", acessibilidade: "Acessibilidade" };
+const pageTitles = { inicio: "Início", cards: "Materiais educativos", regras: "Regras", "bicicleta-eletrica": "Guia de bicicleta elétrica", autopropelido: "Guia de equipamentos autopropelidos", ciclomotor: "Guia de ciclomotores", videos: "Vídeos", campanha: "Sobre o projeto", "sobre-nos": "Sobre nós", privacidade: "Privacidade", termos: "Termos de uso", acessibilidade: "Acessibilidade" };
 
 function changePage(moveFocus = true) {
   const route = window.location.hash.slice(1);
