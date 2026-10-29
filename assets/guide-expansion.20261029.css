@@ -70,3 +70,16 @@
  .home-guide-shortcuts>a{transition:none}
  .home-guide-shortcuts>a:hover{transform:none}
 }
+
+/* Acesso aos novos temas também dentro da página principal de regras e no rodapé. */
+.more-guide-topics{margin-top:34px;padding:26px;border:1px solid #dce5ef;border-radius:12px;background:#f8fafc}
+.more-guide-topics h3{margin:0 0 8px;color:#17345f;font-size:1.4rem;letter-spacing:-.35px}
+.more-guide-topics>p:not(.eyebrow){max-width:760px;margin:0 0 18px;color:#5b6d83;font-size:.9rem;line-height:1.65}
+.more-guide-topic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.more-guide-topic-grid a{display:flex;flex-direction:column;gap:7px;min-width:0;padding:15px;border:1px solid #dfe6ef;border-radius:8px;background:#fff;color:#17345f;text-decoration:none}
+.more-guide-topic-grid a:hover{border-color:#e0a15a;background:#fffdfa;text-decoration:none}
+.more-guide-topic-grid strong{font-size:.85rem;line-height:1.35}
+.more-guide-topic-grid span{color:#667890;font-size:.75rem;line-height:1.5}
+.footer-nav{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+@media(max-width:980px){.more-guide-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-nav{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:600px){.more-guide-topics{padding:18px}.more-guide-topic-grid{grid-template-columns:1fr}.footer-nav{grid-template-columns:1fr!important}}
