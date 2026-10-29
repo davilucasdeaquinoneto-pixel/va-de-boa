@@ -663,7 +663,7 @@ document.addEventListener("click", (event) => {
   }
   changePage();
 });
-window.addEventListener("hashchange", () => changePage());
+window.addEventListener("popstate", () => changePage());
 
 // Leitura sob demanda, com voz em português fornecida pelo navegador/aparelho.
 // O texto é preparado para soar como fala, e não como uma página HTML sendo recitada.
