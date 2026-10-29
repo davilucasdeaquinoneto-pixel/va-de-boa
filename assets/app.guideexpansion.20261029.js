@@ -296,6 +296,60 @@ const guideSearchAliases = {
   "antes-de-comprar": "compra comprar anúncio ficha técnica potência acelerador velocidade fabricante nota fiscal",
   "perguntas-frequentes": "dúvida FAQ perguntas respostas lado direito bordo da via contramão calçada ciclovia distância 1,5 metro ultrapassagem velocidade 32 km/h pedestre cruzamento placa CNH documento idade acelerador potência capacete equipamento fone celular GPS chuva noite passageiro carga carregador bateria recarga fumaça pane acidente queda comprar furto regra local"
 };
+
+const faqSearchAliases = {
+  "faq-lado-da-via": "lado direito direita bordo rua pista andar ficar circular carro carros trânsito sentido meio fio acostamento",
+  "faq-sem-ciclovia": "rua via pista estrada sem faixa ciclovia ciclofaixa acostamento",
+  "faq-contramao": "contramão sentido contrário direção errada",
+  "faq-calcada": "calçada passeio pedestre sidewalk",
+  "faq-distancia": "distância lateral ultrapassagem 1,5 metro carros carro",
+  "faq-velocidade": "velocidade limite rápido devagar km/h",
+  "faq-pedestres": "pedestre prioridade área compartilhada passeio",
+  "faq-cruzamentos": "cruzamento semáforo placa virar conversão",
+  "faq-ciclovia": "ciclovia ciclofaixa pista bicicleta",
+  "faq-cnh-placa": "documento registro licenciamento emplacamento placa habilitação carteira CNH",
+  "faq-categorias": "classificação modelo e-bike autopropelido ciclomotor",
+  "faq-acelerador": "acelerador gatilho motor pedal assistido",
+  "faq-32km": "32 km/h limite velocidade assistência motor",
+  "faq-idade": "idade mínima adolescente menor de idade 18 anos",
+  "faq-passageiro": "garupa criança passageiro assento",
+  "faq-modificacao": "desbloquear modificar motor controlador limitador velocidade",
+  "faq-potencia": "watts W potência nominal motor",
+  "faq-capacete": "capacete obrigatório proteção cabeça",
+  "faq-equipamentos": "campainha retrovisor luz sinalização pneu indicador limitador",
+  "faq-check": "checklist revisão antes de sair freio pneus luzes",
+  "faq-fones": "fone ouvido música áudio atenção som ambiente",
+  "faq-gps": "celular telefone GPS mapa mensagem aplicativo",
+  "faq-chuva": "chuva noite pista molhada visibilidade",
+  "faq-carga": "mochila compras carga peso bagageiro cesto",
+  "faq-carregador": "carregador compatível tomada carregar recarga",
+  "faq-recarga": "carregando durante a noite sem supervisão",
+  "faq-bateria-quente": "bateria quente inchada fumaça fogo incêndio calor",
+  "faq-pane": "pane acabou carga bateria parou rua",
+  "faq-queda": "queda colisão acidente socorro SAMU bombeiros",
+  "faq-comprar": "comprar nova anúncio ficha técnica fabricante potência",
+  "faq-furto": "furto roubo cadeado trava número de série",
+  "faq-regra-local": "regra cidade município prefeitura órgão trânsito legislação local",
+  "faq-sinalizar": "sinalizar braço virar conversão esquerda direita mão direção",
+  "faq-faixa-pedestres": "faixa zebra pedestres travessia atravessar descer empurrar bicicleta",
+  "faq-faixa-onibus": "ônibus bus faixa exclusiva corredor transporte coletivo",
+  "faq-ciclovia-bloqueada": "ciclovia bloqueada obstruída carro obra desvio desviar",
+  "faq-documentos": "nota fiscal documento da bicicleta registro licenciamento CNH emplacamento",
+  "faq-velocidade-fabrica": "32 km/h ultrapassa limite fábrica acelerador motor classificação",
+  "faq-capacete-ajuste": "capacete ajustar tamanho correia cinta preso firme",
+  "faq-freio-falha": "freio falhar freios falha parar manutenção oficina",
+  "faq-entre-carros": "corredor carros parados trânsito porta ponto cego",
+  "faq-buracos": "buraco poça pista irregular água escorregadio obstáculo",
+  "faq-bateria-molhada": "bateria molhada chuva água conector porta de carga recarga",
+  "faq-lavar": "lavar limpeza mangueira jato alta pressão água motor",
+  "faq-autonomia": "autonomia alcance quilômetros distância bateria carga range",
+  "faq-cadeado": "cadeado trava corrente u-lock prender poste quadro roda",
+  "faq-transporte-publico": "ônibus trem metrô transporte público embarcar levar bicicleta",
+  "faq-usada": "comprar usada segunda mão seminova procedência número de série bateria",
+  "faq-roubo": "roubar roubada roubo furto boletim de ocorrência polícia",
+  "faq-dados-bicicleta": "nota fiscal número de série comprovante propriedade fotos manual manutenção"
+};
+
 const guideRelated = {
   regras: ["bicicleta-eletrica","autopropelido","ciclomotor","velocidade-por-local","perguntas-frequentes"],
   "bicicleta-eletrica": ["bike-equipamentos","bike-velocidade","bike-circulacao","bike-manutencao","antes-de-comprar"],
@@ -344,6 +398,28 @@ function initGuideSearch() {
     body: normalizeGuideText(rawBody + " " + (guideSearchAliases[route] || "")),
     rawBody: rawBody.replace(/\s+/g, " ").trim()
   }));
+
+  // Indexa cada pergunta como resultado próprio, além das páginas completas.
+  const faqRoot = document.querySelector('section[data-page="perguntas-frequentes"]');
+  faqRoot?.querySelectorAll(".faq-grid article").forEach((article) => {
+    const heading = article.querySelector("h3");
+    if (!heading || !article.id) return;
+    const title = heading.textContent.replace(/^\s*\d+\.\s*/, "").trim();
+    const rawBody = [...article.querySelectorAll("p")].map((paragraph) => paragraph.textContent).join(" ").replace(/\s+/g, " ").trim();
+    const category = article.closest(".faq-group")?.querySelector(".faq-group-heading h3")?.textContent.trim() || "Perguntas frequentes";
+    const aliases = faqSearchAliases[article.id] || "";
+    index.push({
+      route: "perguntas-frequentes",
+      targetId: article.id,
+      title,
+      category,
+      isFaq: true,
+      body: normalizeGuideText(title + " " + rawBody + " " + aliases),
+      rawBody
+    });
+  });
+
+  const stopWords = new Set(["a","o","as","os","de","da","do","das","dos","e","em","na","no","nas","nos","para","por","com","um","uma","que","qual","quais","como","posso","pode","podem","devo","deve","preciso","é","ser","ter","meu","minha","se","ao","aos","ou","pra","pro"]);
   document.querySelectorAll("[data-guide-search]").forEach((input) => {
     const results = document.getElementById(input.dataset.searchResults);
     if (!results) return;
@@ -352,7 +428,7 @@ function initGuideSearch() {
       results.replaceChildren();
       results.hidden = true;
       if (!query) return;
-      const terms = query.split(/\s+/).filter((term) => term.length > 1);
+      const terms = query.split(/\s+/).filter((term) => term.length > 1 && !stopWords.has(term));
       if (!terms.length) return;
       const scored = index.map((item) => {
         const title = normalizeGuideText(item.title);
@@ -362,18 +438,19 @@ function initGuideSearch() {
           const titleHit = title.includes(term);
           const bodyHit = item.body.includes(term);
           if (titleHit || bodyHit) hits += 1;
-          if (titleHit) score += 6;
-          if (bodyHit) score += 1;
+          if (titleHit) score += item.isFaq ? 10 : 6;
+          if (bodyHit) score += item.isFaq ? 2 : 1;
         });
-        return {...item, score, hits, titleHit: terms.some((term) => title.includes(term))};
+        if (item.isFaq && terms.some((term) => title.includes(term))) score += 3;
+        return {...item, score, hits};
       }).filter((item) => item.hits > 0);
-      scored.sort((a,b) => b.score - a.score || a.title.localeCompare(b.title, "pt-BR"));
+      scored.sort((a,b) => b.score - a.score || Number(Boolean(b.isFaq)) - Number(Boolean(a.isFaq)) || a.title.localeCompare(b.title, "pt-BR"));
       const top = scored.filter((item) => item.hits === terms.length).slice(0, 7);
       const chosen = top.length ? top : scored.slice(0, 7);
       if (!chosen.length) {
         const empty = document.createElement("p");
         empty.className = "guide-search-empty";
-        empty.textContent = "Nenhum resultado encontrado. Tente outra palavra, como “calçada”, “bateria” ou “capacete”.";
+        empty.textContent = "Nenhum resultado encontrado. Tente outra expressão, como “lado direito”, “faixa de pedestres”, “bateria molhada” ou “preciso de CNH”.";
         results.append(empty);
         results.hidden = false;
         return;
@@ -381,16 +458,22 @@ function initGuideSearch() {
       chosen.forEach((item) => {
         const link = document.createElement("a");
         link.className = "guide-search-result";
-        link.href = "#" + item.route;
-        link.dataset.route = item.route;
+        link.href = "#" + (item.targetId || item.route);
+        if (!item.targetId) link.dataset.route = item.route;
         link.setAttribute("role", "listitem");
+        if (item.isFaq) {
+          const label = document.createElement("small");
+          label.textContent = "Pergunta frequente · " + item.category;
+          link.append(label);
+        }
         const title = document.createElement("strong");
         title.textContent = item.title;
         const snippet = document.createElement("span");
         const sentences = item.rawBody.split(/(?<=[.!?])\s+/);
-        const queryTerm = terms.find((term) => item.body.includes(term));
+        const queryTerm = terms.find((term) => normalizeGuideText(item.title + " " + item.rawBody + " " + (item.isFaq ? faqSearchAliases[item.targetId] || "" : "")).includes(term));
         const matchingSentence = sentences.find((sentence) => normalizeGuideText(sentence).includes(queryTerm));
-        snippet.textContent = (matchingSentence || item.rawBody).slice(0, 145) + ((matchingSentence || item.rawBody).length > 145 ? "…" : "");
+        const excerpt = matchingSentence || item.rawBody;
+        snippet.textContent = excerpt.slice(0, 145) + (excerpt.length > 145 ? "…" : "");
         link.append(title, snippet);
         results.append(link);
       });
@@ -398,7 +481,6 @@ function initGuideSearch() {
     });
   });
 }
-
 function initFaqFilters() {
   const root = document.querySelector('section[data-page="perguntas-frequentes"]');
   if (!root) return;
@@ -463,8 +545,10 @@ function appendGuideRelatedLinks() {
 }
 
 function changePage(moveFocus = true) {
-  const route = window.location.hash.slice(1);
-  currentPage = Object.hasOwn(pageTitles, route) ? route : "inicio";
+  const hashRoute = window.location.hash.slice(1);
+  const hashTarget = document.getElementById(hashRoute);
+  const faqTarget = hashTarget?.matches('article[id^="faq-"]') ? hashTarget : null;
+  currentPage = Object.hasOwn(pageTitles, hashRoute) ? hashRoute : faqTarget ? "perguntas-frequentes" : "inicio";
   stopSpeech();
   document.querySelectorAll("video").forEach((video) => video.pause());
   document.querySelectorAll("[data-page]").forEach((section) => {
@@ -477,8 +561,28 @@ function changePage(moveFocus = true) {
   syncDrawerGroups(currentPage);
   document.title = pageTitles[currentPage] + " | Vá de Boa · Projeto Turma 41";
   if (menuDialog.open) closeDialog(menuDialog);
-  if (moveFocus) {
-    const heading = document.querySelector('[data-page="' + currentPage + '"] h1, [data-page="' + currentPage + '"] h2');
+
+  if (faqTarget) {
+    const faqRoot = document.querySelector('section[data-page="perguntas-frequentes"]');
+    faqRoot?.querySelectorAll(".faq-group").forEach((group) => { group.hidden = false; });
+    faqRoot?.querySelectorAll("[data-faq-filter]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.faqFilter === "all"));
+    });
+    const status = faqRoot?.querySelector("#faq-filter-status");
+    const question = faqTarget.querySelector("h3")?.textContent.replace(/^\s*\d+\.\s*/, "").trim();
+    if (status) status.textContent = question ? "Pergunta localizada: " + question : "Pergunta localizada nas perguntas frequentes.";
+  }
+
+  const heading = faqTarget?.querySelector("h3") || document.querySelector('[data-page="' + currentPage + '"] h1, [data-page="' + currentPage + '"] h2');
+  if (faqTarget) {
+    requestAnimationFrame(() => {
+      faqTarget.scrollIntoView({ block: "start", behavior: "instant" });
+      if (moveFocus && heading) {
+        heading.setAttribute("tabindex", "-1");
+        heading.focus({ preventScroll: true });
+      }
+    });
+  } else if (moveFocus) {
     requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: "instant" });
       if (heading) {
@@ -488,7 +592,6 @@ function changePage(moveFocus = true) {
     });
   }
 }
-
 function syncDrawerGroups(route = currentPage) {
   document.querySelectorAll(".drawer-group").forEach((group) => {
     const button = group.querySelector("[data-drawer-toggle]");
