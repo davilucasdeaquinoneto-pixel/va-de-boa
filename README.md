@@ -21,7 +21,7 @@ O projeto não possui cadastro, formulário, analytics próprio ou cookies criad
 ## Acessibilidade
 - navegação por teclado e link “Pular para o conteúdo”;
 - textos alternativos em imagens relevantes;
-- leitura em voz alta com escolha de voz e velocidade;
+- leitura em voz alta com escolha de voz, amostra de voz e cinco velocidades;
 - conteúdo escrito que acompanha as informações dos vídeos;
 - vídeos com texto/legendas incorporadas;
 - respeito a `prefers-reduced-motion`.
