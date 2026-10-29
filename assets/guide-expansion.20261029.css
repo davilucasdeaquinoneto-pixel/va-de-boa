@@ -83,3 +83,34 @@
 .footer-nav{grid-template-columns:repeat(4,minmax(0,1fr))!important}
 @media(max-width:980px){.more-guide-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-nav{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:600px){.more-guide-topics{padding:18px}.more-guide-topic-grid{grid-template-columns:1fr}.footer-nav{grid-template-columns:1fr!important}}
+
+
+/* Organização das perguntas frequentes por assunto, sem esconder conteúdo por padrão. */
+.faq-topic-nav{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 12px}
+.faq-topic-nav button{min-height:42px;padding:10px 14px;border:1px solid #cbd7e5;border-radius:7px;background:#fff;color:#17345f;font:inherit;font-size:.82rem;font-weight:750;line-height:1.3;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.faq-topic-nav button:hover{border-color:#c27a32;background:#fffaf4}
+.faq-topic-nav button[aria-pressed="true"]{border-color:#17345f;background:#17345f;color:#fff}
+.faq-topic-nav button:focus-visible{outline:3px solid #f7b56c;outline-offset:3px}
+.faq-filter-status{margin:0 0 24px;color:#61738a;font-size:.82rem;line-height:1.5}
+.faq-group{margin:32px 0 42px;scroll-margin-top:24px}
+.faq-group[hidden]{display:none!important}
+.faq-group-heading{max-width:780px;margin-bottom:12px}
+.faq-group-heading h3{margin:0 0 6px;color:#17345f;font-size:1.35rem;line-height:1.3;letter-spacing:-.3px}
+.faq-group-heading p{margin:0;color:#61738a;font-size:.88rem;line-height:1.6}
+.faq-group .faq-grid{margin:16px 0 0}
+.faq-group .faq-grid article{height:100%}
+.faq-group .faq-grid h3{font-size:.97rem}
+.faq-group .faq-grid p{line-height:1.72}
+.faq-group .faq-grid a{font-weight:750;text-underline-offset:3px}
+@media(max-width:620px){
+ .faq-topic-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:20px}
+ .faq-topic-nav button{min-height:44px;padding:9px;font-size:.76rem;text-align:left}
+ .faq-group{margin:28px 0 34px}
+ .faq-group-heading h3{font-size:1.18rem}
+}
+@media(max-width:380px){
+ .faq-topic-nav{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+ .faq-topic-nav button{transition:none}
+}
