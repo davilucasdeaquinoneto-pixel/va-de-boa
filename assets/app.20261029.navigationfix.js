@@ -9,7 +9,7 @@ window.CAMPAIGN_SCRIPTS = {
       ["5–12 s", "A conferência", "Detalhes de pneus e manetes de freio, com tudo parado.", "Freios funcionando e pneus em boas condições: comece por aí."],
       ["12–20 s", "Os equipamentos", "Mostrar campainha, retrovisor, indicador de velocidade e sinalização.", "Confira os equipamentos e a sinalização. Ser visto também faz parte do cuidado."],
       ["20–26 s", "A atenção", "Pessoa guarda o celular e ajusta o capacete.", "Deixe a mensagem para depois. Leve sua atenção com você."],
-      ["26–30 s", "O encerramento", "Tela com o nome Vá de Boa e a frase final.", "O movimento é elétrico. O cuidado é de todos."]
+      ["26–30 s", "O encerramento", "Tela com o nome Vá de boa! e a frase final.", "O movimento é elétrico. O cuidado é de todos."]
     ]
   },
   categorias: {
@@ -20,7 +20,7 @@ window.CAMPAIGN_SCRIPTS = {
       ["6–16 s", "O pedal assistido", "Mostrar o card 1 com as palavras pedal assistido em destaque.", "Na bicicleta elétrica, o motor auxilia o pedal. A regra geral prevê até mil watts nominais, assistência até trinta e dois quilômetros por hora e ausência de acelerador."],
       ["16–28 s", "As outras categorias", "Exibir os nomes autopropelido e ciclomotor, em telas separadas.", "Também existem autopropelidos e ciclomotores. As características técnicas definem o enquadramento; o nome do anúncio não basta."],
       ["28–39 s", "A conferência", "Mostrar uma ficha técnica genérica e a referência CONTRAN 996/2023.", "Confira a ficha técnica, a classificação e as exigências aplicáveis antes de circular."],
-      ["39–45 s", "O encerramento", "Marca da campanha e convite para ler os cards.", "Vá de Boa. Vá informado. Conheça os cards da campanha."]
+      ["39–45 s", "O encerramento", "Marca da campanha e convite para ler os cards.", "Vá de boa!! Vá informado. Conheça os cards da campanha."]
     ]
   }
 };
@@ -114,7 +114,7 @@ function preparePrint(id = null) {
     page.append(clonePoster(poster));
     const credit = document.createElement("p");
     credit.className = "print-credit";
-    credit.textContent = "VÁ DE BOA · Campanha educativa sobre bicicletas elétricas · Projeto Turma 41 · 2026";
+    credit.textContent = "Vá de boa! · Campanha educativa sobre bicicletas elétricas · Projeto Turma 41 · 2026";
     page.append(credit);
     printRoot.append(page);
   });
@@ -231,13 +231,13 @@ preparePrint();
 async function shareCardContent(id) {
   const poster = originalPosters.find((item) => item.id === id);
   if (!poster) return;
-  const title = poster.dataset.title || "Card Vá de Boa";
+  const title = poster.dataset.title || "Card Vá de boa!";
   const url = new URL(window.location.href);
   url.hash = "cards";
-  const shareText = title + " — campanha Vá de Boa sobre bicicletas elétricas.";
+  const shareText = title + " — campanha Vá de boa! sobre bicicletas elétricas.";
   try {
     if (navigator.share) {
-      await navigator.share({ title: "Vá de Boa", text: shareText, url: url.toString() });
+      await navigator.share({ title: "Vá de boa!", text: shareText, url: url.toString() });
       document.getElementById("status-message").textContent = "Card pronto para compartilhar.";
       return;
     }
@@ -559,7 +559,7 @@ function changePage(moveFocus = true) {
     else link.removeAttribute("aria-current");
   });
   syncDrawerGroups(currentPage);
-  document.title = pageTitles[currentPage] + " | Vá de Boa · Projeto Turma 41";
+  document.title = pageTitles[currentPage] + " | Vá de boa! · Projeto Turma 41";
   if (menuDialog.open) closeDialog(menuDialog);
 
   if (faqTarget) {
@@ -743,8 +743,8 @@ function refreshSpeechVoices() {
 
 function normalizeSpeechText(text) {
   return String(text || "")
-    .replace(/#VADEBOA/gi, "hashtag Vá de Boa")
-    .replace(/VÁ DE BOA/gi, "Vá de Boa")
+    .replace(/#VADEBOA/gi, "hashtag Vá de boa!")
+    .replace(/Vá de boa!/gi, "Vá de boa!")
     .replace(/CONTRAN/gi, "Contran")
     .replace(/\bCTB\b/g, "C T B")
     .replace(/\bCNH\b/g, "C N H")
@@ -999,13 +999,13 @@ function speakPageContent() {
   if (currentPage === "inicio") {
     const heroTitle = speakableText(document.getElementById("hero-title"));
     const description = finishSpeechSegment(document.querySelector(".hero-description")?.textContent);
-    startSpeech(`Projeto independente feito por alunos do curso de Aprendizagem Profissional em Comércio de Bens, Serviços e Turismo. Turma quarenta e um. Campanha Vá de Boa sobre bicicletas elétricas. ${heroTitle} ${description} Use a navegação para consultar as regras, os materiais educativos, os vídeos e as informações sobre o projeto.`, "Início");
+    startSpeech(`Projeto independente feito por alunos do curso de Aprendizagem Profissional em Comércio de Bens, Serviços e Turismo. Turma quarenta e um. Campanha Vá de boa! sobre bicicletas elétricas. ${heroTitle} ${description} Use a navegação para consultar as regras, os materiais educativos, os vídeos e as informações sobre o projeto.`, "Início");
     return;
   }
 
   if (currentPage === "cards") {
     const cardsText = originalPosters.map((poster, index) => `Card ${index + 1}. ${cardSpeechText(poster.id)}`).join(" ");
-    startSpeech(`Cards educativos da campanha Vá de Boa. ${cardsText}`, "Todos os cards");
+    startSpeech(`Cards educativos da campanha Vá de boa!! ${cardsText}`, "Todos os cards");
     return;
   }
 
@@ -1015,12 +1015,12 @@ function speakPageContent() {
       const description = finishSpeechSegment(info.querySelector("p")?.textContent);
       return `Vídeo ${index + 1}. ${title} ${description}`;
     }).join(" ");
-    startSpeech(`Vídeos da campanha Vá de Boa. Há dois vídeos disponíveis nesta página. ${videosText}`, "Conteúdo dos vídeos");
+    startSpeech(`Vídeos da campanha Vá de boa!! Há dois vídeos disponíveis nesta página. ${videosText}`, "Conteúdo dos vídeos");
     return;
   }
 
   if (currentPage === "sobre-nos") {
-    startSpeech("Sobre nós. Somos alunos da Turma quarenta e um do curso de Aprendizagem Profissional em Comércio de Bens, Serviços e Turismo do Senac. Desenvolvemos o Vá de Boa como parte do kit do projeto da turma sobre bicicletas elétricas. O site é um projeto acadêmico independente e não representa comunicação oficial do Senac.", "Sobre nós");
+    startSpeech("Sobre nós. Somos alunos da Turma quarenta e um do curso de Aprendizagem Profissional em Comércio de Bens, Serviços e Turismo do Senac. Desenvolvemos o Vá de boa! como parte do kit do projeto da turma sobre bicicletas elétricas. O site é um projeto acadêmico independente e não representa comunicação oficial do Senac.", "Sobre nós");
     return;
   }
 
