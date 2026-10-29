@@ -1,4 +1,4 @@
-# Revisão de segurança — Vá de Boa
+# Revisão de segurança — Vá de boa!
 
 **Última revisão estática:** 29/10/2026  
 **Escopo:** código versionado, HTML, CSS, JavaScript e configuração do Render.  
