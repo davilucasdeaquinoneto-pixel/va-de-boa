@@ -1,5 +1,5 @@
 
-/* Vá de Boa — campanha educativa. Sem dependências externas. */
+/* Vá de boa! — campanha educativa. Sem dependências externas. */
 :root{--ink:#172e55;--muted:#5b687e;--blue:#12346b;--orange:#ffa13e;--paper:#fffdfa;--line:#dce3ed;--white:#fff;--radius:18px;--font:"Arial", "Helvetica Neue", sans-serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:100px}
@@ -323,7 +323,7 @@ dialog::backdrop{background:#0a1c3eb8;backdrop-filter:blur(4px)}
 .campaign-home:hover{background:#f7f9fc}
 
 
-/* ===== Vá de Boa · revisão de campanha 09/09/2026 ===== */
+/* ===== Vá de boa! · revisão de campanha 09/09/2026 ===== */
 :root{
   --electric:#ff9f3f;
   --electric-soft:#fff0db;
