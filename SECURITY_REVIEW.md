@@ -1,59 +1,56 @@
-# Revisão de segurança, coerência e produção — Vá de Boa
+# Revisão de segurança — Vá de Boa
 
-**Data:** 16/09/2026
-
-## Escopo
-Revisão estática do HTML/CSS/JavaScript, configuração do Render, links externos, privacidade, termos, acessibilidade e coerência do conteúdo normativo. Não foi executado ataque contra infraestrutura de terceiros, negação de serviço ou carga abusiva.
+**Última revisão estática:** 29/10/2026  
+**Escopo:** código versionado, HTML, CSS, JavaScript e configuração do Render.  
+**Tipo de revisão:** análise estática; não equivale a teste de invasão nem a validação completa do ambiente publicado.
 
 ## Resultado resumido
-- **Crítico: 0**
-- **Alto: 0**
-- **Médio: 0 pendentes**
-- **Baixo: 0 pendentes identificados na revisão atual**
 
-## Controles aplicados
-- CSP com `default-src 'none'` e listas explícitas por tipo de recurso.
-- JavaScript e CSS somente de mesma origem; nenhum script de terceiros.
-- `require-trusted-types-for 'script'` e `trusted-types 'none'` para bloquear sinks DOM perigosos em navegadores compatíveis.
-- `frame-ancestors 'none'` + `X-Frame-Options: DENY` contra clickjacking.
-- `X-Content-Type-Options: nosniff`.
-- `Referrer-Policy: strict-origin-when-cross-origin`.
-- `Permissions-Policy` bloqueando câmera, microfone, geolocalização, pagamento e USB.
-- COOP, COEP e CORP para isolamento de origem.
-- `Origin-Agent-Cluster: ?1`.
-- `X-XSS-Protection: 0` para desativar filtros legados problemáticos.
-- `X-DNS-Prefetch-Control: off`.
-- HSTS por um ano no ambiente HTTPS.
-- `form-action 'none'`, `connect-src 'none'`, `object-src 'none'`, `frame-src 'none'`, `worker-src 'none'` e `manifest-src 'none'`.
-- HTML (incluindo a rota raiz `/`) e assets com `Cache-Control: public, max-age=0, must-revalidate`, evitando versões antigas após atualizações.
-- Links externos em nova aba usam `noopener noreferrer`.
+- **Vulnerabilidades críticas ou altas identificadas:** nenhuma nesta revisão estática.
+- **Vulnerabilidades médias confirmadas:** nenhuma.
+- **Melhoria de configuração aplicada:** a publicação do Render foi direcionada para a pasta `dist`, que contém apenas os arquivos necessários à página e seus recursos.
+- **Verificações pendentes:** confirmar os cabeçalhos HTTP e o comportamento da implantação depois que o Render publicar a alteração.
+- **Observação de manutenção:** existem arquivos antigos de JavaScript/CSS sem referências no código atual. Não foram tratados como vulnerabilidades e permanecem no repositório por enquanto.
 
-## Superfície de ataque
-O site não possui login, banco de dados, formulário, API própria, upload de arquivos ou processamento de entrada de usuário. A revisão não encontrou uso de `eval`, `new Function`, `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `document.write`, handlers inline ou URLs `javascript:`.
+A ausência de problemas encontrados nesta análise não garante que o site esteja livre de vulnerabilidades.
 
-Também não foram encontrados `fetch`, XHR, WebSocket, EventSource, cookies, `localStorage` ou `sessionStorage` na aplicação.
+## Controles verificados no código
 
-## Testes defensivos realizados
-- sintaxe JavaScript validada com Node;
-- busca por sinks de DOM XSS e APIs de execução dinâmica;
-- busca por segredos/chaves/tokens em arquivos de texto;
-- verificação de links externos e `rel="noopener noreferrer"`;
-- verificação de referências locais e arquivos ausentes;
-- verificação de IDs duplicados e alvos de navegação;
-- conferência da CSP do HTML com a CSP do `render.yaml`;
-- conferência dos headers defensivos por servidor local equivalente;
-- revisão de privacidade contra o comportamento real da Web Speech API;
-- revisão do conteúdo da Resolução CONTRAN nº 996/2023 e de sua situação no portal oficial.
+- Política CSP restritiva definida no HTML e na configuração do Render; os valores foram comparados e correspondem.
+- Scripts e folhas de estilo da página carregados da própria origem.
+- Nenhum script inline, atributo de evento HTML, atributo `style` ou URL `javascript:` encontrado no HTML principal.
+- Nenhum uso identificado no JavaScript ativo de `eval`, `new Function`, `innerHTML`, `outerHTML`, `insertAdjacentHTML` ou `document.write`.
+- Nenhuma chamada identificada no JavaScript ativo a `fetch`, `XMLHttpRequest`, WebSocket, cookies, `localStorage` ou `sessionStorage`.
+- Os 58 links externos examinados abrem em nova aba e incluem `rel="noopener noreferrer"`.
+- 211 IDs verificados, sem duplicatas; 403 referências a âncoras internas, sem destinos ausentes.
+- Nenhum recurso declarado com URL HTTP simples em atributos `src`/`href`; nenhuma importação CSS remota ou URL remota em `url()` encontrada.
+- Nenhuma correspondência encontrada para os padrões comuns de credenciais pesquisados nos 19 arquivos de texto examinados. Essa busca é limitada e não substitui ferramentas especializadas de detecção de segredos.
 
-### Limitação do teste automatizado de navegador
-O ambiente de execução bloqueou a abertura do Chromium por política administrativa (`ERR_BLOCKED_BY_ADMINISTRATOR`). Por isso, a validação final de layout foi feita por análise estrutural e pelos testes mobile já realizados na versão anterior; as mudanças atuais foram limitadas a páginas institucionais, rodapé, controles de fala e headers.
+## Alteração de publicação aplicada
 
-## Coerência e transparência
-- “Sobre nós” identifica os autores como alunos do curso e explica que o site integra o kit do projeto sobre bicicletas elétricas.
-- O texto deixa explícito que a referência ao Senac é contextual e que o site não é canal oficial da instituição.
-- Privacidade não afirma mais que toda síntese de voz é necessariamente local.
-- Termos de Uso e Política de Privacidade foram harmonizados com o funcionamento real do site.
-- A base normativa foi conferida em 16/09/2026.
+A configuração em `render.yaml` agora:
 
-## Observação sobre disponibilidade
-Para tráfego elevado, manter como **Static Site** no Render. O uso de CDN e cache reduz a carga de origem. Nenhuma configuração pode garantir disponibilidade absoluta contra qualquer volume ou falha externa.
+1. Cria a pasta `dist` durante a compilação.
+2. Copia para ela `index.html`, `404.html`, `robots.txt` e a pasta `assets/`.
+3. Define `dist` como diretório publicado.
+
+Isso evita que a implantação estática publique diretamente, no domínio do site, arquivos de documentação e configuração que ficam na raiz do repositório. O repositório GitHub continua público; essa mudança não pretende ocultar o código-fonte.
+
+**Commit da alteração:** [5d9f7ab](https://github.com/davilucasdeaquinoneto-pixel/va-de-boa/commit/5d9f7ab163f291712e9cc880e8ab430c83346c18).
+
+## Cabeçalhos configurados
+
+O `render.yaml` define CSP, HSTS, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, COOP, COEP, CORP e outras diretivas de proteção.
+
+**Limitação importante:** a configuração versionada foi inspecionada, mas os cabeçalhos de resposta do site publicado não puderam ser confirmados por esta ferramenta. A configuração só deve ser considerada validada em produção depois de verificar a resposta HTTP real após a implantação.
+
+## Limitações e próximos passos
+
+- A URL pública do Render não pôde ser inspecionada por esta ferramenta; portanto, não há confirmação visual nem confirmação dos cabeçalhos em produção nesta revisão.
+- Não foi possível consultar as regras de proteção da branch principal com o acesso disponível.
+- Não foi realizado teste dinâmico em navegador, teste de invasão da infraestrutura ou teste de carga.
+- Próximas etapas recomendadas:
+  1. Confirmar que a nova implantação do Render terminou sem erros.
+  2. Conferir os cabeçalhos HTTP reais na aba **Network/Rede** das ferramentas de desenvolvedor do navegador.
+  3. Revisar as configurações de proteção da branch principal e os alertas de segurança disponíveis no GitHub.
+  4. Remover os arquivos antigos não referenciados somente depois de confirmar que não há dependência externa ou referência legada necessária.
