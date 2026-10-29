@@ -256,7 +256,7 @@ async function shareCardContent(id) {
 }
 
 // Navegação por hash: funciona tanto em arquivo local quanto no Render.
-const pageTitles = { inicio: "Início", cards: "Materiais educativos", regras: "Regras", "bicicleta-eletrica": "Guia de bicicleta elétrica", autopropelido: "Guia de equipamentos autopropelidos", ciclomotor: "Guia de ciclomotores", videos: "Vídeos", campanha: "Sobre o projeto", "sobre-nos": "Sobre nós", privacidade: "Privacidade", termos: "Termos de uso", acessibilidade: "Acessibilidade" };
+const pageTitles = { inicio: "Início", cards: "Materiais educativos", regras: "Regras rápidas", "bicicleta-eletrica": "Guia de bicicleta elétrica", "bike-equipamentos": "Equipamentos da bicicleta elétrica", "bike-velocidade": "Velocidade da bicicleta elétrica", "bike-circulacao": "Circulação da bicicleta elétrica", "bike-manutencao": "Manutenção da bicicleta elétrica", autopropelido: "Guia de equipamentos autopropelidos", "autopropelido-equipamentos": "Equipamentos autopropelidos", "autopropelido-velocidade": "Velocidade do autopropelido", "autopropelido-circulacao": "Circulação do autopropelido", ciclomotor: "Guia de ciclomotores", "ciclomotor-documentacao": "Documentação do ciclomotor", "ciclomotor-habilitacao": "Habilitação para ciclomotor", "ciclomotor-equipamentos": "Equipamentos do ciclomotor", "ciclomotor-circulacao": "Circulação do ciclomotor", "velocidade-por-local": "Velocidade por local", "calcadas-compartilhadas": "Calçadas compartilhadas", "circulacao-sem-ciclovia": "Circulação sem ciclovia", "distancia-ultrapassagem": "Distância na ultrapassagem", videos: "Vídeos", campanha: "Sobre o projeto", "sobre-nos": "Sobre nós", privacidade: "Privacidade", termos: "Termos de uso", acessibilidade: "Acessibilidade" };
 
 function changePage(moveFocus = true) {
   const route = window.location.hash.slice(1);
@@ -270,6 +270,7 @@ function changePage(moveFocus = true) {
     if (link.dataset.route === currentPage) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   });
+  syncDrawerGroups(currentPage);
   document.title = pageTitles[currentPage] + " | Vá de Boa · Projeto Turma 41";
   if (menuDialog.open) closeDialog(menuDialog);
   if (moveFocus) {
@@ -284,7 +285,47 @@ function changePage(moveFocus = true) {
   }
 }
 
+function syncDrawerGroups(route = currentPage) {
+  document.querySelectorAll(".drawer-group").forEach((group) => {
+    const button = group.querySelector("[data-drawer-toggle]");
+    const panel = document.getElementById(button?.getAttribute("aria-controls") || "");
+    const active = [...group.querySelectorAll("a[data-route]")].some((link) => link.dataset.route === route);
+    if (panel && button && active) {
+      panel.hidden = false;
+      button.setAttribute("aria-expanded", "true");
+      group.classList.add("is-active");
+    } else if (panel && button) {
+      panel.hidden = true;
+      button.setAttribute("aria-expanded", "false");
+      group.classList.remove("is-active");
+    }
+  });
+}
+
+document.querySelectorAll("[data-drawer-toggle]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const panel = document.getElementById(button.getAttribute("aria-controls"));
+    if (!panel) return;
+    const shouldOpen = panel.hidden;
+    document.querySelectorAll(".drawer-group").forEach((group) => {
+      const otherButton = group.querySelector("[data-drawer-toggle]");
+      const otherPanel = document.getElementById(otherButton?.getAttribute("aria-controls") || "");
+      if (otherButton && otherPanel) {
+        otherPanel.hidden = true;
+        otherButton.setAttribute("aria-expanded", "false");
+        group.classList.remove("is-active");
+      }
+    });
+    if (shouldOpen) {
+      panel.hidden = false;
+      button.setAttribute("aria-expanded", "true");
+      button.closest(".drawer-group")?.classList.add("is-active");
+    }
+  });
+});
+
 menuToggle.addEventListener("click", () => {
+  syncDrawerGroups(currentPage);
   showDialog(menuDialog);
   menuToggle.setAttribute("aria-expanded", "true");
 });
