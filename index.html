@@ -9,6 +9,7 @@
 <link href="assets/favicon.c92632b67411.svg" rel="icon" type="image/svg+xml"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/><meta content="index,follow,max-image-preview:large" name="robots"/><meta content="light" name="color-scheme"/><meta content="Vá de Boa | Projeto Turma 41" property="og:title"/><meta content="Campanha educativa independente sobre bicicletas elétricas, desenvolvida por alunos da Turma 41 do curso de Aprendizagem Profissional em Comércio de Bens, Serviços e Turismo do Senac." property="og:description"/><meta content="website" property="og:type"/><meta content="assets/bike-hero.82c05c9b30be.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><link crossorigin="anonymous" href="assets/styles.2772bc3939d3.css" integrity="sha384-Bx5JjxjYe+OlS+a/j6DVBIaWv2Y6RC6dmhIxlSZEMqulQVPAYu7PKL/ZF1MgOKfR" rel="stylesheet"/><link href="assets/rules-guide.20261029.css" rel="stylesheet"/>
 <link href="assets/navigation-guides.20261029.css" rel="stylesheet"/>
+<link href="assets/guide-expansion.20261029.css" rel="stylesheet"/>
 <!--
 Interface icons adapted from Lucide and Feather.
 Source: https://github.com/lucide-icons/lucide/blob/main/LICENSE
@@ -89,7 +90,7 @@ SOFTWARE.
 </div>
 <nav aria-label="Navegação principal" class="desktop-nav">
 <a data-route="inicio" href="#inicio">Início</a>
-<a data-route="regras" href="#regras">Regras</a>
+<a data-route="regras" href="#regras">Guia completo</a>
 <a data-route="cards" href="#cards">Materiais</a>
 <a data-route="videos" href="#videos">Vídeos</a>
 <a data-route="campanha" href="#campanha">Sobre o projeto</a>
@@ -106,6 +107,14 @@ SOFTWARE.
 <div><span class="drawer-kicker">PROJETO INDEPENDENTE</span><h2 id="menu-title">Vá de Boa</h2><p>Projeto Turma 41 · feito por alunos do curso de Aprendizagem Profissional em Comércio de Bens, Serviços e Turismo</p></div>
 <button aria-label="Fechar menu" class="icon-button" data-close-dialog="menu-dialog" type="button"><svg aria-hidden="true" class="icon"><use href="#i-close"></use></svg></button>
 </div>
+
+<div class="drawer-guide-search guide-search-box" role="search">
+  <label for="drawer-guide-search">Buscar no guia</label>
+  <div class="guide-search-control"><input autocomplete="off" id="drawer-guide-search" type="search" data-guide-search data-search-results="drawer-guide-results" placeholder="Digite um assunto..." aria-controls="drawer-guide-results"/><span aria-hidden="true">⌕</span></div>
+  <p class="guide-search-hint">Ex.: placa, freio, celular, chuva.</p>
+  <div aria-label="Resultados da busca" class="guide-search-results" hidden id="drawer-guide-results" role="list"></div>
+</div>
+
 <nav aria-label="Navegação da campanha" class="drawer-nav">
 <a data-route="inicio" href="#inicio"><span class="drawer-index">01</span><span>Início</span></a>
 <a data-route="regras" href="#regras"><span class="drawer-index">02</span><span>Regras rápidas</span></a>
@@ -152,9 +161,35 @@ SOFTWARE.
   </ul>
 </div>
 
-<a data-route="cards" href="#cards"><span class="drawer-index">07</span><span>Materiais educativos</span></a>
-<a data-route="videos" href="#videos"><span class="drawer-index">08</span><span>Vídeos</span></a>
-<a data-route="campanha" href="#campanha"><span class="drawer-index">09</span><span>Sobre o projeto</span></a>
+
+<div class="drawer-group" data-drawer-group="seguranca">
+  <button aria-controls="drawer-safety-links" aria-expanded="false" class="drawer-group-toggle" data-drawer-toggle type="button"><span class="drawer-index">07</span><span>Segurança no dia a dia</span><span aria-hidden="true" class="drawer-chevron"></span></button>
+  <ul class="drawer-subnav" hidden id="drawer-safety-links">
+    <li><a data-route="seguranca-noite-chuva" href="#seguranca-noite-chuva">Noite, chuva e visibilidade</a></li>
+    <li><a data-route="celular-fones" href="#celular-fones">Celular e fones de ouvido</a></li>
+    <li><a data-route="sinalizacao-cruzamentos" href="#sinalizacao-cruzamentos">Sinalização e cruzamentos</a></li>
+    <li><a data-route="passageiros-carga" href="#passageiros-carga">Passageiros e objetos</a></li>
+  </ul>
+</div>
+<div class="drawer-group" data-drawer-group="imprevistos">
+  <button aria-controls="drawer-emergency-links" aria-expanded="false" class="drawer-group-toggle" data-drawer-toggle type="button"><span class="drawer-index">08</span><span>Bateria e imprevistos</span><span aria-hidden="true" class="drawer-chevron"></span></button>
+  <ul class="drawer-subnav" hidden id="drawer-emergency-links">
+    <li><a data-route="bateria-recarga" href="#bateria-recarga">Bateria e recarga segura</a></li>
+    <li><a data-route="pane-acidente" href="#pane-acidente">Pane, queda ou acidente</a></li>
+    <li><a data-route="estacionar-furtos" href="#estacionar-furtos">Estacionamento e prevenção de furtos</a></li>
+  </ul>
+</div>
+<div class="drawer-group" data-drawer-group="planejamento">
+  <button aria-controls="drawer-planning-links" aria-expanded="false" class="drawer-group-toggle" data-drawer-toggle type="button"><span class="drawer-index">09</span><span>Planejamento e dúvidas</span><span aria-hidden="true" class="drawer-chevron"></span></button>
+  <ul class="drawer-subnav" hidden id="drawer-planning-links">
+    <li><a data-route="antes-de-comprar" href="#antes-de-comprar">Antes de comprar</a></li>
+    <li><a data-route="perguntas-frequentes" href="#perguntas-frequentes">Perguntas frequentes</a></li>
+  </ul>
+</div>
+<a data-route="cards" href="#cards"><span class="drawer-index">10</span><span>Materiais educativos</span></a>
+<a data-route="videos" href="#videos"><span class="drawer-index">11</span><span>Vídeos</span></a>
+<a data-route="campanha" href="#campanha"><span class="drawer-index">12</span><span>Sobre o projeto</span></a>
+
 </nav>
 <div class="drawer-secondary"><a data-route="sobre-nos" href="#sobre-nos">Sobre nós</a><a data-route="acessibilidade" href="#acessibilidade">Acessibilidade</a><a data-route="privacidade" href="#privacidade">Privacidade</a><a data-route="termos" href="#termos">Termos de uso</a></div>
 <p class="drawer-footer">PROJETO TURMA 41 · 2026</p>
@@ -191,6 +226,33 @@ SOFTWARE.
 <span aria-hidden="true">→</span>
 <span class="strip-step"><b>3</b> Observe a sinalização</span>
 </div></div>
+
+<section aria-labelledby="home-guide-title" class="home-guide-access container" data-page="inicio" id="acesso-rapido">
+  <div class="home-guide-panel">
+    <div class="home-guide-heading">
+      <p class="eyebrow">GUIA DE CONSULTA</p>
+      <h2 id="home-guide-title">O que você precisa saber<span class="orange-dot">?</span></h2>
+      <p>Pesquise uma dúvida ou entre direto no assunto. As páginas se conectam para você continuar a leitura sem voltar ao início toda hora.</p>
+    </div>
+    <div class="guide-search-box home-search-box" role="search">
+      <label for="home-guide-search">Buscar no guia</label>
+      <div class="guide-search-control"><input autocomplete="off" id="home-guide-search" type="search" data-guide-search data-search-results="home-guide-results" placeholder="Ex.: capacete, calçada, bateria..." aria-controls="home-guide-results"/><span aria-hidden="true">⌕</span></div>
+      <p class="guide-search-hint">Digite uma palavra ou uma pergunta curta.</p>
+      <div aria-label="Resultados da busca" class="guide-search-results" hidden id="home-guide-results" role="list"></div>
+    </div>
+    <div class="home-guide-shortcuts" aria-label="Acessos rápidos ao guia">
+      <a href="#regras"><span>01</span><strong>Entender as categorias</strong><small>Bike elétrica, autopropelido e ciclomotor</small></a>
+      <a href="#bike-equipamentos"><span>02</span><strong>Conferir equipamentos</strong><small>Itens exigidos e cuidados extras</small></a>
+      <a href="#bike-circulacao"><span>03</span><strong>Saber onde circular</strong><small>Vias, ciclovias e áreas de pedestres</small></a>
+      <a href="#seguranca-noite-chuva"><span>04</span><strong>Pedalar com pouca visibilidade</strong><small>Noite, chuva e pista molhada</small></a>
+      <a href="#bateria-recarga"><span>05</span><strong>Cuidar da bateria</strong><small>Recarga e sinais de problema</small></a>
+      <a href="#celular-fones"><span>06</span><strong>Evitar distrações</strong><small>Celular, fones e atenção</small></a>
+      <a href="#passageiros-carga"><span>07</span><strong>Levar passageiro ou carga</strong><small>Limites e equilíbrio</small></a>
+      <a href="#perguntas-frequentes"><span>08</span><strong>Ver perguntas frequentes</strong><small>Respostas curtas com links para detalhes</small></a>
+    </div>
+  </div>
+</section>
+
 <section aria-labelledby="cards-title" class="cards-section container" data-page="cards" id="cards">
 <div class="section-heading">
 <div><p class="eyebrow">01 / PARA LER E COMPARTILHAR</p><h2 id="cards-title">Pequenos cards.<br/>Grandes cuidados<span class="orange-dot">.</span></h2></div>
@@ -204,7 +266,7 @@ SOFTWARE.
 <div class="poster-main"><h3>O motor ajuda.<br/>Você pedala.</h3><p>Na bicicleta elétrica de pedal assistido:</p><div class="fact-stack"><div><strong>1.000 <small>W</small></strong><span>potência nominal máxima</span></div><div><strong>32 <small>km/h</small></strong><span>limite da assistência do motor*</span></div></div><p class="poster-emphasis">Sem acelerador.</p><p class="poster-note">*Regra geral de uso urbano. A classificação depende do conjunto de características.</p></div>
 <div class="poster-bottom"><strong>vá de boa.</strong><span>CONTRAN 996/2023 · ART. 2º</span></div>
 </div>
-<div class="card-description"><h3>Primeiro, conheça sua bicicleta</h3><p>Classificação e limites do pedal assistido.</p><a class="card-rule-link" href="#regras">
+<div class="card-description"><h3>Primeiro, conheça sua bicicleta</h3><p>Classificação e limites do pedal assistido.</p><a class="card-rule-link" href="#antes-de-comprar">
           Ver regra relacionada <span aria-hidden="true">→</span>
 </a></div>
 <div class="card-actions"><button data-open-card="card-1" type="button"><svg aria-hidden="true" class="icon"><use href="#i-expand"></use></svg> Ampliar<span class="sr-only"> card 1</span></button><button data-speak-card="card-1" type="button"><svg aria-hidden="true" class="icon"><use href="#i-volume"></use></svg> Ouvir<span class="sr-only"> card 1</span></button><button data-print-card="card-1" type="button"><svg aria-hidden="true" class="icon"><use href="#i-print"></use></svg> Imprimir<span class="sr-only"> card 1</span></button><button data-share-card="card-1" type="button">
@@ -218,7 +280,7 @@ SOFTWARE.
 <div class="poster-main"><h3>O cuidado<br/>começa antes<br/>da saída.</h3><ul class="poster-checklist"><li><span aria-hidden="true">✓</span> Freios e pneus conferidos.</li><li><span aria-hidden="true">✓</span> Campainha e sinalização.</li><li><span aria-hidden="true">✓</span> Retrovisor no lado esquerdo.</li><li><span aria-hidden="true">✓</span> Indicador ou limitador de velocidade.</li></ul><p class="poster-note">Use capacete bem ajustado como cuidado adicional.</p></div>
 <div class="poster-bottom"><strong>vá de boa.</strong><span>SEGURANÇA EM PRIMEIRO LUGAR</span></div>
 </div>
-<div class="card-description"><h3>Um minuto antes de sair</h3><p>Uma conferência rápida faz diferença.</p><a class="card-rule-link" href="#regras">
+<div class="card-description"><h3>Um minuto antes de sair</h3><p>Uma conferência rápida faz diferença.</p><a class="card-rule-link" href="#bike-manutencao">
           Ver regra relacionada <span aria-hidden="true">→</span>
 </a></div>
 <div class="card-actions"><button data-open-card="card-2" type="button"><svg aria-hidden="true" class="icon"><use href="#i-expand"></use></svg> Ampliar<span class="sr-only"> card 2</span></button><button data-speak-card="card-2" type="button"><svg aria-hidden="true" class="icon"><use href="#i-volume"></use></svg> Ouvir<span class="sr-only"> card 2</span></button><button data-print-card="card-2" type="button"><svg aria-hidden="true" class="icon"><use href="#i-print"></use></svg> Imprimir<span class="sr-only"> card 2</span></button><button data-share-card="card-2" type="button">
@@ -232,7 +294,7 @@ SOFTWARE.
 <div class="poster-main"><p class="poster-overline">A CIDADE É COMPARTILHADA.</p><h3>Tem gente<br/>no seu<br/>caminho.<br/><em>Respeite.</em></h3><p>Reduza perto de pedestres.<br/>Dê espaço para passar.<br/>Avise suas intenções com antecedência.</p></div>
 <div class="poster-bottom"><strong>vá de boa.</strong><span>CUIDADO TAMBÉM É RESPEITO</span></div>
 </div>
-<div class="card-description"><h3>O caminho é de todos</h3><p>Convivência com pedestres e ciclistas.</p><a class="card-rule-link" href="#regras">
+<div class="card-description"><h3>O caminho é de todos</h3><p>Convivência com pedestres e ciclistas.</p><a class="card-rule-link" href="#sinalizacao-cruzamentos">
           Ver regra relacionada <span aria-hidden="true">→</span>
 </a></div>
 <div class="card-actions"><button data-open-card="card-3" type="button"><svg aria-hidden="true" class="icon"><use href="#i-expand"></use></svg> Ampliar<span class="sr-only"> card 3</span></button><button data-speak-card="card-3" type="button"><svg aria-hidden="true" class="icon"><use href="#i-volume"></use></svg> Ouvir<span class="sr-only"> card 3</span></button><button data-print-card="card-3" type="button"><svg aria-hidden="true" class="icon"><use href="#i-print"></use></svg> Imprimir<span class="sr-only"> card 3</span></button><button data-share-card="card-3" type="button">
@@ -246,7 +308,7 @@ SOFTWARE.
 <div class="poster-main"><h3>Pode passar<br/>por aqui?</h3><div class="poster-callout">A regra também<br/>depende da via.</div><p>Confira a sinalização e as regras do órgão de trânsito local para a categoria do seu veículo.</p><p class="poster-emphasis">Não presuma que toda calçada ou ciclovia está liberada.</p></div>
 <div class="poster-bottom"><strong>vá de boa.</strong><span>CONTRAN 996/2023 · ARTS. 6º–10</span></div>
 </div>
-<div class="card-description"><h3>Cada via tem suas regras</h3><p>Atenção à sinalização e à orientação local.</p><a class="card-rule-link" href="#regras">
+<div class="card-description"><h3>Cada via tem suas regras</h3><p>Atenção à sinalização e à orientação local.</p><a class="card-rule-link" href="#bike-circulacao">
           Ver regra relacionada <span aria-hidden="true">→</span>
 </a></div>
 <div class="card-actions"><button data-open-card="card-4" type="button"><svg aria-hidden="true" class="icon"><use href="#i-expand"></use></svg> Ampliar<span class="sr-only"> card 4</span></button><button data-speak-card="card-4" type="button"><svg aria-hidden="true" class="icon"><use href="#i-volume"></use></svg> Ouvir<span class="sr-only"> card 4</span></button><button data-print-card="card-4" type="button"><svg aria-hidden="true" class="icon"><use href="#i-print"></use></svg> Imprimir<span class="sr-only"> card 4</span></button><button data-share-card="card-4" type="button">
@@ -260,7 +322,7 @@ SOFTWARE.
 <div class="poster-main"><h3>A mensagem<br/>pode esperar.<br/><em>Seu cuidado,<br/>não.</em></h3><div class="attention-label"><svg aria-hidden="true" class="icon"><use href="#i-phone"></use></svg><span>OLHOS NO CAMINHO</span></div><p>Precisa usar o celular?<br/>Pare em um lugar seguro,<br/>fora do fluxo de circulação.</p></div>
 <div class="poster-bottom"><strong>vá de boa.</strong><span>ATENÇÃO É PARTE DO TRAJETO</span></div>
 </div>
-<div class="card-description"><h3>O celular fica para depois</h3><p>Evite distrações durante o trajeto.</p><a class="card-rule-link" href="#regras">
+<div class="card-description"><h3>O celular fica para depois</h3><p>Evite distrações durante o trajeto.</p><a class="card-rule-link" href="#celular-fones">
           Ver regra relacionada <span aria-hidden="true">→</span>
 </a></div>
 <div class="card-actions"><button data-open-card="card-5" type="button"><svg aria-hidden="true" class="icon"><use href="#i-expand"></use></svg> Ampliar<span class="sr-only"> card 5</span></button><button data-speak-card="card-5" type="button"><svg aria-hidden="true" class="icon"><use href="#i-volume"></use></svg> Ouvir<span class="sr-only"> card 5</span></button><button data-print-card="card-5" type="button"><svg aria-hidden="true" class="icon"><use href="#i-print"></use></svg> Imprimir<span class="sr-only"> card 5</span></button><button data-share-card="card-5" type="button">
@@ -274,7 +336,7 @@ SOFTWARE.
 <div class="poster-main"><h3>O nome<br/>do anúncio<br/>não é a regra.</h3><p>Bicicleta elétrica, autopropelido e ciclomotor são categorias diferentes.</p><div class="category-lines"><span>Bicicleta elétrica</span><span>Autopropelido</span><span>Ciclomotor</span></div><p class="poster-note">Confira a ficha técnica e o enquadramento. Só a aparência não define as exigências.</p></div>
 <div class="poster-bottom"><strong>vá de boa.</strong><span>CONTRAN 996/2023 · ART. 2º</span></div>
 </div>
-<div class="card-description"><h3>Nem tudo é bicicleta elétrica</h3><p>As características definem a categoria.</p><a class="card-rule-link" href="#regras">
+<div class="card-description"><h3>Nem tudo é bicicleta elétrica</h3><p>As características definem a categoria.</p><a class="card-rule-link" href="#antes-de-comprar">
           Ver regra relacionada <span aria-hidden="true">→</span>
 </a></div>
 <div class="card-actions"><button data-open-card="card-6" type="button"><svg aria-hidden="true" class="icon"><use href="#i-expand"></use></svg> Ampliar<span class="sr-only"> card 6</span></button><button data-speak-card="card-6" type="button"><svg aria-hidden="true" class="icon"><use href="#i-volume"></use></svg> Ouvir<span class="sr-only"> card 6</span></button><button data-print-card="card-6" type="button"><svg aria-hidden="true" class="icon"><use href="#i-print"></use></svg> Imprimir<span class="sr-only"> card 6</span></button><button data-share-card="card-6" type="button">
@@ -1079,6 +1141,79 @@ SOFTWARE.
 </div>
 </section>
 
+<section aria-labelledby="seguranca-noite-chuva-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="seguranca-noite-chuva" hidden id="seguranca-noite-chuva">
+<div class="container">
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">SEGURANÇA / VISIBILIDADE</p><h2 id="seguranca-noite-chuva-title">Noite, chuva e pouca visibilidade<span class="orange-dot">.</span></h2></div><p>Quando o caminho fica mais difícil de enxergar ou a pista perde aderência, ajuste a condução antes que a situação exija uma reação brusca.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#bike-manutencao">Conferir a bicicleta</a></div></div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Antes de sair</span><strong>Veja e seja visto</strong><p>Confira a sinalização e os refletores.</p></div><div class="guide-fact"><span class="fact-label">Pista molhada</span><strong>Reduza</strong><p>Frear e fazer curvas exige mais cuidado.</p></div><div class="guide-fact"><span class="fact-label">Visibilidade ruim</span><strong>Não force</strong><p>Se não der para seguir com segurança, pare em local protegido.</p></div></div>
+  <div class="guide-page-content"><h3>1. Prepare a sinalização</h3><ul><li>Confira se a iluminação e a sinalização exigidas para a categoria estão funcionando.</li><li>Na bicicleta elétrica, a Resolução CONTRAN nº 996/2023 exige sinalização noturna dianteira, traseira, lateral e nos pedais.</li><li>Roupas claras e elementos refletivos ajudam outras pessoas a perceber sua presença, mas não substituem os equipamentos exigidos.</li></ul><h3>2. Em dias de chuva</h3><ul><li>Reduza a velocidade e aumente a distância para conseguir parar com controle.</li><li>Evite poças profundas, alagamentos, tampas metálicas escorregadias, folhas molhadas e pintura viária quando estiverem oferecendo pouca aderência.</li><li>Faça curvas e frenagens de maneira suave. Não tente atravessar uma área alagada sem conseguir avaliar o piso.</li><li>Se a chuva impedir enxergar o caminho ou controlar o veículo, procure um local seguro fora do fluxo e espere melhorar.</li></ul><h3>3. Antes de voltar ao trajeto</h3><p>Confira os freios, os pneus e a iluminação. Se algum componente elétrico estiver molhado ou danificado, siga as instruções do fabricante antes de ligar ou recarregar o veículo.</p><div class="guide-note"><strong>O que é regra e o que é recomendação?</strong> A sinalização noturna faz parte dos requisitos legais da bicicleta elétrica. Roupas refletivas, reduzir a velocidade além do necessário e evitar superfícies escorregadias são recomendações preventivas.</div><p><strong>Fontes:</strong> <a href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023</a> e <a href="https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-orienta-sobre-direitos-e-deveres-dos-ciclistas" rel="noopener noreferrer" target="_blank">orientações do DNIT para ciclistas</a>.</p></div>
+  <div class="guide-page-footer"><p>Adapte a condução às condições reais do trajeto; a velocidade máxima do veículo não é uma meta.</p><div class="guide-actions"><a class="button button-outline" href="#bike-equipamentos">Equipamentos</a><a class="button button-orange" href="#bateria-recarga">Bateria e recarga</a></div></div>
+</div></section>
+<section aria-labelledby="celular-fones-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="celular-fones" hidden id="celular-fones">
+<div class="container">
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">SEGURANÇA / ATENÇÃO</p><h2 id="celular-fones-title">Celular e fones de ouvido<span class="orange-dot">.</span></h2></div><p>Uma notificação pode esperar. Durante o deslocamento, sua atenção precisa estar no caminho, nos sons do trânsito e nas pessoas ao redor.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#sinalizacao-cruzamentos">Ver cruzamentos</a></div></div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Rota</span><strong>Planeje antes</strong><p>Confira o caminho antes de começar.</p></div><div class="guide-fact"><span class="fact-label">Mensagem</span><strong>Pare primeiro</strong><p>Saia do fluxo sem bloquear a passagem.</p></div><div class="guide-fact"><span class="fact-label">Áudio</span><strong>Ouça o entorno</strong><p>Evite fones que reduzam sua percepção do trânsito.</p></div></div>
+  <div class="guide-page-content"><h3>1. Antes de sair</h3><ul><li>Configure a rota, o volume e os recursos de navegação antes de começar a se mover.</li><li>Se precisar prender o celular, use um suporte firme sem cobrir controles, luzes ou a visão do caminho. Mesmo com suporte, não leia nem digite enquanto conduz.</li><li>Se estiver com outra pessoa, combine o trajeto e os pontos de parada antes de sair.</li></ul><h3>2. Se precisar consultar algo</h3><p>Reduza a velocidade, procure um ponto seguro fora da faixa de circulação e pare completamente antes de olhar o celular. Não pare em cruzamentos, rampas, ciclovias estreitas ou locais que bloqueiem pedestres.</p><h3>3. E os fones?</h3><p>Evite usar fones durante o deslocamento, especialmente em vias compartilhadas. Ouvir motores, campainhas, buzinas e alertas de outras pessoas ajuda a perceber situações que podem não estar no seu campo de visão.</p><div class="guide-note"><strong>Importante:</strong> esta página apresenta uma recomendação de segurança para quem usa bicicleta elétrica ou autopropelido. A aplicação de dispositivos legais específicos depende da categoria do veículo e da norma pertinente; não interprete esta recomendação como uma descrição completa de todas as infrações possíveis.</div><p><strong>Fonte complementar:</strong> <a href="https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-orienta-sobre-direitos-e-deveres-dos-ciclistas" rel="noopener noreferrer" target="_blank">DNIT: direitos e deveres dos ciclistas</a>.</p></div>
+  <div class="guide-page-footer"><p>Distração não é apenas olhar para a tela: qualquer atividade que tire sua atenção do entorno pode atrasar uma reação.</p><div class="guide-actions"><a class="button button-outline" href="#seguranca-noite-chuva">Noite e chuva</a><a class="button button-orange" href="#sinalizacao-cruzamentos">Sinalização e cruzamentos</a></div></div>
+</div></section>
+<section aria-labelledby="sinalizacao-cruzamentos-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="sinalizacao-cruzamentos" hidden id="sinalizacao-cruzamentos">
+<div class="container">
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">CIRCULAÇÃO / PREVISIBILIDADE</p><h2 id="sinalizacao-cruzamentos-title">Sinalização e cruzamentos<span class="orange-dot">.</span></h2></div><p>Ser previsível ajuda os demais usuários a entenderem o que você pretende fazer. Em cruzamentos, não presuma que alguém já percebeu sua presença.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#circulacao-sem-ciclovia">Sem ciclovia</a></div></div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Antes da manobra</span><strong>Observe</strong><p>Confira os lados e os pontos cegos.</p></div><div class="guide-fact"><span class="fact-label">Mudança de direção</span><strong>Sinalize</strong><p>Avise com antecedência quando for seguro.</p></div><div class="guide-fact"><span class="fact-label">Sem certeza</span><strong>Reduza</strong><p>Não entre no cruzamento sem conseguir avaliar o risco.</p></div></div>
+  <div class="guide-page-content"><h3>1. Leia a via</h3><ul><li>Respeite semáforos, placas, marcas no pavimento e orientações dos agentes de trânsito.</li><li>Observe veículos que possam virar à direita ou à esquerda e cruzar seu caminho.</li><li>Reduza a velocidade ao se aproximar de entradas de garagem, ruas laterais e locais com visão obstruída.</li><li>Não circule na contramão. Quando a infraestrutura permitir, siga o sentido regulamentado para o trecho.</li></ul><h3>2. Indique o que pretende fazer</h3><p>Sinalize a mudança de direção com antecedência, usando o gesto adequado quando conseguir fazê-lo sem perder o controle. Olhe novamente para o trânsito antes de mudar de posição. Sinalizar não concede preferência automática nem obriga outras pessoas a abrir espaço.</p><h3>3. Respeite quem está a pé</h3><p>Reduza a velocidade perto de travessias e áreas de grande movimento. Não use a campainha para pressionar pedestres a sair do caminho; espere uma oportunidade segura e respeitosa para passar onde a circulação for autorizada.</p><div class="guide-note"><strong>Regra prática:</strong> se não conseguir ver o que há do outro lado do cruzamento, não avance como se estivesse livre. Diminua e confirme que a manobra pode ser feita com segurança.</div><p><strong>Fontes:</strong> <a href="https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm" rel="noopener noreferrer" target="_blank">Código de Trânsito Brasileiro</a> e <a href="https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-orienta-sobre-direitos-e-deveres-dos-ciclistas" rel="noopener noreferrer" target="_blank">orientações do DNIT</a>.</p></div>
+  <div class="guide-page-footer"><p>A sinalização da via e a categoria do veículo definem as regras aplicáveis. Na dúvida, não improvise uma autorização.</p><div class="guide-actions"><a class="button button-outline" href="#bike-circulacao">Onde circular</a><a class="button button-orange" href="#distancia-ultrapassagem">Ultrapassagem segura</a></div></div>
+</div></section>
+<section aria-labelledby="passageiros-carga-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="passageiros-carga" hidden id="passageiros-carga">
+<div class="container">
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">USO DO VEÍCULO / EQUILÍBRIO</p><h2 id="passageiros-carga-title">Passageiros e transporte de objetos<span class="orange-dot">.</span></h2></div><p>Um peso extra muda o equilíbrio, a frenagem e a capacidade de fazer curvas. Não presuma que qualquer bicicleta ou patinete possa levar outra pessoa.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#antes-de-comprar">Conferir especificações</a></div></div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Passageiro</span><strong>Confira o projeto</strong><p>O veículo e o assento precisam ser adequados.</p></div><div class="guide-fact"><span class="fact-label">Objetos</span><strong>Prenda a carga</strong><p>Não bloqueie luzes, controles ou visão.</p></div><div class="guide-fact"><span class="fact-label">Limite</span><strong>Manual do fabricante</strong><p>Não ultrapasse a carga permitida.</p></div></div>
+  <div class="guide-page-content"><h3>1. Posso levar outra pessoa?</h3><p>Somente quando o veículo for projetado e equipado para transportar passageiro, seguindo as instruções do fabricante e as regras aplicáveis. Não leve alguém em pé sobre o quadro, no guidão ou em uma posição improvisada.</p><p>A Resolução CONTRAN nº 996/2023 prevê especificamente a possibilidade de um passageiro em equipamentos autopropelidos que se assemelham a bicicletas com acelerador, desde que exista dispositivo adequado previsto pelo fabricante. Essa previsão não autoriza passageiros em qualquer patinete, skate ou bicicleta elétrica.</p><h3>2. Como transportar objetos?</h3><ul><li>Use cesto, bagageiro ou suporte adequado e respeite a capacidade indicada pelo fabricante.</li><li>Prenda os objetos para que não deslizem, caiam ou se prendam nas rodas.</li><li>Não carregue volumes que impeçam enxergar, segurar o guidão, acionar os freios ou sinalizar.</li><li>Distribua o peso sem comprometer a estabilidade e confira a fixação antes de sair.</li></ul><h3>3. Faça um teste parado</h3><p>Antes de iniciar o trajeto, confirme que os comandos continuam acessíveis e que o veículo permanece estável. Se o peso alterar muito o controle, retire a carga e escolha outro meio de transporte.</p><div class="guide-note"><strong>Regra de ouro:</strong> não improvise assentos, suportes nem alterações estruturais. O manual e a capacidade de projeto do veículo são o ponto de partida.</div><p><strong>Fonte:</strong> <a href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023</a>, especialmente as definições e condições de uso de equipamentos autopropelidos.</p></div>
+  <div class="guide-page-footer"><p>O nome comercial do produto não basta para saber o que ele pode transportar. Confira o manual e a categoria legal.</p><div class="guide-actions"><a class="button button-outline" href="#autopropelido">Guia de autopropelidos</a><a class="button button-orange" href="#antes-de-comprar">Antes de comprar</a></div></div>
+</div></section>
+<section aria-labelledby="bateria-recarga-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="bateria-recarga" hidden id="bateria-recarga">
+<div class="container">
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">MANUTENÇÃO / ENERGIA</p><h2 id="bateria-recarga-title">Bateria e recarga segura<span class="orange-dot">.</span></h2></div><p>A bateria precisa de cuidado durante o uso, o transporte e a recarga. Siga o manual específico do veículo e não improvise carregadores ou adaptações.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#pane-acidente">O que fazer se houver problema</a></div></div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Carregador</span><strong>Compatível</strong><p>Use o indicado pelo fabricante.</p></div><div class="guide-fact"><span class="fact-label">Local</span><strong>Seco e ventilado</strong><p>Mantenha longe de calor e materiais inflamáveis.</p></div><div class="guide-fact"><span class="fact-label">Dano</span><strong>Não use</strong><p>Interrompa o uso se houver sinais de avaria.</p></div></div>
+  <div class="guide-page-content"><h3>1. Antes de conectar</h3><ul><li>Leia o manual e use apenas o carregador compatível especificado pelo fabricante.</li><li>Confira se cabo, conector e bateria estão secos e sem danos visíveis.</li><li>Faça a recarga em local seco e ventilado, longe de fontes de calor, luz solar direta e materiais que possam pegar fogo.</li><li>Evite adaptadores improvisados, cabos danificados e modificações no sistema elétrico.</li><li>Siga a sequência de conexão e o tempo de carga indicados no manual.</li></ul><h3>2. Sinais para interromper o uso</h3><p>Calor incomum, cheiro estranho, deformação, inchaço, vazamento, ruídos incomuns ou danos após uma queda são motivos para parar de usar a bateria e procurar orientação do fabricante ou assistência qualificada. Não abra, perfure, comprima ou tente consertar a bateria por conta própria.</p><h3>3. Depois da recarga</h3><p>Desconecte conforme as instruções do fabricante, guarde o carregador em local seco e não altere o conjunto de bateria, controlador ou motor para aumentar a velocidade ou potência. Além do risco de segurança, modificações podem mudar a classificação legal do veículo.</p><div class="guide-note"><strong>Se houver fumaça, fogo ou aquecimento intenso:</strong> afaste-se, avise quem estiver perto e acione os bombeiros pelo 193. Não tente transportar nem manipular uma bateria em situação de emergência.</div><p><strong>Fontes:</strong> <a href="https://segurancacontraincendio.cbm.df.gov.br/wp-content/uploads/2021/11/Estudo-Tecnico-no-03-2021-Ensaio-de-Baterias-de-Litio-CBMDF-2.pdf" rel="noopener noreferrer" target="_blank">estudo técnico do Corpo de Bombeiros Militar do Distrito Federal sobre baterias de lítio</a> e <a href="https://www.gov.br/anatel/pt-br/regulado/certificacao-de-produtos/orientacoes-para-uso-seguro-de-telefones-celulares-e-seus-acessorios" rel="noopener noreferrer" target="_blank">orientações de segurança da Anatel para baterias e carregadores</a>. As orientações gerais não substituem o manual da bateria do veículo.</p></div>
+  <div class="guide-page-footer"><p>Se a bateria ou o carregador apresentar defeito, não tente resolver com uma adaptação improvisada.</p><div class="guide-actions"><a class="button button-outline" href="#bike-manutencao">Manutenção</a><a class="button button-orange" href="#pane-acidente">Pane ou emergência</a></div></div>
+</div></section>
+<section aria-labelledby="pane-acidente-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="pane-acidente" hidden id="pane-acidente">
+<div class="container">
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">IMPREVISTOS / RESPOSTA SEGURA</p><h2 id="pane-acidente-title">Pane, queda ou acidente<span class="orange-dot">.</span></h2></div><p>Quando algo sai do previsto, a prioridade é sair do fluxo de circulação e evitar que um problema mecânico vire uma segunda ocorrência.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#bike-manutencao">Prevenir problemas</a></div></div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Primeiro passo</span><strong>Proteja-se</strong><p>Não fique parado no fluxo de veículos.</p></div><div class="guide-fact"><span class="fact-label">Ferimento</span><strong>Peça ajuda</strong><p>Não mova uma pessoa ferida se houver suspeita de lesão grave, salvo perigo imediato.</p></div><div class="guide-fact"><span class="fact-label">Emergência</span><strong>Acione o serviço</strong><p>192 para atendimento médico; 193 em incêndio ou risco de fogo.</p></div></div>
+  <div class="guide-page-content"><h3>1. Se o veículo parar de funcionar</h3><ul><li>Reduza a velocidade e procure um ponto seguro fora da faixa de circulação.</li><li>Não tente consertar a bicicleta ou o patinete no meio da via, em cruzamentos ou em locais sem visibilidade.</li><li>Se houver dano elétrico, cheiro incomum, fumaça ou aquecimento intenso, afaste-se do equipamento e não mexa na bateria.</li><li>Peça ajuda a um adulto de confiança ou à assistência indicada pelo fabricante.</li></ul><h3>2. Se houver queda ou colisão</h3><ul><li>Primeiro observe o trânsito e vá para um local protegido se for seguro fazer isso.</li><li>Se alguém estiver ferido, acione o SAMU pelo 192. Não retire capacete nem mova a pessoa se houver suspeita de lesão grave, a menos que exista perigo imediato no local.</li><li>Em risco de incêndio ou fumaça, afaste-se e ligue para os Bombeiros pelo 193. Para ocorrência policial, ligue 190 quando necessário.</li><li>Não discuta no meio da via nem se coloque novamente em risco para registrar fotos.</li></ul><h3>3. Antes de voltar a usar</h3><p>Depois de uma queda ou colisão, verifique o veículo antes de retomar o uso. Trincas, freios desalinhados, roda empenada, cabo danificado ou bateria atingida precisam de avaliação adequada. Não confie apenas no fato de o motor ainda ligar.</p><div class="guide-note"><strong>Se você for menor de idade:</strong> procure um responsável de confiança para ajudar a lidar com a ocorrência e o contato com serviços ou assistência técnica.</div><p><strong>Referências:</strong> <a href="https://www.gov.br/dnit/pt-br/assuntos/noticias/dnit-orienta-sobre-direitos-e-deveres-dos-ciclistas" rel="noopener noreferrer" target="_blank">orientações de segurança do DNIT</a> e <a href="https://segurancacontraincendio.cbm.df.gov.br/wp-content/uploads/2021/11/Estudo-Tecnico-no-03-2021-Ensaio-de-Baterias-de-Litio-CBMDF-2.pdf" rel="noopener noreferrer" target="_blank">estudo do CBMDF sobre baterias de lítio</a>.</p></div>
+  <div class="guide-page-footer"><p>Não tente resolver uma pane elétrica por conta própria nem volte a circular se os freios ou a direção não estiverem funcionando corretamente.</p><div class="guide-actions"><a class="button button-outline" href="#bateria-recarga">Bateria e recarga</a><a class="button button-orange" href="#bike-manutencao">Conferência preventiva</a></div></div>
+</div></section>
+<section aria-labelledby="estacionar-furtos-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="estacionar-furtos" hidden id="estacionar-furtos">
+<div class="container">
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">CUIDADOS / ESTACIONAMENTO</p><h2 id="estacionar-furtos-title">Estacionamento e prevenção de furtos<span class="orange-dot">.</span></h2></div><p>Um bom hábito de estacionamento ajuda a reduzir a oportunidade de furto e evita bloquear a passagem de pedestres ou pessoas com mobilidade reduzida.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#bike-manutencao">Conferir manutenção</a></div></div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Onde parar</span><strong>Local permitido</strong><p>Use bicicletário ou área indicada.</p></div><div class="guide-fact"><span class="fact-label">Trava</span><strong>Prenda ao ponto fixo</strong><p>Não deixe apenas a roda presa.</p></div><div class="guide-fact"><span class="fact-label">Identificação</span><strong>Guarde os dados</strong><p>Nota fiscal, modelo e número de série ajudam a identificar o bem.</p></div></div>
+  <div class="guide-page-content"><h3>1. Escolha o local</h3><ul><li>Prefira bicicletários, locais movimentados e bem iluminados, quando disponíveis.</li><li>Não bloqueie calçadas, rampas, portas, faixas táteis, saídas de emergência ou áreas reservadas.</li><li>Evite deixar o veículo em local isolado por longos períodos, se houver alternativa segura.</li></ul><h3>2. Use a trava corretamente</h3><ul><li>Use uma trava resistente e prenda o quadro a um ponto fixo seguro, além de proteger componentes removíveis quando possível.</li><li>Não dependa apenas do cadeado da bateria ou de um acessório que possa ser retirado facilmente.</li><li>Retire a chave e não deixe objetos pessoais visíveis no cesto ou no suporte.</li></ul><h3>3. Guarde as informações do veículo</h3><p>Guarde nota fiscal, marca, modelo, número de série e fotos identificadoras em local seguro. Se houver furto ou roubo, vá para um lugar protegido, avise um responsável de confiança e registre a ocorrência com as autoridades. Não tente confrontar a pessoa suspeita.</p><div class="guide-note"><strong>Orientação local:</strong> a Polícia Civil do Espírito Santo recomenda o uso de travas reforçadas, a fixação em local seguro e a preferência por bicicletários ou áreas com circulação de pessoas e monitoramento quando disponíveis.</div><p><strong>Fonte:</strong> <a href="https://pc.es.gov.br/Noticia/policia-civil-alerta-sobre-como-se-prevenir-de-furtos-e-roubos-de-bicicletas-eletricas" rel="noopener noreferrer" target="_blank">Polícia Civil do Espírito Santo: prevenção de furtos e roubos de bicicletas elétricas</a>.</p></div>
+  <div class="guide-page-footer"><p>Estacionar com cuidado também significa deixar o caminho livre para quem anda a pé.</p><div class="guide-actions"><a class="button button-outline" href="#bike-circulacao">Onde circular</a><a class="button button-orange" href="#perguntas-frequentes">Perguntas frequentes</a></div></div>
+</div></section>
+<section aria-labelledby="antes-de-comprar-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="antes-de-comprar" hidden id="antes-de-comprar">
+<div class="container">
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">PLANEJAMENTO / CLASSIFICAÇÃO</p><h2 id="antes-de-comprar-title">Antes de comprar uma bicicleta elétrica<span class="orange-dot">.</span></h2></div><p>Confira as características técnicas antes de decidir. Um anúncio pode usar o nome “bicicleta elétrica” mesmo quando o veículo pertence a outra categoria legal.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#perguntas-frequentes">Perguntas frequentes</a></div></div>
+  <div class="guide-facts"><div class="guide-fact"><span class="fact-label">Ficha técnica</span><strong>Leia os dados</strong><p>Potência, velocidade e modo de acionamento.</p></div><div class="guide-fact"><span class="fact-label">Documentação</span><strong>Peça comprovantes</strong><p>Manual, nota fiscal e identificação do modelo.</p></div><div class="guide-fact"><span class="fact-label">Promessa comercial</span><strong>Confirme</strong><p>O anúncio não define a categoria legal.</p></div></div>
+  <div class="guide-page-content"><h3>1. Confira as características originais</h3><ul><li>Veja a potência nominal do motor e a velocidade máxima de fabricação.</li><li>Confira se a bicicleta elétrica funciona por pedal assistido e se possui acelerador ou outro comando manual de propulsão.</li><li>Para autopropelidos, confira também os limites de dimensões previstos na Resolução CONTRAN nº 996/2023.</li><li>Se o produto for anunciado com velocidade, potência ou características superiores às da categoria, não presuma que um limitador instalado depois resolva o enquadramento.</li></ul><h3>2. Peça os documentos e leia o manual</h3><ul><li>Solicite nota fiscal, manual do fabricante, dados do modelo e informações de garantia.</li><li>Confirme quais equipamentos são exigidos para a categoria e se o produto vem com eles.</li><li>Confira a disponibilidade de peças, assistência e orientações de bateria e carregador.</li><li>Desconfie de anúncios que não informam potência, velocidade de fabricação ou identificação do fabricante.</li></ul><h3>3. Não modifique para aumentar a velocidade</h3><p>Alterar motor, controlador, acelerador ou limitador pode comprometer a segurança e mudar a classificação do veículo, trazendo exigências legais diferentes. Não faça modificações para contornar os limites de fabricação.</p><div class="guide-note"><strong>Regra prática:</strong> compare as especificações originais com as definições da norma. Se não for possível confirmar a categoria, consulte o órgão de trânsito competente antes de usar o veículo em via pública.</div><p><strong>Fonte oficial:</strong> <a href="https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9962023.pdf" rel="noopener noreferrer" target="_blank">Resolução CONTRAN nº 996/2023</a>, que define as categorias e as características técnicas.</p></div>
+  <div class="guide-page-footer"><p>Uma compra informada começa pela classificação legal, não pelo nome ou pela velocidade anunciada.</p><div class="guide-actions"><a class="button button-outline" href="#bicicleta-eletrica">Guia de bicicleta elétrica</a><a class="button button-orange" href="#ciclomotor">Entender ciclomotores</a></div></div>
+</div></section>
+<section aria-labelledby="perguntas-frequentes-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="perguntas-frequentes" hidden id="perguntas-frequentes">
+<div class="container">
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">CONSULTA RÁPIDA / DÚVIDAS COMUNS</p><h2 id="perguntas-frequentes-title">Perguntas frequentes<span class="orange-dot">.</span></h2></div><p>Respostas diretas para dúvidas comuns. Cada resposta aponta para uma página com contexto, exceções e fontes.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#acesso-rapido">Usar a busca do guia</a></div></div>
+  <div class="faq-grid">
+    <article><h3>1. Toda bicicleta com motor é uma bicicleta elétrica?</h3><p>Não. A classificação depende das características técnicas, como potência, velocidade de fabricação e modo de acionamento. <a href="#antes-de-comprar">Veja como conferir antes de comprar.</a></p></article>
+    <article><h3>2. Bicicleta elétrica precisa de placa ou CNH?</h3><p>A bicicleta elétrica que se enquadra na definição da Resolução CONTRAN nº 996/2023 não exige registro, licenciamento ou emplacamento. Ciclomotores têm exigências diferentes. <a href="#bicicleta-eletrica">Compare as categorias.</a></p></article>
+    <article><h3>3. Posso circular em qualquer calçada?</h3><p>Não presuma que a circulação esteja autorizada. A sinalização e a regulamentação local importam, e áreas de pedestres exigem cuidado especial. <a href="#calcadas-compartilhadas">Leia as regras de calçadas compartilhadas.</a></p></article>
+    <article><h3>4. Os 20 km/h valem para toda calçada compartilhada?</h3><p>Não existe um limite único que possa ser transferido automaticamente entre municípios e tipos de via. Confira o contexto legal e a sinalização local. <a href="#velocidade-por-local">Veja os limites por local.</a></p></article>
+    <article><h3>5. Posso levar passageiro?</h3><p>Somente se o veículo for projetado e equipado para isso e as regras aplicáveis permitirem. A autorização para determinados autopropelidos não vale para todos os modelos. <a href="#passageiros-carga">Confira as condições.</a></p></article>
+    <article><h3>6. Qual carregador devo usar?</h3><p>Use o carregador compatível especificado pelo fabricante e siga o manual. Não improvise adaptadores nem use baterias danificadas. <a href="#bateria-recarga">Veja os cuidados com a recarga.</a></p></article>
+    <article><h3>7. O que faço se o veículo parar na rua?</h3><p>Procure um ponto seguro fora do fluxo e não tente consertar o veículo no meio da via. Em emergência, acione o serviço adequado. <a href="#pane-acidente">Leia o passo a passo de segurança.</a></p></article>
+    <article><h3>8. Como reduzir o risco de furto ao estacionar?</h3><p>Use uma trava resistente, prenda o quadro a um ponto fixo seguro e prefira locais permitidos e movimentados. <a href="#estacionar-furtos">Veja as recomendações completas.</a></p></article>
+    <article><h3>9. Posso olhar o celular enquanto pedalo devagar?</h3><p>A recomendação de segurança é parar completamente em um ponto seguro antes de consultar mensagens ou rotas. <a href="#celular-fones">Veja como evitar distrações.</a></p></article>
+  </div>
+  <div class="guide-note"><strong>Nota:</strong> o guia é educativo. Regras locais podem mudar e a sinalização da via deve ser respeitada. Para decisões legais, consulte a norma oficial e o órgão de trânsito responsável.</div>
+  <div class="guide-page-footer"><p>Não encontrou a resposta? Use a busca no início ou no menu de navegação para pesquisar por palavra-chave.</p><div class="guide-actions"><a class="button button-outline" href="#inicio">Início</a><a class="button button-orange" href="#regras">Guia completo</a></div></div>
+</div></section>
 <section aria-labelledby="videos-title" class="video-section" data-page="videos" id="videos">
 <div class="container">
 <div class="section-heading"><div><p class="eyebrow">03 / A CAMPANHA EM MOVIMENTO</p><h2 id="videos-title">Assista à campanha<br/>e conheça o site.</h2></div><p>Dois vídeos complementam os materiais: um apresenta a campanha Vá de Boa e o outro mostra como usar os recursos do site.</p></div>
@@ -1203,7 +1338,7 @@ Seu navegador não consegue reproduzir este vídeo.
 </div>
 <div class="container footer-bottom">
 <span>PROJETO TURMA 41 · CAMPANHA VÁ DE BOA</span>
-<span>Base normativa verificada em 16/09/2026</span>
+<span>Base normativa verificada em 29/10/2026</span>
 </div>
 </footer>
 <dialog aria-labelledby="card-dialog-title" id="card-dialog">
@@ -1222,5 +1357,5 @@ Seu navegador não consegue reproduzir este vídeo.
 <p class="audio-notice" hidden="" id="audio-notice" role="status"></p>
 <div aria-hidden="true" id="print-root"></div>
 <p class="sr-only" id="status-message" role="status"></p>
-<script defer src="assets/app.navigationfix.20261029.js"></script></body>
+<script defer src="assets/app.guideexpansion.20261029.js"></script></body>
 </html>
