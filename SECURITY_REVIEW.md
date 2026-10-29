@@ -25,7 +25,7 @@ Revisão estática do HTML/CSS/JavaScript, configuração do Render, links exter
 - `X-DNS-Prefetch-Control: off`.
 - HSTS por um ano no ambiente HTTPS.
 - `form-action 'none'`, `connect-src 'none'`, `object-src 'none'`, `frame-src 'none'`, `worker-src 'none'` e `manifest-src 'none'`.
-- Assets versionados por hash e cache imutável; HTML revalidado.
+- HTML (incluindo a rota raiz `/`) e assets com `Cache-Control: public, max-age=0, must-revalidate`, evitando versões antigas após atualizações.
 - Links externos em nova aba usam `noopener noreferrer`.
 
 ## Superfície de ataque
