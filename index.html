@@ -110,8 +110,8 @@ SOFTWARE.
 
 <div class="drawer-guide-search guide-search-box" role="search">
   <label for="drawer-guide-search">Buscar no guia</label>
-  <div class="guide-search-control"><input autocomplete="off" id="drawer-guide-search" type="search" data-guide-search data-search-results="drawer-guide-results" placeholder="Digite um assunto..." aria-controls="drawer-guide-results"/><span aria-hidden="true">⌕</span></div>
-  <p class="guide-search-hint">Ex.: placa, freio, celular, chuva.</p>
+  <div class="guide-search-control"><input autocomplete="off" id="drawer-guide-search" type="search" data-guide-search data-search-results="drawer-guide-results" placeholder="Ex.: preciso de CNH? lado direito, chuva..." aria-controls="drawer-guide-results"/><span aria-hidden="true">⌕</span></div>
+  <p class="guide-search-hint">A busca também encontra perguntas e respostas específicas.</p>
   <div aria-label="Resultados da busca" aria-live="polite" class="guide-search-results" hidden id="drawer-guide-results" role="list"></div>
 </div>
 
@@ -236,8 +236,8 @@ SOFTWARE.
     </div>
     <div class="guide-search-box home-search-box" role="search">
       <label for="home-guide-search">Buscar no guia</label>
-      <div class="guide-search-control"><input autocomplete="off" id="home-guide-search" type="search" data-guide-search data-search-results="home-guide-results" placeholder="Ex.: capacete, calçada, bateria..." aria-controls="home-guide-results"/><span aria-hidden="true">⌕</span></div>
-      <p class="guide-search-hint">Digite uma palavra ou uma pergunta curta.</p>
+      <div class="guide-search-control"><input autocomplete="off" id="home-guide-search" type="search" data-guide-search data-search-results="home-guide-results" placeholder="Ex.: posso usar a calçada? CNH, bateria..." aria-controls="home-guide-results"/><span aria-hidden="true">⌕</span></div>
+      <p class="guide-search-hint">Pesquise uma palavra, uma dúvida completa ou uma situação do dia a dia.</p>
       <div aria-label="Resultados da busca" aria-live="polite" class="guide-search-results" hidden id="home-guide-results" role="list"></div>
     </div>
     <div class="home-guide-shortcuts" aria-label="Acessos rápidos ao guia">
@@ -248,7 +248,18 @@ SOFTWARE.
       <a href="#bateria-recarga"><span>05</span><strong>Cuidar da bateria</strong><small>Recarga e sinais de problema</small></a>
       <a href="#celular-fones"><span>06</span><strong>Evitar distrações</strong><small>Celular, fones e atenção</small></a>
       <a href="#passageiros-carga"><span>07</span><strong>Levar passageiro ou carga</strong><small>Limites e equilíbrio</small></a>
-      <a href="#perguntas-frequentes"><span>08</span><strong>Ver perguntas frequentes</strong><small>Respostas curtas com links para detalhes</small></a>
+      <a href="#perguntas-frequentes"><span>08</span><strong>Ver perguntas frequentes</strong><small>Respostas diretas com links para detalhes</small></a>
+    </div>
+    <div class="home-faq-shortcuts" aria-label="Dúvidas mais procuradas">
+      <div class="home-faq-shortcuts-heading"><p class="eyebrow">DÚVIDAS MAIS PROCURADAS</p><p>Vá direto à resposta, sem procurar página por página.</p></div>
+      <div class="home-faq-shortcut-grid">
+        <a href="#faq-lado-da-via">Em qual lado da via devo circular?</a>
+        <a href="#faq-calcada">Posso circular pela calçada?</a>
+        <a href="#faq-cnh-placa">Preciso de CNH ou placa?</a>
+        <a href="#faq-faixa-pedestres">Posso atravessar na faixa pedalando?</a>
+        <a href="#faq-chuva">Posso pedalar na chuva?</a>
+        <a href="#faq-carregador">Qual carregador devo usar?</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1276,7 +1287,7 @@ SOFTWARE.
 </div></section>
 <section aria-labelledby="perguntas-frequentes-title" class="route-section vehicle-guide-page guide-expansion-page" data-page="perguntas-frequentes" hidden id="perguntas-frequentes">
 <div class="container">
-  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">CONSULTA RÁPIDA / DÚVIDAS COMUNS</p><h2 id="perguntas-frequentes-title">Perguntas frequentes<span class="orange-dot">.</span></h2></div><p>Encontre a dúvida pelo assunto. As respostas são diretas, mas mantêm os detalhes importantes, as exceções e os links para aprofundar a consulta.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#inicio">Buscar no início</a></div></div>
+  <div class="guide-page-intro"><div class="section-heading"><div><p class="eyebrow">CONSULTA RÁPIDA / DÚVIDAS COMUNS</p><h2 id="perguntas-frequentes-title">Perguntas frequentes<span class="orange-dot">.</span></h2></div><p>Pesquise pela pergunta ou filtre por assunto. Cada card traz uma resposta direta e links para o guia completo, sem esconder exceções nem detalhes importantes.</p></div><div class="guide-actions"><a class="button button-outline" href="#regras">Voltar ao guia</a><a class="button button-orange" href="#inicio">Buscar no início</a></div></div>
   <nav class="faq-topic-nav" aria-label="Filtrar perguntas por assunto">
     <button type="button" data-faq-filter="all" aria-pressed="true">Todas as dúvidas</button>
     <button type="button" data-faq-filter="circulacao" aria-pressed="false">Circulação</button>
@@ -1290,7 +1301,7 @@ SOFTWARE.
   <div class="faq-group" data-faq-group="circulacao" id="faq-group-circulacao">
     <div class="faq-group-heading"><h3>Circulação e convivência</h3><p>Por onde seguir, como dividir a via e o que observar no caminho.</p></div>
     <div class="faq-grid">
-      <article id="faq-lado-da-via"><h3>1. Por qual lado da via devo circular?</h3><p>Quando a circulação pela pista for permitida, siga pelo bordo direito e no mesmo sentido do trânsito. Mantenha espaço para desviar de buracos, tampas e portas de carros estacionados. Não é necessário se espremer contra o meio-fio. <a href="#circulacao-sem-ciclovia">Veja a orientação completa.</a></p></article>
+      <article id="faq-lado-da-via"><h3>1. Em qual lado da via devo circular?</h3><p>Quando as regras permitirem circular pela pista, siga pela direita e no mesmo sentido do trânsito. Mantenha uma margem para desviar de buracos, tampas e portas de carros estacionados. Não pedale colado ao meio-fio: escolha uma posição previsível e dê espaço para ultrapassagens seguras. Confira também a sinalização e as regras locais. <a href="#circulacao-sem-ciclovia">Veja a orientação completa.</a></p></article>
       <article id="faq-sem-ciclovia"><h3>2. Se não existe ciclovia, posso usar a rua?</h3><p>O art. 58 do CTB prevê que, nas situações descritas na lei, a bicicleta circule nos bordos da pista e no mesmo sentido dos veículos quando não houver ciclovia, ciclofaixa ou acostamento, ou quando não for possível utilizá-los. Isso não significa que toda via seja adequada: observe o tipo de via, a sinalização e as condições de segurança. <a href="#circulacao-sem-ciclovia">Entenda melhor.</a></p></article>
       <article id="faq-contramao"><h3>3. Posso pedalar na contramão para encurtar o caminho?</h3><p>Não faça isso por conta própria. A circulação deve seguir o sentido indicado para a via, salvo quando houver autorização específica e sinalização que permita a exceção. Ser visto de frente não torna a manobra segura. <a href="#bike-circulacao">Consulte as regras de circulação.</a></p></article>
       <article id="faq-calcada"><h3>4. Posso circular pela calçada?</h3><p>Não presuma que sim. O CTB permite a circulação de bicicletas no passeio quando o órgão responsável autoriza e sinaliza essa possibilidade. Em áreas compartilhadas, reduza a velocidade e dê prioridade a quem está a pé. <a href="#calcadas-compartilhadas">Veja a diferença entre calçada e área compartilhada.</a></p></article>
@@ -1299,6 +1310,11 @@ SOFTWARE.
       <article id="faq-pedestres"><h3>7. Quem tem prioridade em uma área compartilhada?</h3><p>Quem está a pé é a parte mais vulnerável. Reduza com antecedência, deixe espaço, não passe raspando e, se o local estiver cheio, pare ou desça do veículo até conseguir seguir com segurança. <a href="#sinalizacao-cruzamentos">Veja outras orientações de convivência.</a></p></article>
       <article id="faq-cruzamentos"><h3>8. Como devo agir em cruzamentos?</h3><p>Reduza antes de chegar, observe semáforos e placas, confira o movimento dos dois lados e sinalize a intenção de virar com antecedência. Não presuma que motoristas ou pedestres perceberam você só porque estão olhando na sua direção. <a href="#sinalizacao-cruzamentos">Leia o guia de cruzamentos.</a></p></article>
       <article id="faq-ciclovia"><h3>9. Posso usar qualquer ciclovia ou ciclofaixa?</h3><p>Confira a sinalização e as regras do órgão responsável pela via para a categoria do veículo. A regulamentação local pode definir onde cada tipo de veículo pode circular e quais limites de velocidade se aplicam. <a href="#bike-circulacao">Veja as orientações de circulação.</a></p></article>
+
+      <article id="faq-sinalizar"><h3>33. Como sinalizo que vou virar?</h3><p>Olhe ao redor, reduza a velocidade e indique a direção com o braço com antecedência, quando for seguro. Não faça o gesto se isso tirar sua estabilidade; nesse caso, diminua e espere uma posição em que consiga sinalizar com controle. O sinal ajuda, mas não substitui observar o trânsito. <a href="#sinalizacao-cruzamentos">Veja como agir em cruzamentos.</a></p></article>
+      <article id="faq-faixa-pedestres"><h3>34. Posso atravessar na faixa de pedestres pedalando?</h3><p>Em uma faixa destinada a pedestres, a conduta mais segura é descer e atravessar empurrando a bicicleta, a menos que haja uma travessia cicloviária sinalizada para pedalar. Assim, você respeita o espaço de quem está a pé e fica mais previsível para os motoristas. Siga a sinalização local. <a href="#sinalizacao-cruzamentos">Veja as orientações de travessia.</a></p></article>
+      <article id="faq-faixa-onibus"><h3>35. Posso usar a faixa exclusiva de ônibus?</h3><p>Não presuma que bicicleta elétrica ou autopropelido pode circular ali. A permissão depende da sinalização e da regulamentação local. Se não houver autorização clara, escolha uma rota permitida e segura; não entre na faixa só porque ela parece mais livre. <a href="#bike-circulacao">Confira as regras de circulação.</a></p></article>
+      <article id="faq-ciclovia-bloqueada"><h3>36. O que faço se a ciclovia estiver bloqueada?</h3><p>Reduza a velocidade e avalie a situação antes de desviar. Não entre no fluxo de carros sem conferir o espaço e não suba na calçada se a circulação não estiver autorizada. Se não houver passagem segura, pare em local protegido e procure uma alternativa permitida. <a href="#circulacao-sem-ciclovia">Veja como planejar o desvio.</a></p></article>
     </div>
   </div>
 
@@ -1313,6 +1329,9 @@ SOFTWARE.
       <article id="faq-passageiro"><h3>15. Posso levar outra pessoa na bicicleta elétrica?</h3><p>Somente se o modelo tiver sido projetado para transportar passageiro, com assento adequado, e se as regras aplicáveis permitirem. Não leve alguém no guidão, no quadro ou em um bagageiro que não tenha sido projetado para isso. <a href="#passageiros-carga">Confira as orientações para passageiros e carga.</a></p></article>
       <article id="faq-modificacao"><h3>16. Posso desbloquear a velocidade ou trocar o motor?</h3><p>Não trate isso como uma simples personalização. Alterar motor, controlador ou limitador pode comprometer a segurança e mudar a classificação legal do veículo, criando exigências diferentes para circular. Consulte o fabricante e não modifique o sistema para contornar limites. <a href="#antes-de-comprar">Entenda a classificação técnica.</a></p></article>
       <article id="faq-potencia"><h3>17. A potência sozinha define a categoria?</h3><p>Não. Potência é apenas um dos critérios. Também importam o modo de acionamento, a velocidade máxima de fabricação e outros requisitos previstos para cada categoria. <a href="#regras">Consulte o quadro de regras.</a></p></article>
+
+      <article id="faq-documentos"><h3>37. Preciso levar documentos da bicicleta elétrica?</h3><p>A bicicleta elétrica que se enquadra na definição da Resolução CONTRAN nº 996/2023 não exige registro, licenciamento, placa ou CNH. Nota fiscal, manual e número de série são úteis para comprovar procedência e propriedade, mas isso não deve ser confundido com a documentação exigida para ciclomotores. Se o veículo não se enquadrar como bicicleta elétrica, as exigências podem mudar. <a href="#antes-de-comprar">Confira a ficha técnica antes de concluir a categoria.</a></p></article>
+      <article id="faq-velocidade-fabrica"><h3>38. E se a bicicleta passar de 32 km/h?</h3><p>Os 32 km/h se referem à velocidade máxima de assistência do motor na definição de bicicleta elétrica. Um modelo projetado para ultrapassar esse limite ou com outras características pode não se enquadrar nessa categoria. Não conclua a classificação só pelo velocímetro: confira a ficha técnica, o modo de acionamento e os demais critérios da resolução. <a href="#antes-de-comprar">Veja o que analisar antes da compra.</a></p></article>
     </div>
   </div>
 
@@ -1326,6 +1345,11 @@ SOFTWARE.
       <article id="faq-gps"><h3>22. Posso mexer no celular para consultar o GPS?</h3><p>Configure a rota antes de sair. Se precisar mudar o destino, ler uma mensagem ou ajustar o aparelho, pare completamente em um local seguro, fora do fluxo de circulação. <a href="#celular-fones">Leia as orientações sobre celular e fones.</a></p></article>
       <article id="faq-chuva"><h3>23. Posso pedalar na chuva ou à noite?</h3><p>Redobre os cuidados com visibilidade e aderência. Use a sinalização exigida, reduza a velocidade, aumente a distância de segurança e evite áreas alagadas. Depois de molhar o veículo, siga o manual antes de limpar, guardar ou carregar a bateria. <a href="#seguranca-noite-chuva">Veja o guia de chuva e pouca visibilidade.</a></p></article>
       <article id="faq-carga"><h3>24. Como levar mochila, compras ou outros objetos?</h3><p>Use mochila ou suporte apropriado, mantenha a carga firme e equilibrada e não cubra luzes nem impeça os movimentos do guidão. Respeite a capacidade indicada pelo fabricante e não transporte objetos que comprometam o controle do veículo. <a href="#passageiros-carga">Veja as orientações de transporte.</a></p></article>
+
+      <article id="faq-capacete-ajuste"><h3>39. Como o capacete deve ficar ajustado?</h3><p>Ele deve ficar nivelado e firme, sem balançar nem cobrir os olhos. Ajuste as tiras para que não fiquem soltas e confira as instruções do fabricante. Um capacete mal encaixado pode sair do lugar no momento de uma queda. As exigências legais variam conforme a categoria e as regras aplicáveis. <a href="#bike-equipamentos">Veja os equipamentos e cuidados.</a></p></article>
+      <article id="faq-freio-falha"><h3>40. O que devo fazer se o freio falhar?</h3><p>Não continue o trajeto como se nada tivesse acontecido. Reduza com cuidado, procure um local seguro para parar e só desmonte quando o veículo estiver controlado. Não volte a circular até que os freios sejam verificados e reparados. <a href="#bike-manutencao">Confira os cuidados de manutenção.</a></p></article>
+      <article id="faq-entre-carros"><h3>41. É seguro passar entre carros parados?</h3><p>Evite se espremer entre veículos. Um carro pode arrancar ou abrir uma porta sem que o motorista perceba sua presença, e você pode ficar em um ponto cego. Aguarde uma oportunidade segura, mantenha distância lateral e não conte com o motorista ter visto você. <a href="#sinalizacao-cruzamentos">Veja outras orientações para circular.</a></p></article>
+      <article id="faq-buracos"><h3>42. Como passar por buracos e poças?</h3><p>Reduza a velocidade antes do obstáculo e evite frear ou virar bruscamente sobre uma superfície escorregadia. Poças podem esconder buracos ou objetos; se não conseguir avaliar a profundidade, não atravesse. Mantenha os pneus em boas condições e escolha a trajetória com antecedência. <a href="#seguranca-noite-chuva">Veja os cuidados com chuva e pista molhada.</a></p></article>
     </div>
   </div>
 
@@ -1337,6 +1361,10 @@ SOFTWARE.
       <article id="faq-bateria-quente"><h3>27. O que fazer se a bateria aquecer demais, inchar ou soltar fumaça?</h3><p>Interrompa o uso, não toque nem tente desmontar a bateria e afaste-se do equipamento. Se houver fumaça, fogo ou risco imediato, vá para um local seguro e acione o Corpo de Bombeiros pelo 193. <a href="#bateria-recarga">Veja os sinais de alerta.</a></p></article>
       <article id="faq-pane"><h3>28. O que fazer se acabar a bateria ou o veículo parar na rua?</h3><p>Saia do fluxo de circulação assim que for seguro, sinalize sua presença e peça ajuda. Não tente consertar o veículo no meio da pista nem empurre-o em um local onde você fique exposto ao trânsito. <a href="#pane-acidente">Siga o passo a passo para panes.</a></p></article>
       <article id="faq-queda"><h3>29. O que fazer depois de uma queda ou colisão?</h3><p>Primeiro, cuide da segurança do local e peça ajuda. Em emergência médica, ligue para o SAMU (192); se houver necessidade de resgate ou incêndio, ligue para os Bombeiros (193). Se alguém puder ter lesão grave, evite movimentá-lo, a menos que exista perigo imediato. <a href="#pane-acidente">Veja as orientações para imprevistos.</a></p></article>
+
+      <article id="faq-bateria-molhada"><h3>43. Posso carregar a bateria depois que ela molhou?</h3><p>Não conecte o carregador enquanto a bateria, o conector ou a entrada de carga estiverem molhados. Consulte o manual para secagem e inspeção; se houve imersão, dano ou comportamento incomum, não use nem carregue até receber avaliação técnica. Nunca use calor direto para acelerar a secagem. <a href="#bateria-recarga">Veja os cuidados com a recarga.</a></p></article>
+      <article id="faq-lavar"><h3>44. Posso lavar a bicicleta elétrica com mangueira?</h3><p>Depende da proteção do modelo. Evite jatos de alta pressão e não direcione água para bateria, conectores, painel ou motor. Siga o manual e remova a bateria apenas se o fabricante orientar que isso é seguro. Antes de carregar, confirme que a bateria e a entrada de carga estão secas. <a href="#bateria-recarga">Confira os cuidados com a bateria.</a></p></article>
+      <article id="faq-autonomia"><h3>45. A autonomia anunciada é a distância que vou percorrer?</h3><p>Não necessariamente. A autonomia varia com o peso transportado, subidas, vento, temperatura, pressão dos pneus, velocidade, modo de assistência, idade da bateria e estilo de condução. Planeje uma margem de segurança e não trate o valor máximo do anúncio como garantia. <a href="#antes-de-comprar">Veja o que conferir antes da compra.</a></p></article>
     </div>
   </div>
 
@@ -1346,6 +1374,12 @@ SOFTWARE.
       <article id="faq-comprar"><h3>30. O que conferir antes de comprar uma bicicleta elétrica?</h3><p>Confira a ficha técnica original, a potência, a velocidade de fabricação, o modo de acionamento, o manual, a nota fiscal, a garantia e a disponibilidade de peças. Não confie apenas no nome do anúncio ou em um limitador instalado depois. <a href="#antes-de-comprar">Use a lista de compra.</a></p></article>
       <article id="faq-furto"><h3>31. Como reduzir o risco de furto ao estacionar?</h3><p>Prenda o quadro e, quando possível, uma roda a um suporte fixo e resistente. Prefira locais permitidos, iluminados e movimentados, evite deixar acessórios removíveis e guarde fotos do veículo e do número de série. <a href="#estacionar-furtos">Veja outras medidas de prevenção.</a></p></article>
       <article id="faq-regra-local"><h3>32. Como descobrir qual regra vale na minha cidade?</h3><p>Observe a sinalização e consulte o órgão municipal responsável pelo trânsito ou a autoridade que administra a via. A Resolução CONTRAN nº 996/2023 permite que o órgão responsável regulamente a circulação e os limites aplicáveis em cada local. <a href="#bike-circulacao">Comece pelo guia de circulação.</a></p></article>
+
+      <article id="faq-cadeado"><h3>46. Qual cadeado é melhor para uma bicicleta elétrica?</h3><p>Prefira uma trava resistente e prenda o quadro a um suporte fixo e confiável; quando possível, proteja também uma roda com outra trava. Evite prender apenas uma roda ou usar grades frágeis e objetos que possam ser removidos. Nenhuma trava elimina totalmente o risco, então escolha também um local permitido e movimentado. <a href="#estacionar-furtos">Veja outras medidas contra furtos.</a></p></article>
+      <article id="faq-transporte-publico"><h3>47. Posso levar a bicicleta elétrica no ônibus ou trem?</h3><p>Não existe uma regra única para todos os serviços. Cada empresa ou sistema de transporte pode ter condições sobre tamanho, bateria, horário e forma de embarque. Consulte a operadora antes da viagem e nunca bloqueie portas, corredores ou a circulação de passageiros. <a href="#passageiros-carga">Veja os cuidados ao transportar objetos e passageiros.</a></p></article>
+      <article id="faq-usada"><h3>48. O que verificar ao comprar uma bicicleta elétrica usada?</h3><p>Confira o número de série e a procedência, o comprovante de compra, os freios, os pneus, o motor, a bateria e o carregador. Pergunte sobre reparos e teste o veículo em local seguro. Desconfie de preço muito abaixo do normal, número de série raspado ou vendedor que não explica a origem. <a href="#antes-de-comprar">Use a lista de conferência para compras.</a></p></article>
+      <article id="faq-roubo"><h3>49. O que fazer se minha bicicleta for roubada ou furtada?</h3><p>Priorize sua segurança e não confronte suspeitos. Registre a ocorrência pelos canais policiais adequados e informe número de série, fotos, marca, modelo e sinais identificadores. Guarde comprovantes e compartilhe os dados com plataformas ou serviços de recuperação quando aplicável. <a href="#estacionar-furtos">Veja como se preparar e prevenir furtos.</a></p></article>
+      <article id="faq-dados-bicicleta"><h3>50. Como guardar os dados e comprovantes da bicicleta?</h3><p>Fotografe o veículo, anote marca, modelo e número de série e guarde nota fiscal, manual e registros de manutenção em local seguro. Esses dados ajudam a comprovar propriedade, facilitar reparos e fornecer informações em caso de furto. Evite publicar informações pessoais junto com as fotos. <a href="#estacionar-furtos">Confira as recomendações de prevenção.</a></p></article>
     </div>
   </div>
 
