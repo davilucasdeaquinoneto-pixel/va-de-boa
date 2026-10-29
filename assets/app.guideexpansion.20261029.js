@@ -48,7 +48,14 @@ const cardNotes = {
   "card-3": "Convivência segura: adapte a velocidade ao ambiente, mantenha distância e dê prioridade ao cuidado com quem está mais vulnerável no trajeto.",
   "card-4": "Referência: Resolução CONTRAN nº 996/2023, arts. 6º a 10. O órgão responsável pela via regulamenta a circulação. Confira a sinalização e as orientações locais para a categoria do veículo.",
   "card-5": "Se precisar ler, responder ou ajustar o celular, interrompa o deslocamento e pare fora do fluxo, sem bloquear a passagem de outras pessoas.",
-  "card-6": "Autopropelidos podem ter acelerador, dentro dos limites técnicos da categoria. Ter acelerador, sozinho, não torna um veículo ciclomotor. Ciclomotores têm exigências próprias de habilitação, registro e licenciamento. Consulte o quadro comparativo oficial na seção A campanha."
+  "card-6": "Autopropelidos podem ter acelerador, dentro dos limites técnicos da categoria. Ter acelerador, sozinho, não torna um veículo ciclomotor. Ciclomotores têm exigências próprias de habilitação, registro e licenciamento. Consulte o quadro comparativo oficial na seção A campanha.",
+
+  "card-7": "Referência: art. 58 do Código de Trânsito Brasileiro. Nas situações previstas na lei, a bicicleta circula nos bordos da pista e no mesmo sentido do trânsito quando não houver infraestrutura cicloviária ou acostamento utilizável. Observe a sinalização e não se esprema contra o meio-fio.",
+  "card-8": "Referência: art. 201 do Código de Trânsito Brasileiro. Ao passar ou ultrapassar uma bicicleta, o condutor deve manter pelo menos 1,5 metro de distância lateral.",
+  "card-9": "Referência: art. 59 do Código de Trânsito Brasileiro. A circulação de bicicletas nos passeios depende de autorização e sinalização do órgão responsável. Regras locais e condições da área compartilhada devem ser respeitadas.",
+  "card-10": "Referência: Resolução CONTRAN nº 996/2023. Os 32 km/h dizem respeito ao limite de assistência do motor na definição geral da bicicleta elétrica. A velocidade de circulação depende da sinalização, da regulamentação local e das condições do trajeto.",
+  "card-11": "Orientação preventiva: use o carregador compatível indicado pelo fabricante, siga o manual e não carregue baterias danificadas. Se houver aquecimento anormal, inchaço ou fumaça, afaste-se e procure ajuda adequada.",
+  "card-12": "Orientação preventiva: configure o trajeto antes de sair. Para consultar o celular, pare completamente em um local seguro, fora do fluxo de circulação."
 };
 
 const scripts = window.CAMPAIGN_SCRIPTS;
@@ -264,7 +271,7 @@ const guideSearchAliases = {
   "bicicleta-eletrica": "e-bike bike pedal assistido acelerador potência motor classificação",
   "bike-equipamentos": "campainha espelho retrovisor pneu luz sinalização equipamento obrigatório capacete",
   "bike-velocidade": "32 km/h 20 km/h 6 km/h limite velocidade",
-  "bike-circulacao": "ciclovia ciclofaixa calçada rua passeio via",
+  "bike-circulacao": "ciclovia ciclofaixa calçada rua passeio via lado direito bordo da pista sentido do trânsito contramão cruzamento",
   "bike-manutencao": "freios pneus corrente revisão manutenção",
   autopropelido: "patinete skate elétrico monociclo hoverboard",
   "autopropelido-equipamentos": "sinalização campainha velocímetro limitador equipamento",
@@ -277,8 +284,8 @@ const guideSearchAliases = {
   "ciclomotor-circulacao": "50 km/h rua via trânsito",
   "velocidade-por-local": "limite velocidade calçada ciclovia 20 6 32",
   "calcadas-compartilhadas": "pedestre calçada passeio compartilhada sinalização",
-  "circulacao-sem-ciclovia": "rua bordo da pista acostamento contramão",
-  "distancia-ultrapassagem": "1,5 metro carro ultrapassar distância lateral",
+  "circulacao-sem-ciclovia": "rua bordo da pista acostamento contramão lado direito direita mesmo sentido fluxo via carro",
+  "distancia-ultrapassagem": "1,5 1.5 metro carro ultrapassar distância lateral espaço ao passar",
   "seguranca-noite-chuva": "noite chuva visibilidade luz refletivo pista molhada freio",
   "celular-fones": "celular telefone fone ouvido distração mensagem GPS",
   "sinalizacao-cruzamentos": "cruzamento placa semáforo sinalização conversão preferência",
@@ -287,7 +294,7 @@ const guideSearchAliases = {
   "pane-acidente": "pane queda acidente colisão emergência 192 193 190 socorro",
   "estacionar-furtos": "furto roubo cadeado trava estacionamento bicicletário",
   "antes-de-comprar": "compra comprar anúncio ficha técnica potência acelerador velocidade fabricante nota fiscal",
-  "perguntas-frequentes": "dúvida FAQ perguntas respostas"
+  "perguntas-frequentes": "dúvida FAQ perguntas respostas lado direito bordo da via contramão calçada ciclovia distância 1,5 metro ultrapassagem velocidade 32 km/h pedestre cruzamento placa CNH documento idade acelerador potência capacete equipamento fone celular GPS chuva noite passageiro carga carregador bateria recarga fumaça pane acidente queda comprar furto regra local"
 };
 const guideRelated = {
   regras: ["bicicleta-eletrica","autopropelido","ciclomotor","velocidade-por-local","perguntas-frequentes"],
@@ -391,6 +398,37 @@ function initGuideSearch() {
     });
   });
 }
+
+function initFaqFilters() {
+  const root = document.querySelector('section[data-page="perguntas-frequentes"]');
+  if (!root) return;
+  const buttons = [...root.querySelectorAll("[data-faq-filter]")];
+  const groups = [...root.querySelectorAll(".faq-group[data-faq-group]")];
+  const status = root.querySelector("#faq-filter-status");
+  if (!buttons.length || !groups.length) return;
+
+  const total = groups.reduce((sum, group) => sum + group.querySelectorAll(".faq-grid article").length, 0);
+  if (status) status.textContent = `Exibindo todas as ${total} perguntas.`;
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.faqFilter;
+      groups.forEach((group) => {
+        group.hidden = filter !== "all" && group.dataset.faqGroup !== filter;
+      });
+      buttons.forEach((other) => other.setAttribute("aria-pressed", String(other === button)));
+      if (status) {
+        const visibleCount = groups
+          .filter((group) => !group.hidden)
+          .reduce((sum, group) => sum + group.querySelectorAll(".faq-grid article").length, 0);
+        status.textContent = filter === "all"
+          ? `Exibindo todas as ${visibleCount} perguntas.`
+          : `Exibindo ${visibleCount} perguntas sobre ${button.textContent.trim().toLowerCase()}.`;
+      }
+    });
+  });
+}
+
 function appendGuideRelatedLinks() {
   document.querySelectorAll("section[data-page].vehicle-guide-page, section[data-page].rules-section, section[data-page].guide-expansion-page").forEach((section) => {
     const route = section.dataset.page;
@@ -908,6 +946,7 @@ document.querySelectorAll("video").forEach((video) => video.addEventListener("pl
   document.querySelectorAll("video").forEach((other) => { if (other !== video) other.pause(); });
 }));
 initGuideSearch();
+initFaqFilters();
 appendGuideRelatedLinks();
 changePage(false);
 
