@@ -1,4 +1,4 @@
-# Vá de Boa — Projeto Turma 41
+# Vá de boa! — Projeto Turma 41
 
 Campanha educativa independente sobre bicicletas elétricas, desenvolvida por alunos da Turma 41 do curso de Aprendizagem Profissional em Comércio de Bens, Serviços e Turismo do Senac.
 
