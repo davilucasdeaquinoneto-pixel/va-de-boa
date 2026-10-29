@@ -20,7 +20,7 @@ window.CAMPAIGN_SCRIPTS = {
       ["6–16 s", "O pedal assistido", "Mostrar o card 1 com as palavras pedal assistido em destaque.", "Na bicicleta elétrica, o motor auxilia o pedal. A regra geral prevê até mil watts nominais, assistência até trinta e dois quilômetros por hora e ausência de acelerador."],
       ["16–28 s", "As outras categorias", "Exibir os nomes autopropelido e ciclomotor, em telas separadas.", "Também existem autopropelidos e ciclomotores. As características técnicas definem o enquadramento; o nome do anúncio não basta."],
       ["28–39 s", "A conferência", "Mostrar uma ficha técnica genérica e a referência CONTRAN 996/2023.", "Confira a ficha técnica, a classificação e as exigências aplicáveis antes de circular."],
-      ["39–45 s", "O encerramento", "Marca da campanha e convite para ler os cards.", "Vá de boa!! Vá informado. Conheça os cards da campanha."]
+      ["39–45 s", "O encerramento", "Marca da campanha e convite para ler os cards.", "Vá de boa! Vá informado. Conheça os cards da campanha."]
     ]
   }
 };
@@ -689,7 +689,7 @@ function speakPageContent() {
 
   if (currentPage === "cards") {
     const cardsText = originalPosters.map((poster, index) => `Card ${index + 1}. ${cardSpeechText(poster.id)}`).join(" ");
-    startSpeech(`Cards educativos da campanha Vá de boa!! ${cardsText}`, "Todos os cards");
+    startSpeech(`Cards educativos da campanha Vá de boa! ${cardsText}`, "Todos os cards");
     return;
   }
 
@@ -699,7 +699,7 @@ function speakPageContent() {
       const description = finishSpeechSegment(info.querySelector("p")?.textContent);
       return `Vídeo ${index + 1}. ${title} ${description}`;
     }).join(" ");
-    startSpeech(`Vídeos da campanha Vá de boa!! Há dois vídeos disponíveis nesta página. ${videosText}`, "Conteúdo dos vídeos");
+    startSpeech(`Vídeos da campanha Vá de boa! Há dois vídeos disponíveis nesta página. ${videosText}`, "Conteúdo dos vídeos");
     return;
   }
 
