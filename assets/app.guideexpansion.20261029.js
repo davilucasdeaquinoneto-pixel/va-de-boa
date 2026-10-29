@@ -648,12 +648,20 @@ document.addEventListener("click", (event) => {
     }
     return;
   }
-  const route = link.getAttribute("href").slice(1);
-  if (!Object.hasOwn(pageTitles, route)) return;
-  if (route === currentPage) {
-    event.preventDefault();
-    changePage();
+
+  // Intercepta rotas e perguntas frequentes antes do salto nativo para um alvo oculto.
+  // Assim, a página é exibida primeiro e só depois o foco/rolagem é atualizado.
+  const hash = link.getAttribute("href").slice(1);
+  if (!hash) return;
+  const target = document.getElementById(hash);
+  const isFaqTarget = target?.matches('article[id^="faq-"]');
+  if (!Object.hasOwn(pageTitles, hash) && !isFaqTarget) return;
+
+  event.preventDefault();
+  if (window.location.hash !== "#" + hash) {
+    window.history.pushState(null, "", "#" + hash);
   }
+  changePage();
 });
 window.addEventListener("hashchange", () => changePage());
 
