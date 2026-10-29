@@ -2,8 +2,12 @@ services:
   - type: web
     runtime: static
     name: va-de-boa-turma41
-    buildCommand: echo "Static site - no build required"
-    staticPublishPath: .
+    buildCommand: >-
+      rm -rf dist &&
+      mkdir -p dist &&
+      cp index.html 404.html robots.txt dist/ &&
+      cp -R assets dist/
+    staticPublishPath: dist
     pullRequestPreviewsEnabled: true
     headers:
       - path: /*
