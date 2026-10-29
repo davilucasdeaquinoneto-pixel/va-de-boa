@@ -674,6 +674,7 @@ const speechTitle = document.getElementById("speech-title");
 const speechProgress = document.getElementById("speech-progress");
 const speechVoice = document.getElementById("speech-voice");
 const speechRate = document.getElementById("speech-rate");
+const speechPreview = document.getElementById("speech-preview");
 const speechServiceNote = document.getElementById("speech-service-note");
 const audioNotice = document.getElementById("audio-notice");
 const supportsSpeech = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
@@ -745,7 +746,9 @@ function normalizeSpeechText(text) {
   return String(text || "")
     .replace(/#VADEBOA/gi, "hashtag Vá de Boa")
     .replace(/VÁ DE BOA/gi, "Vá de Boa")
-    .replace(/CONTRAN/gi, "Contran")
+    .replace(/\bWCAG\b/gi, "W C A G")
+    .replace(/\bWeb Speech API\b/gi, "Web Speech A P I")
+    .replace(/\bCONTRAN\b/gi, "Contran")
     .replace(/\bCTB\b/g, "C T B")
     .replace(/\bCNH\b/g, "C N H")
     .replace(/\bACC\b/g, "A C C")
@@ -864,7 +867,9 @@ function updateSpeechServiceNote() {
   if (!speechServiceNote) return;
   const selected = portugueseVoices().find((voice) => voice.voiceURI === speechVoice?.value);
   if (!selected) {
-    speechServiceNote.textContent = "A voz disponível depende do navegador e do aparelho.";
+    speechServiceNote.textContent = availableVoices.length
+      ? "Nenhuma voz em português foi encontrada. O navegador tentará a voz padrão; a pronúncia pode variar."
+      : "A lista de vozes ainda está carregando. Se necessário, aguarde um instante e tente novamente.";
     return;
   }
   speechServiceNote.textContent = selected.localService
@@ -941,7 +946,7 @@ function speakNext(generation) {
   utterance.onerror = (event) => {
     if (generation !== speechGeneration || event.error === "interrupted" || event.error === "canceled") return;
     stopSpeech();
-    showAudioNotice("A voz em português não está disponível neste aparelho. Use uma voz em português nas configurações de fala ou o leitor de tela do sistema.");
+    showAudioNotice("A leitura falhou nesta voz. Escolha outra voz em português, tente novamente ou use o leitor de tela do aparelho.");
   };
   window.speechSynthesis.speak(utterance);
 }
@@ -1038,6 +1043,12 @@ speechVoice?.addEventListener("change", () => {
   restartCurrentSpeech();
 });
 speechRate?.addEventListener("change", restartCurrentSpeech);
+speechPreview?.addEventListener("click", () => {
+  startSpeech(
+    "Olá! Esta é uma amostra da voz e da velocidade selecionadas para a leitura em voz alta do Vá de Boa.",
+    "Amostra da voz selecionada"
+  );
+});
 
 speechPause.addEventListener("click", () => {
   if (!supportsSpeech || !speechChunks.length) return;
