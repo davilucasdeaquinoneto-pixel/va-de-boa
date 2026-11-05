@@ -1247,3 +1247,20 @@ body{background:
   .header-project span{display:none!important}
   .header-actions{flex:0 0 auto!important;margin-left:0!important}
 }
+
+
+/* Mantém o menu de três barras acessível também em notebooks. */
+@media (min-width:701px) and (max-width:1400px){
+  .menu-toggle{
+    display:inline-flex!important;
+    flex:0 0 40px!important;
+    width:40px!important;
+    min-width:40px!important;
+    height:40px!important;
+    min-height:40px!important;
+    align-items:center!important;
+    justify-content:center!important;
+    margin:0!important;
+  }
+  .header-inner{gap:10px!important}
+}
