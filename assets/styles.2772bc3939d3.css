@@ -937,3 +937,67 @@ body{background:
   .hero>*{min-width:0!important;max-width:100%}
   .hero-copy,.hero-visual,.hero-media-frame,.hero-share-panel{width:100%!important;max-width:100%!important}
 }
+
+/* ===== Cabeçalho responsivo · notebooks, tablets e celulares =====
+   Em larguras intermediárias, a navegação extensa cede espaço aos controles
+   essenciais para impedir que o botão Ouvir ultrapasse a viewport. */
+@media (min-width: 981px) and (max-width: 1240px) {
+  .header-inner {
+    gap: 14px !important;
+  }
+  .desktop-nav {
+    display: none !important;
+  }
+  .header-brand-group {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  .header-project {
+    min-width: 0 !important;
+    max-width: 190px !important;
+  }
+  .header-project span {
+    white-space: normal !important;
+  }
+  .header-actions {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .header-inner {
+    min-width: 0 !important;
+  }
+  .header-brand-group {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  .header-actions {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .header-inner,
+  .header-brand-group,
+  .header-actions {
+    min-width: 0 !important;
+  }
+  .header-project {
+    min-width: 0 !important;
+    max-width: clamp(64px, 30vw, 126px) !important;
+    flex: 1 1 auto !important;
+  }
+  .header-actions,
+  .menu-toggle,
+  .page-listen {
+    flex-shrink: 0 !important;
+  }
+  .page-listen {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
