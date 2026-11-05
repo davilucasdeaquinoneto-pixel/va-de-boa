@@ -1189,8 +1189,8 @@ body{background:
 .nav-overflow-panel{
   position:absolute!important;
   z-index:100!important;
-  top:calc(100% + 8px)!important;
-  right:0!important;
+  top:0!important;
+  right:calc(100% + 8px)!important;
   display:grid!important;
   min-width:205px!important;
   padding:7px!important;
