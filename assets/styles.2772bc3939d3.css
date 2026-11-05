@@ -1001,3 +1001,105 @@ body{background:
     justify-content: center !important;
   }
 }
+
+/* ===== Cabeçalho compacto em notebooks: menu lateral + Ouvir fixo =====
+   O menu principal já abre no painel lateral pelo botão hambúrguer.
+   Em larguras de notebook, recolhemos os links horizontais e reservamos
+   espaço permanente para o botão Ouvir no lado direito. */
+@media (max-width: 1400px) {
+  .header-inner {
+    width: min(1200px, calc(100% - 32px)) !important;
+    min-width: 0 !important;
+    gap: 12px !important;
+  }
+  .desktop-nav,
+  .header-accessibility {
+    display: none !important;
+  }
+  .header-brand-group {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    gap: 10px !important;
+  }
+  .campaign-home {
+    flex: 0 0 112px !important;
+    width: 112px !important;
+    min-width: 112px !important;
+  }
+  .header-project {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: 260px !important;
+  }
+  .header-project strong,
+  .header-project span {
+    overflow-wrap: anywhere !important;
+  }
+  .header-actions {
+    flex: 0 0 auto !important;
+    min-width: max-content !important;
+    margin-left: auto !important;
+    gap: 8px !important;
+  }
+  .page-listen {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 88px !important;
+    max-width: none !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding: 9px 12px !important;
+  }
+  .page-listen > span {
+    display: inline !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .header-inner {
+    width: calc(100% - 20px) !important;
+    gap: 6px !important;
+  }
+  .header-brand-group {
+    flex: 1 1 0% !important;
+    gap: 6px !important;
+  }
+  .campaign-home {
+    flex: 0 0 38px !important;
+    width: 38px !important;
+    min-width: 38px !important;
+  }
+  .campaign-home-name {
+    display: none !important;
+  }
+  .header-divider {
+    display: none !important;
+  }
+  .header-project {
+    flex: 1 1 auto !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+  .header-project strong {
+    font-size: .74rem !important;
+    line-height: 1.12 !important;
+  }
+  .header-project span {
+    display: none !important;
+  }
+  .header-actions {
+    flex: 0 0 auto !important;
+    gap: 5px !important;
+  }
+  .page-listen {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+  }
+  .page-listen > span {
+    display: none !important;
+  }
+}
