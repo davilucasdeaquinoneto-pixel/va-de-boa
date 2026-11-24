@@ -228,19 +228,28 @@ printMedia.addEventListener?.("change", (event) => { if (!event.matches && print
 preparePrint();
 
 
+// Também atende páginas que ainda estão em cache com o HTML anterior.
+const shareFallback = document.createElement("p");
+shareFallback.id = "share-fallback";
+shareFallback.hidden = true;
+const publicCardsLink = document.createElement("a");
+publicCardsLink.id = "public-cards-link";
+publicCardsLink.href = "https://va-de-boa-turma41.onrender.com/#cards";
+publicCardsLink.textContent = publicCardsLink.href;
+shareFallback.append("Copie o link público dos cards: ", publicCardsLink);
+document.getElementById("cards").append(shareFallback);
+
 async function shareCardContent(id) {
   const poster = originalPosters.find((item) => item.id === id);
   if (!poster) return;
-  const link = document.getElementById("public-cards-link");
-  const fallback = document.getElementById("share-fallback");
   const status = document.getElementById("status-message");
   const text = (poster.dataset.title || "Card Vá de boa!") + " — campanha Vá de boa! sobre bicicletas elétricas.";
-  fallback.hidden = true;
+  shareFallback.hidden = true;
   status.textContent = "";
 
   if (navigator.share) {
     try {
-      await navigator.share({ title: "Vá de boa!", text, url: link.href });
+      await navigator.share({ title: "Vá de boa!", text, url: publicCardsLink.href });
       status.textContent = "Card pronto para compartilhar.";
       return;
     } catch (error) {
@@ -248,7 +257,7 @@ async function shareCardContent(id) {
     }
   }
 
-  const copyText = text + " " + link.href;
+  const copyText = text + " " + publicCardsLink.href;
   try {
     if (navigator.clipboard?.writeText) {
       await navigator.clipboard.writeText(copyText);
@@ -269,8 +278,9 @@ async function shareCardContent(id) {
     }
     status.textContent = "Link da campanha copiado. Agora é só colar onde quiser compartilhar.";
   } catch {
-    fallback.hidden = false;
-    link.focus();
+    poster.closest(".card-item")?.append(shareFallback);
+    shareFallback.hidden = false;
+    publicCardsLink.focus();
     status.textContent = "A cópia automática está indisponível. Use o link público dos cards.";
   }
 }
@@ -436,6 +446,7 @@ function initGuideSearch() {
   document.querySelectorAll("[data-guide-search]").forEach((input) => {
     const results = document.getElementById(input.dataset.searchResults);
     if (!results) return;
+    input.maxLength = 200;
     input.addEventListener("input", () => {
       const query = normalizeGuideText(input.value.slice(0, input.maxLength)).trim();
       results.replaceChildren();

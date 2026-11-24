@@ -90,7 +90,7 @@ class Publicacao(unittest.TestCase):
                 self.assertIn(a["href"][1:], ids)
             if tag == "a" and a.get("target") == "_blank":
                 self.assertTrue({"noopener", "noreferrer"}.issubset(a.get("rel", "").split()))
-        self.assertIn("public-cards-link", ids)
+        self.assertIn("cards", ids)
 
     def test_falha_de_build_preserva_saida_anterior(self):
         previous = (self.dist / "index.html").read_bytes()

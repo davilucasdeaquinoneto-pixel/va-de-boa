@@ -156,6 +156,6 @@
   gap: .5rem 1rem;
 }
 html.app-ready .nojs-nav,
-html:not(.app-ready) :is(#menu-toggle, [data-speak-page], .card-actions, .guide-search-box, .faq-topic-nav, [data-script]) {
+html[data-navigation-fallback]:not(.app-ready) :is(#menu-toggle, [data-speak-page], .card-actions, .guide-search-box, .faq-topic-nav, [data-script]) {
   display: none !important;
 }

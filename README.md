@@ -13,7 +13,7 @@ No Render, use **Static Site**, comando de build `python3 scripts/build.py` e di
 - `404.html`: página de erro.
 
 ## Segurança
-O build copia os recursos autorizados em `PUBLIC_ASSETS`, calcula SHA-384 para o JavaScript e as folhas de estilo e vincula a CSP da página ao script publicado. O HTML e os arquivos em `assets/` usam revalidação de cache. Ao trocar um recurso, atualize a referência no HTML e, se mudar o nome, a lista em `scripts/build.py`. O link público usado pelo botão Compartilhar fica em `#public-cards-link`.
+O build copia os recursos autorizados em `PUBLIC_ASSETS`, calcula SHA-384 para o JavaScript e as folhas de estilo e vincula a CSP da página ao script publicado. O HTML e os arquivos em `assets/` usam revalidação de cache. Ao trocar um recurso, atualize a referência no HTML e, se mudar o nome, a lista em `scripts/build.py`. O endereço público da coleção é definido em `publicCardsLink.href` no JavaScript da página.
 
 ## Testes de regressão
 
