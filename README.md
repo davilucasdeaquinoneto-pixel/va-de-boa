@@ -5,15 +5,15 @@ Campanha educativa independente sobre bicicletas elétricas, desenvolvida por al
 Este site integra o **kit do projeto da turma sobre bicicletas elétricas**. A menção ao Senac identifica o contexto educacional dos alunos; o site não é um canal oficial da instituição.
 
 ## Publicação recomendada
-Publique como **Static Site** no Render. O arquivo `render.yaml` já configura headers de segurança e cache.
+No Render, use **Static Site**, comando de build `python3 scripts/build.py` e diretório público `dist`. O `render.yaml` inclui os cabeçalhos HTTP e a regra de revalidação de cache. O build usa Python 3.9 ou superior e a biblioteca padrão.
 
-- `index.html`: versão de produção.
+- `index.html`: página-fonte. A versão de publicação é gerada em `dist/index.html`.
 - `assets/`: CSS, JavaScript, imagens, capas e vídeos versionados.
 - `SECURITY_REVIEW.md`: auditoria de segurança e coerência.
 - `404.html`: página de erro.
 
 ## Segurança
-A versão de produção usa CSP restritiva, sem scripts/estilos inline e sem JavaScript de terceiros. O Render aplica headers defensivos, bloqueio de framing, isolamento de origem e cache imutável dos assets versionados.
+O build copia os recursos autorizados em `PUBLIC_ASSETS`, calcula SHA-384 para o JavaScript e as folhas de estilo e vincula a CSP da página ao script publicado. O HTML e os arquivos em `assets/` usam revalidação de cache. Ao trocar um recurso, atualize a referência no HTML e, se mudar o nome, a lista em `scripts/build.py`. O link público usado pelo botão Compartilhar fica em `#public-cards-link`.
 
 ## Privacidade
 O projeto não possui cadastro, formulário, analytics próprio ou cookies criados pela campanha. A leitura em voz alta usa a Web Speech API do navegador/sistema; algumas vozes podem ser locais e outras podem depender de serviço remoto do próprio navegador/sistema.
