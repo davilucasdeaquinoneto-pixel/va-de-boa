@@ -149,3 +149,19 @@
 @media(prefers-reduced-motion:reduce){
   .drawer-chevron{transition:none}
 }
+
+/* As âncoras e o conteúdo continuam disponíveis se o aplicativo não carregar. */
+html[data-navigation-fallback]:not(.app-ready) {
+  scroll-behavior: auto;
+}
+#share-fallback {
+  overflow-wrap: anywhere;
+}
+.nojs-nav {
+  display: flex;
+  gap: .5rem 1rem;
+}
+html.app-ready .nojs-nav,
+html[data-navigation-fallback]:not(.app-ready) :is(#menu-toggle, [data-speak-page], .card-actions, .guide-search-box, .faq-topic-nav, [data-script]) {
+  display: none !important;
+}

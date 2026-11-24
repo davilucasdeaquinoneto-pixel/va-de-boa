@@ -228,37 +228,60 @@ printMedia.addEventListener?.("change", (event) => { if (!event.matches && print
 preparePrint();
 
 
+// Também atende páginas que ainda estão em cache com o HTML anterior.
+const shareFallback = document.createElement("p");
+shareFallback.id = "share-fallback";
+shareFallback.hidden = true;
+const publicCardsLink = document.createElement("a");
+publicCardsLink.id = "public-cards-link";
+publicCardsLink.href = "https://va-de-boa-turma41.onrender.com/#cards";
+publicCardsLink.textContent = publicCardsLink.href;
+shareFallback.append("Copie o link público dos cards: ", publicCardsLink);
+document.getElementById("cards").append(shareFallback);
+
 async function shareCardContent(id) {
   const poster = originalPosters.find((item) => item.id === id);
   if (!poster) return;
-  const title = poster.dataset.title || "Card Vá de boa!";
-  const url = new URL(window.location.href);
-  url.hash = "cards";
-  const shareText = title + " — campanha Vá de boa! sobre bicicletas elétricas.";
-  try {
-    if (navigator.share) {
-      await navigator.share({ title: "Vá de boa!", text: shareText, url: url.toString() });
-      document.getElementById("status-message").textContent = "Card pronto para compartilhar.";
+  const status = document.getElementById("status-message");
+  const text = (poster.dataset.title || "Card Vá de boa!") + " — campanha Vá de boa! sobre bicicletas elétricas.";
+  shareFallback.hidden = true;
+  status.textContent = "";
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: "Vá de boa!", text, url: publicCardsLink.href });
+      status.textContent = "Card pronto para compartilhar.";
       return;
+    } catch (error) {
+      if (error?.name === "AbortError") return;
     }
-    const text = shareText + " " + url.toString();
+  }
+
+  const copyText = text + " " + publicCardsLink.href;
+  try {
     if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(copyText);
     } else {
       const helper = document.createElement("textarea");
-      helper.value = text;
-      helper.setAttribute("readonly", "");
+      helper.value = copyText;
+      helper.readOnly = true;
       helper.className = "clipboard-helper";
+      const trigger = document.activeElement;
       document.body.append(helper);
-      helper.select();
-      document.execCommand("copy");
-      helper.remove();
+      try {
+        helper.select();
+        if (!document.execCommand("copy")) throw new Error("Cópia indisponível");
+      } finally {
+        helper.remove();
+        trigger?.focus({ preventScroll: true });
+      }
     }
-    document.getElementById("status-message").textContent = "Link da campanha copiado. Agora é só colar onde quiser compartilhar.";
-  } catch (error) {
-    if (error?.name !== "AbortError") {
-      document.getElementById("status-message").textContent = "Não foi possível abrir o compartilhamento. Copie o endereço do site pelo navegador.";
-    }
+    status.textContent = "Link da campanha copiado. Agora é só colar onde quiser compartilhar.";
+  } catch {
+    poster.closest(".card-item")?.append(shareFallback);
+    shareFallback.hidden = false;
+    publicCardsLink.focus();
+    status.textContent = "A cópia automática está indisponível. Use o link público dos cards.";
   }
 }
 
@@ -423,8 +446,9 @@ function initGuideSearch() {
   document.querySelectorAll("[data-guide-search]").forEach((input) => {
     const results = document.getElementById(input.dataset.searchResults);
     if (!results) return;
+    input.maxLength = 200;
     input.addEventListener("input", () => {
-      const query = normalizeGuideText(input.value).trim();
+      const query = normalizeGuideText(input.value.slice(0, input.maxLength)).trim();
       results.replaceChildren();
       results.hidden = true;
       if (!query) return;
@@ -470,8 +494,8 @@ function initGuideSearch() {
         title.textContent = item.title;
         const snippet = document.createElement("span");
         const sentences = item.rawBody.split(/(?<=[.!?])\s+/);
-        const queryTerm = terms.find((term) => normalizeGuideText(item.title + " " + item.rawBody + " " + (item.isFaq ? faqSearchAliases[item.targetId] || "" : "")).includes(term));
-        const matchingSentence = sentences.find((sentence) => normalizeGuideText(sentence).includes(queryTerm));
+        const queryTerm = terms.find((term) => item.body.includes(term));
+        const matchingSentence = queryTerm && sentences.find((sentence) => normalizeGuideText(sentence).includes(queryTerm));
         const excerpt = matchingSentence || item.rawBody;
         snippet.textContent = excerpt.slice(0, 145) + (excerpt.length > 145 ? "…" : "");
         link.append(title, snippet);
@@ -1061,4 +1085,5 @@ initGuideSearch();
 initFaqFilters();
 appendGuideRelatedLinks();
 changePage(false);
+document.documentElement.classList.add("app-ready");
 
