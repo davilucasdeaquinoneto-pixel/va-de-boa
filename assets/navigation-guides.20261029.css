@@ -151,6 +151,12 @@
 }
 
 /* As âncoras e o conteúdo continuam disponíveis se o aplicativo não carregar. */
+html[data-navigation-fallback]:not(.app-ready) {
+  scroll-behavior: auto;
+}
+#share-fallback {
+  overflow-wrap: anywhere;
+}
 .nojs-nav {
   display: flex;
   gap: .5rem 1rem;

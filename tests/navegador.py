@@ -188,6 +188,25 @@ class Navegador(unittest.TestCase):
             self.assertEqual(self.element("#card-dialog-title").text, expected)
             self.click(self.element('[data-close-dialog="card-dialog"]'))
 
+    def test_preparacao_da_impressao_individual(self):
+        self.open_page("cards")
+        count = len(self.driver.find_elements(By.CSS_SELECTOR, "[data-print-card]"))
+        self.driver.execute_script("""
+            window.print = () => {
+                window.dispatchEvent(new Event("beforeprint"));
+                const pages = document.querySelectorAll("#print-root .print-page");
+                window.impressao = {count: pages.length, title: pages[0].querySelector("h3").textContent};
+                window.dispatchEvent(new Event("afterprint"));
+            };
+        """)
+        title = self.element("#card-2 h3").get_attribute("textContent")
+        self.click(self.element('[data-print-card="card-2"]'))
+        printed = self.wait(lambda d: d.execute_script("return window.impressao"))
+        self.assertEqual(printed, {"count": 1, "title": title})
+        self.assertEqual(len(self.driver.find_elements(By.CSS_SELECTOR, "#print-root .print-page")), count)
+        self.assertTrue(self.element('[data-print-card="card-2"]').is_enabled())
+        self.driver.refresh()
+
     def test_compartilhamento_copia_cancelamento_e_link_manual(self):
         self.open_page("cards")
         button = self.element('[data-share-card="card-1"]')
@@ -226,6 +245,9 @@ class Navegador(unittest.TestCase):
                             error:v.error?.message, h264:v.canPlayType('video/mp4; codecs="avc1.42E01E"')};
                 """, video)
                 self.fail(f"Vídeo sem metadados: {details}")
+            self.driver.execute_script("const v = arguments[0]; v.muted = true; v.play()", video)
+            self.wait(lambda d: d.execute_script("return arguments[0].currentTime > 0", video))
+            self.driver.execute_script("arguments[0].pause()", video)
         self.driver.execute_script("document.querySelector('track').track.mode = 'showing'")
         self.wait(lambda d: d.execute_script("return document.querySelector('track').track.cues?.length > 0"))
         self.driver.get(self.url + "/rota/ausente")
@@ -240,8 +262,10 @@ class Navegador(unittest.TestCase):
         self.assertTrue(self.element("#faq-cnh-placa").is_displayed())
         self.assertTrue(self.element(".nojs-nav").is_displayed())
         self.assertFalse(self.element("#menu-toggle").is_displayed())
+        self.assertEqual(self.driver.execute_script("return getComputedStyle(document.documentElement).scrollBehavior"), "auto")
         self.click(self.element('.nojs-nav a[href="#videos"]'))
-        self.assertTrue(self.element("#videos").is_displayed())
+        self.wait(lambda d: urlsplit(d.current_url).fragment == "videos")
+        self.wait(lambda d: d.execute_script("const r = document.querySelector(\'#videos\').getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0"))
 
     def test_campos_de_busca_do_html_anterior(self):
         self.driver.get(self.url + "/campos-antigos/?origem=teste#inicio")
