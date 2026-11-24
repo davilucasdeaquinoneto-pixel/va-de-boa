@@ -15,6 +15,10 @@ No Render, use **Static Site**, comando de build `python3 scripts/build.py` e di
 ## Segurança
 O build copia os recursos autorizados em `PUBLIC_ASSETS`, calcula SHA-384 para o JavaScript e as folhas de estilo e vincula a CSP da página ao script publicado. O HTML e os arquivos em `assets/` usam revalidação de cache. Ao trocar um recurso, atualize a referência no HTML e, se mudar o nome, a lista em `scripts/build.py`. O link público usado pelo botão Compartilhar fica em `#public-cards-link`.
 
+## Testes de regressão
+
+Na raiz do repositório, rode `python3 -m unittest discover -s tests -v` para verificar o pacote, as âncoras, o cache e a integridade. Para testar a interface, gere `dist` com `python3 scripts/build.py` e execute `python3 tests/navegador.py` com Selenium, PyYAML, Chrome e ChromeDriver instalados. Use `TEST_BROWSER=firefox` com Firefox e GeckoDriver para testar o outro navegador. O teste serve o pacote em loopback com os cabeçalhos do Render.
+
 ## Privacidade
 O projeto não possui cadastro, formulário, analytics próprio ou cookies criados pela campanha. A leitura em voz alta usa a Web Speech API do navegador/sistema; algumas vozes podem ser locais e outras podem depender de serviço remoto do próprio navegador/sistema.
 

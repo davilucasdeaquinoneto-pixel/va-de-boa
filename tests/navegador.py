@@ -1,0 +1,190 @@
+"""Testa o build em um navegador real com os cabeçalhos do render.yaml.
+
+Requer Selenium, PyYAML, o navegador e seu WebDriver instalados. Execute
+python3 scripts/build.py antes de python3 tests/navegador.py.
+"""
+
+import os
+import shutil
+import threading
+import unittest
+from fnmatch import fnmatchcase
+from functools import partial
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from urllib.parse import urlsplit
+from urllib.request import urlopen
+
+import yaml
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.support.ui import WebDriverWait
+
+
+ROOT = Path(__file__).resolve().parents[1]
+DIST = ROOT / "dist"
+CONFIG = yaml.safe_load((ROOT / "render.yaml").read_text(encoding="utf-8"))["services"][0]
+PUBLIC_CARDS = "https://va-de-boa-turma41.onrender.com/#cards"
+
+
+class StaticSite(SimpleHTTPRequestHandler):
+    def log_message(self, *args):
+        pass
+
+    def end_headers(self):
+        path = urlsplit(self.path).path
+        for rule in CONFIG["headers"]:
+            if fnmatchcase(path, rule["path"]):
+                self.send_header(rule["name"], rule["value"])
+        super().end_headers()
+
+    def send_error(self, code, *args):
+        if code != 404:
+            return super().send_error(code, *args)
+        self.send_content(404, "text/html; charset=utf-8", (DIST / "404.html").read_bytes())
+
+    def send_content(self, status, mime, data):
+        self.send_response(status)
+        self.send_header("Content-Type", mime)
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        if self.command != "HEAD":
+            self.wfile.write(data)
+
+    def do_GET(self):
+        # Uma cópia do site recebe um JS que difere por uma quebra de linha.
+        # As URLs têm um prefixo próprio para isolar o cache desse cenário.
+        if self.path.startswith("/versao-defasada/"):
+            self.path = self.path.removeprefix("/versao-defasada")
+            path = urlsplit(self.path).path
+            if path.startswith("/assets/") and path.endswith(".js"):
+                asset = DIST / "assets" / Path(path).name
+                return self.send_content(200, "text/javascript", asset.read_bytes() + b"\n")
+        super().do_GET()
+
+
+def browser():
+    if os.environ.get("TEST_BROWSER") == "firefox":
+        options = webdriver.FirefoxOptions()
+        options.add_argument("-headless")
+        return webdriver.Firefox(options=options, service=FirefoxService(shutil.which("geckodriver")))
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    options.binary_location = shutil.which("google-chrome") or shutil.which("chromium")
+    return webdriver.Chrome(options=options, service=ChromeService(shutil.which("chromedriver")))
+
+
+class Navegador(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        handler = partial(StaticSite, directory=str(DIST))
+        cls.server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
+        cls.addClassCleanup(cls.server.server_close)
+        threading.Thread(target=cls.server.serve_forever, daemon=True).start()
+        cls.addClassCleanup(cls.server.shutdown)
+        cls.url = f"http://127.0.0.1:{cls.server.server_port}"
+        cls.driver = browser()
+        cls.addClassCleanup(cls.driver.quit)
+        cls.driver.set_page_load_timeout(25)
+
+    def open_page(self, fragment="inicio"):
+        self.driver.get(self.url + "/?origem=teste#" + fragment)
+        self.wait(lambda d: d.execute_script("return document.documentElement.classList.contains('app-ready')"))
+        self.wait(lambda d: self.element("#" + fragment).is_displayed())
+
+    def wait(self, condition):
+        return WebDriverWait(self.driver, 8, poll_frequency=0.1).until(condition)
+
+    def element(self, selector):
+        return self.driver.find_element(By.CSS_SELECTOR, selector)
+
+    def test_menu_busca_e_faq_em_duas_larguras(self):
+        for width, height in ((390, 844), (1366, 768)):
+            with self.subTest(width=width):
+                self.driver.set_window_size(width, height)
+                self.open_page()
+                self.element("#menu-toggle").click()
+                self.wait(lambda d: self.element("#menu-dialog").is_displayed())
+                self.element("#drawer-guide-search").send_keys("CNH")
+                result = self.wait(lambda d: self.element("#drawer-guide-results a[href^='#faq-']"))
+                target = urlsplit(result.get_attribute("href")).fragment
+                result.click()
+                self.wait(lambda d: self.element("#" + target).is_displayed())
+                self.assertFalse(self.element("#menu-dialog").is_displayed())
+                self.element('[data-faq-filter="bateria"]').click()
+                self.assertEqual(self.element('[data-faq-filter="bateria"]').get_attribute("aria-pressed"), "true")
+                self.driver.back()
+                self.wait(lambda d: self.element("#inicio").is_displayed())
+
+    def test_rotas_e_cards(self):
+        self.open_page()
+        routes = self.driver.execute_script("return [...new Set([...document.querySelectorAll('[data-page]')].map(el => el.dataset.page))]")
+        for route in routes:
+            self.driver.get(self.url + "/?origem=teste#" + route)
+            self.wait(lambda d: d.execute_script("return [...document.querySelectorAll('[data-page]')].every(el => el.hidden === (el.dataset.page !== arguments[0]))", route))
+        self.open_page("cards")
+        buttons = self.driver.find_elements(By.CSS_SELECTOR, "[data-open-card]")
+        self.assertEqual(len(buttons), len(self.driver.find_elements(By.CSS_SELECTOR, "#print-root .print-page")))
+        for button in buttons:
+            expected = self.element("#" + button.get_attribute("data-open-card")).get_attribute("data-title")
+            button.click()
+            self.assertEqual(self.element("#card-dialog-title").text, expected)
+            self.element('[data-close-dialog="card-dialog"]').click()
+
+    def test_compartilhamento_copia_cancelamento_e_link_manual(self):
+        self.open_page("cards")
+        click = self.element('[data-share-card="card-1"]').click
+        js = self.driver.execute_script
+        js("Object.defineProperty(navigator, 'share', { configurable: true, value: async data => { window.enviado = data.url } })")
+        click()
+        self.wait(lambda d: js("return window.enviado") == PUBLIC_CARDS)
+        js("Object.defineProperty(navigator, 'clipboard', { configurable: true, value: {writeText: async t => { window.copiado = t }} }); Object.defineProperty(navigator, 'share', {configurable: true, value: async () => { throw new DOMException('Cancelado','AbortError') }})")
+        click()
+        self.assertIsNone(js("return window.copiado"))
+        self.assertFalse(self.element("#share-fallback").is_displayed())
+        js("Object.defineProperty(navigator, 'share', {configurable: true, value: undefined})")
+        click()
+        copied = self.wait(lambda d: js("return window.copiado"))
+        self.assertTrue(copied.endswith(PUBLIC_CARDS))
+        self.assertNotIn("origem=teste", copied)
+        js("navigator.clipboard.writeText = async () => { throw new Error('indisponível') }")
+        click()
+        self.wait(lambda d: self.element("#share-fallback").is_displayed())
+        self.assertEqual(self.driver.switch_to.active_element.get_attribute("id"), "public-cards-link")
+        self.assertEqual(self.element("#public-cards-link").get_attribute("href"), PUBLIC_CARDS)
+
+    def test_css_videos_legenda_e_404(self):
+        self.open_page("videos")
+        self.assertTrue(self.driver.execute_script("return [...document.querySelectorAll('link[rel=stylesheet]')].every(el => el.sheet && el.sheet.cssRules.length)"))
+        videos = self.driver.find_elements(By.CSS_SELECTOR, "video")
+        self.assertEqual(len(videos), 2)
+        for video in videos:
+            self.wait(lambda d: d.execute_script("return arguments[0].videoWidth > 0 && arguments[0].duration > 0", video))
+        self.driver.execute_script("document.querySelector('track').track.mode = 'showing'")
+        self.wait(lambda d: d.execute_script("return document.querySelector('track').track.cues?.length > 0"))
+        self.driver.get(self.url + "/rota/ausente")
+        self.assertIn("Página não encontrada", self.driver.title)
+        self.assertTrue(self.driver.execute_script("return document.querySelector('link[rel=stylesheet]').sheet.cssRules.length > 0"))
+        self.element('a[href="/#inicio"]').click()
+        self.wait(lambda d: self.element("#inicio").is_displayed())
+
+    def test_arquivo_defasado_preserva_consulta(self):
+        self.driver.get(self.url + "/versao-defasada/#faq-cnh-placa")
+        self.assertFalse(self.driver.execute_script("return document.documentElement.classList.contains('app-ready')"))
+        self.assertTrue(self.element("#faq-cnh-placa").is_displayed())
+        self.assertTrue(self.element(".nojs-nav").is_displayed())
+        self.assertFalse(self.element("#menu-toggle").is_displayed())
+        self.element('.nojs-nav a[href="#videos"]').click()
+        self.assertTrue(self.element("#videos").is_displayed())
+
+    def test_cabecalhos_da_configuracao(self):
+        with urlopen(self.url + "/", timeout=4) as response:
+            self.assertEqual(response.headers["Referrer-Policy"], "no-referrer")
+            self.assertIn("frame-ancestors 'none'", response.headers["Content-Security-Policy"])
+            self.assertEqual(response.headers["Integrity-Policy"], "blocked-destinations=(script style)")
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
